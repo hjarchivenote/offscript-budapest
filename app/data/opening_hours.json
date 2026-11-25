@@ -1,0 +1,3362 @@
+{
+  "calendar_sources": [
+    "https://njt.jog.gov.hu/jogszabaly/2012-1-00-00",
+    "https://www.bse.hu/Products-and-Services/Trading-information/trading-calendar-2025"
+  ],
+  "special_dates": [
+    "2026-01-02",
+    "2026-01-10",
+    "2026-08-08",
+    "2026-08-21",
+    "2026-12-12",
+    "2026-12-31"
+  ],
+  "calendar_note": "Special-day hours are treated as unknown unless the venue publishes holiday hours or an explicit dated override. Bank calendar dates flag potential changes; they do not establish business closures.",
+  "schedules": {
+    "embassy-coffee": {
+      "weekly": {
+        "0": [
+          [
+            "07:30",
+            "17:00"
+          ]
+        ],
+        "1": [
+          [
+            "07:30",
+            "17:00"
+          ]
+        ],
+        "2": [
+          [
+            "07:30",
+            "17:00"
+          ]
+        ],
+        "3": [
+          [
+            "07:30",
+            "17:00"
+          ]
+        ],
+        "4": [
+          [
+            "07:30",
+            "17:00"
+          ]
+        ],
+        "5": [
+          [
+            "08:30",
+            "17:00"
+          ]
+        ],
+        "6": [
+          [
+            "08:30",
+            "17:00"
+          ]
+        ]
+      },
+      "source_url": "https://espressoembassy.hu/",
+      "checked_on": "2026-11-24",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Holiday details can differ. Weekend and holiday laptop use is restricted to communal tables.",
+      "exceptions": {}
+    },
+    "overture-c552b3b1-1970-47f6-af6f-bf8823d0a58c-place": {
+      "weekly": {
+        "0": [
+          [
+            "07:30",
+            "16:30"
+          ]
+        ],
+        "1": [
+          [
+            "07:30",
+            "16:30"
+          ]
+        ],
+        "2": [
+          [
+            "07:30",
+            "16:30"
+          ]
+        ],
+        "3": [
+          [
+            "07:30",
+            "16:30"
+          ]
+        ],
+        "4": [
+          [
+            "07:30",
+            "16:30"
+          ]
+        ],
+        "5": [
+          [
+            "09:00",
+            "16:30"
+          ]
+        ],
+        "6": []
+      },
+      "source_url": "https://goosebumps.hu/kavezo/",
+      "checked_on": "2026-11-24",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "",
+      "exceptions": {}
+    },
+    "she-manicure": {
+      "weekly": {
+        "0": [
+          [
+            "09:30",
+            "18:00"
+          ]
+        ],
+        "1": [
+          [
+            "09:30",
+            "18:00"
+          ]
+        ],
+        "2": [
+          [
+            "09:30",
+            "18:00"
+          ]
+        ],
+        "3": [
+          [
+            "09:30",
+            "18:00"
+          ]
+        ],
+        "4": [
+          [
+            "09:30",
+            "18:00"
+          ]
+        ],
+        "5": [],
+        "6": []
+      },
+      "source_url": "https://shenailbeauty.hu/",
+      "checked_on": "2026-11-24",
+      "scope": "venue",
+      "appointment_required": true,
+      "note": "Published studio hours; an appointment is required. No live slots have been checked.",
+      "exceptions": {}
+    },
+    "she-brows": {
+      "weekly": {
+        "0": [
+          [
+            "09:30",
+            "18:00"
+          ]
+        ],
+        "1": [
+          [
+            "09:30",
+            "18:00"
+          ]
+        ],
+        "2": [
+          [
+            "09:30",
+            "18:00"
+          ]
+        ],
+        "3": [
+          [
+            "09:30",
+            "18:00"
+          ]
+        ],
+        "4": [
+          [
+            "09:30",
+            "18:00"
+          ]
+        ],
+        "5": [],
+        "6": []
+      },
+      "source_url": "https://shenailbeauty.hu/",
+      "checked_on": "2026-11-24",
+      "scope": "venue",
+      "appointment_required": true,
+      "note": "Published studio hours; an appointment is required. No live slots have been checked.",
+      "exceptions": {}
+    },
+    "she-gel-polish": {
+      "weekly": {
+        "0": [
+          [
+            "09:30",
+            "18:00"
+          ]
+        ],
+        "1": [
+          [
+            "09:30",
+            "18:00"
+          ]
+        ],
+        "2": [
+          [
+            "09:30",
+            "18:00"
+          ]
+        ],
+        "3": [
+          [
+            "09:30",
+            "18:00"
+          ]
+        ],
+        "4": [
+          [
+            "09:30",
+            "18:00"
+          ]
+        ],
+        "5": [],
+        "6": []
+      },
+      "source_url": "https://shenailbeauty.hu/",
+      "checked_on": "2026-11-24",
+      "scope": "venue",
+      "appointment_required": true,
+      "note": "Published studio hours; an appointment is required. No live slots have been checked.",
+      "exceptions": {}
+    },
+    "overture-c94c538d-9a56-464f-acad-c78bfb6d37aa-place": {
+      "weekly": {
+        "0": [
+          [
+            "10:00",
+            "22:00"
+          ]
+        ],
+        "1": [
+          [
+            "10:00",
+            "22:00"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "22:00"
+          ]
+        ],
+        "3": [
+          [
+            "10:00",
+            "22:00"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "22:00"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "22:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "22:00"
+          ]
+        ]
+      },
+      "source_url": "https://5elements-massage-spa.hu/contacts/",
+      "checked_on": "2026-11-24",
+      "scope": "venue",
+      "appointment_required": true,
+      "note": "Buda branch at Csalogány utca 4/A. Ask the branch to confirm a treatment slot.",
+      "exceptions": {}
+    },
+    "overture-e9d4cea1-0966-435f-86db-000c2009203f-place": {
+      "weekly": {
+        "0": [
+          [
+            "09:00",
+            "20:00"
+          ]
+        ],
+        "1": [
+          [
+            "09:00",
+            "20:00"
+          ]
+        ],
+        "2": [
+          [
+            "09:00",
+            "20:00"
+          ]
+        ],
+        "3": [
+          [
+            "09:00",
+            "20:00"
+          ]
+        ],
+        "4": [
+          [
+            "09:00",
+            "20:00"
+          ]
+        ],
+        "5": [
+          [
+            "08:00",
+            "20:00"
+          ]
+        ],
+        "6": [
+          [
+            "08:00",
+            "22:00"
+          ]
+        ]
+      },
+      "source_url": "https://www.paskalfurdo.hu/en/opening-hours",
+      "checked_on": "2026-11-24",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "The published 8 December 2026 closing time is 16:00. The geothermal sauna is under reconstruction.",
+      "exceptions": {
+        "2026-12-08": [
+          [
+            "09:00",
+            "16:00"
+          ]
+        ]
+      }
+    },
+    "overture-49624605-082e-4187-a918-330a49b67bc1-place": {
+      "weekly": {
+        "0": [
+          [
+            "12:00",
+            "16:30"
+          ],
+          [
+            "17:30",
+            "22:00"
+          ]
+        ],
+        "1": [
+          [
+            "12:00",
+            "16:30"
+          ],
+          [
+            "17:30",
+            "22:00"
+          ]
+        ],
+        "2": [
+          [
+            "12:00",
+            "16:30"
+          ],
+          [
+            "17:30",
+            "22:00"
+          ]
+        ],
+        "3": [
+          [
+            "12:00",
+            "16:30"
+          ],
+          [
+            "17:30",
+            "22:00"
+          ]
+        ],
+        "4": [
+          [
+            "12:00",
+            "16:30"
+          ],
+          [
+            "17:30",
+            "22:00"
+          ]
+        ],
+        "5": [
+          [
+            "12:00",
+            "16:30"
+          ],
+          [
+            "17:30",
+            "22:00"
+          ]
+        ],
+        "6": [
+          [
+            "12:00",
+            "16:30"
+          ],
+          [
+            "17:30",
+            "22:00"
+          ]
+        ]
+      },
+      "source_url": "https://www.kiosk-budapest.hu/kapcsolat",
+      "checked_on": "2026-11-24",
+      "scope": "food_service",
+      "appointment_required": false,
+      "note": "This meal listing uses kitchen hours. The kitchen pauses 16:30–17:30 and closes at 22:00, although the venue can remain open later.",
+      "exceptions": {},
+      "usage_hours": {
+        "weekly": {
+          "0": [
+            [
+              "12:00",
+              "23:00"
+            ]
+          ],
+          "1": [
+            [
+              "12:00",
+              "23:00"
+            ]
+          ],
+          "2": [
+            [
+              "12:00",
+              "23:00"
+            ]
+          ],
+          "3": [
+            [
+              "12:00",
+              "24:00"
+            ]
+          ],
+          "4": [
+            [
+              "12:00",
+              "24:00"
+            ]
+          ],
+          "5": [
+            [
+              "12:00",
+              "24:00"
+            ]
+          ],
+          "6": [
+            [
+              "12:00",
+              "23:00"
+            ]
+          ]
+        },
+        "exceptions": {},
+        "note": "Dining is bounded by the venue’s closing time. Orders pause 16:30–17:30 and stop at 22:00; no meal preparation or waiting time has been assumed."
+      }
+    },
+    "instant-night": {
+      "weekly": {
+        "0": [
+          [
+            "18:00",
+            "06:00"
+          ]
+        ],
+        "1": [
+          [
+            "18:00",
+            "06:00"
+          ]
+        ],
+        "2": [
+          [
+            "18:00",
+            "06:00"
+          ]
+        ],
+        "3": [
+          [
+            "18:00",
+            "06:00"
+          ]
+        ],
+        "4": [
+          [
+            "18:00",
+            "06:00"
+          ]
+        ],
+        "5": [
+          [
+            "18:00",
+            "06:00"
+          ]
+        ],
+        "6": [
+          [
+            "18:00",
+            "06:00"
+          ]
+        ]
+      },
+      "source_url": "https://instant-fogas.com/",
+      "checked_on": "2026-11-24",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Night-time hours extend into the following morning. Event-specific admission and age conditions still apply.",
+      "exceptions": {}
+    },
+    "pinball-play": {
+      "weekly": {
+        "0": [],
+        "1": [],
+        "2": [
+          [
+            "16:00",
+            "24:00"
+          ]
+        ],
+        "3": [
+          [
+            "16:00",
+            "24:00"
+          ]
+        ],
+        "4": [
+          [
+            "16:00",
+            "24:00"
+          ]
+        ],
+        "5": [
+          [
+            "13:00",
+            "24:00"
+          ]
+        ],
+        "6": [
+          [
+            "11:00",
+            "22:00"
+          ]
+        ]
+      },
+      "source_url": "https://flippermuzeum.hu/en/main-page/",
+      "checked_on": "2026-11-24",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "",
+      "exceptions": {}
+    },
+    "monkey-day": {
+      "weekly": {
+        "0": [
+          [
+            "08:00",
+            "23:00"
+          ]
+        ],
+        "1": [
+          [
+            "08:00",
+            "23:00"
+          ]
+        ],
+        "2": [
+          [
+            "08:00",
+            "23:00"
+          ]
+        ],
+        "3": [
+          [
+            "08:00",
+            "23:00"
+          ]
+        ],
+        "4": [
+          [
+            "08:00",
+            "23:00"
+          ]
+        ],
+        "5": [
+          [
+            "09:00",
+            "20:00"
+          ]
+        ],
+        "6": [
+          [
+            "09:00",
+            "20:00"
+          ]
+        ]
+      },
+      "source_url": "https://monkeyboulder.hu/",
+      "checked_on": "2026-11-24",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Published holiday hours: 09:00–20:00. Closed 24–25 December and 1 January.",
+      "exceptions": {},
+      "holiday_hours": [
+        [
+          "09:00",
+          "20:00"
+        ]
+      ]
+    },
+    "overture-490799b3-d5a3-4a24-88f2-74395b273241-place": {
+      "weekly": {
+        "0": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "1": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "3": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ]
+      },
+      "source_url": "https://varmuzeum.hu/latogatoknak/",
+      "checked_on": "2026-11-24",
+      "scope": "admission",
+      "appointment_required": false,
+      "note": "Open-now discovery stops at the published 17:30 last-admission time. The museum closes at 18:00; check extraordinary opening notices.",
+      "exceptions": {},
+      "usage_hours": {
+        "weekly": {
+          "0": [
+            [
+              "10:00",
+              "17:45"
+            ]
+          ],
+          "1": [
+            [
+              "10:00",
+              "17:45"
+            ]
+          ],
+          "2": [
+            [
+              "10:00",
+              "17:45"
+            ]
+          ],
+          "3": [
+            [
+              "10:00",
+              "17:45"
+            ]
+          ],
+          "4": [
+            [
+              "10:00",
+              "17:45"
+            ]
+          ],
+          "5": [
+            [
+              "10:00",
+              "17:45"
+            ]
+          ],
+          "6": [
+            [
+              "10:00",
+              "17:45"
+            ]
+          ]
+        },
+        "exceptions": {},
+        "note": "Exhibition rooms start closing at 17:45, which is used conservatively for a visit. The building closes at 18:00; last admission is 17:30."
+      }
+    },
+    "overture-325133c4-7337-486a-9b7a-bdb540562398-place": {
+      "weekly": {
+        "0": [
+          [
+            "10:00",
+            "18:00"
+          ]
+        ],
+        "1": [],
+        "2": [],
+        "3": [
+          [
+            "10:00",
+            "18:00"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "18:00"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "18:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "18:00"
+          ]
+        ]
+      },
+      "source_url": "https://www.kollergaleria.hu/where_we_are_%C2%A0opening_hours-142.php",
+      "checked_on": "2026-11-24",
+      "scope": "general_visits",
+      "appointment_required": false,
+      "note": "General visits only. Tuesday and Wednesday appointments are restricted to purchases and collection of orders.",
+      "exceptions": {}
+    },
+    "overture-3fab9a77-fe82-4129-973e-095e7564cde9-place": {
+      "weekly": {
+        "0": [
+          [
+            "10:00",
+            "17:00"
+          ]
+        ],
+        "1": [
+          [
+            "10:00",
+            "17:00"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "19:00"
+          ]
+        ],
+        "3": [],
+        "4": [
+          [
+            "10:00",
+            "19:00"
+          ]
+        ],
+        "5": [],
+        "6": []
+      },
+      "source_url": "https://oik.oszk.hu/web/guest/nyitvatartas",
+      "checked_on": "2026-11-24",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Reader-registration and access conditions still apply.",
+      "exceptions": {}
+    },
+    "overture-13ade11e-1765-4000-a080-0f0985af3709-place": {
+      "weekly": {
+        "0": [
+          [
+            "10:00",
+            "18:30"
+          ]
+        ],
+        "1": [
+          [
+            "10:00",
+            "18:30"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "19:00"
+          ]
+        ],
+        "3": [
+          [
+            "10:00",
+            "18:30"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "18:30"
+          ]
+        ],
+        "5": [
+          [
+            "11:00",
+            "18:00"
+          ]
+        ],
+        "6": [
+          [
+            "12:00",
+            "18:00"
+          ]
+        ]
+      },
+      "source_url": "https://bestsellers.hu/contact-us",
+      "checked_on": "2026-11-24",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "",
+      "exceptions": {}
+    },
+    "overture-d88db040-18e5-4cf7-b91f-41235f1ba951-place": {
+      "weekly": {
+        "0": [
+          [
+            "09:00",
+            "21:00"
+          ]
+        ],
+        "1": [
+          [
+            "09:00",
+            "21:00"
+          ]
+        ],
+        "2": [
+          [
+            "09:00",
+            "21:00"
+          ]
+        ],
+        "3": [
+          [
+            "09:00",
+            "21:00"
+          ]
+        ],
+        "4": [
+          [
+            "09:00",
+            "21:00"
+          ]
+        ],
+        "5": [
+          [
+            "09:00",
+            "21:00"
+          ]
+        ],
+        "6": [
+          [
+            "09:00",
+            "21:00"
+          ]
+        ]
+      },
+      "source_url": "https://www.lianmassage.hu/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": true,
+      "note": "A treatment appointment is required; published hours do not establish current slot availability.",
+      "exceptions": {}
+    },
+    "mandala-bath": {
+      "weekly": {
+        "0": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "1": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "3": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ]
+      },
+      "source_url": "https://mandaladayspa.hu/en/price-list/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": true,
+      "note": "Reserve the selected bath or treatment slot before visiting.",
+      "exceptions": {}
+    },
+    "mandala-face": {
+      "weekly": {
+        "0": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "1": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "3": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ]
+      },
+      "source_url": "https://mandaladayspa.hu/en/price-list/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": true,
+      "note": "Reserve the selected bath or treatment slot before visiting.",
+      "exceptions": {}
+    },
+    "mandala-foot": {
+      "weekly": {
+        "0": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "1": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "3": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ]
+      },
+      "source_url": "https://mandaladayspa.hu/en/price-list/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": true,
+      "note": "Reserve the selected bath or treatment slot before visiting.",
+      "exceptions": {}
+    },
+    "mandala-classic": {
+      "weekly": {
+        "0": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "1": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "3": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ]
+      },
+      "source_url": "https://mandaladayspa.hu/en/price-list/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": true,
+      "note": "Reserve the selected bath or treatment slot before visiting.",
+      "exceptions": {}
+    },
+    "mecca-day": {
+      "weekly": {
+        "0": [
+          [
+            "06:00",
+            "22:00"
+          ]
+        ],
+        "1": [
+          [
+            "06:00",
+            "22:00"
+          ]
+        ],
+        "2": [
+          [
+            "06:00",
+            "22:00"
+          ]
+        ],
+        "3": [
+          [
+            "06:00",
+            "22:00"
+          ]
+        ],
+        "4": [
+          [
+            "06:00",
+            "22:00"
+          ]
+        ],
+        "5": [
+          [
+            "08:00",
+            "20:00"
+          ]
+        ],
+        "6": [
+          [
+            "08:00",
+            "20:00"
+          ]
+        ]
+      },
+      "source_url": "https://meccagym.hu/nyitvatartas/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "",
+      "exceptions": {}
+    },
+    "kommunity-desk": {
+      "weekly": {
+        "0": [
+          [
+            "08:00",
+            "18:00"
+          ]
+        ],
+        "1": [
+          [
+            "08:00",
+            "18:00"
+          ]
+        ],
+        "2": [
+          [
+            "08:00",
+            "18:00"
+          ]
+        ],
+        "3": [
+          [
+            "08:00",
+            "18:00"
+          ]
+        ],
+        "4": [
+          [
+            "08:00",
+            "18:00"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "16:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "16:00"
+          ]
+        ]
+      },
+      "source_url": "https://kommunity.kastner.hu/english/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Published coworking-ticket sessions; check seat availability and current operation.",
+      "exceptions": {}
+    },
+    "madal-hollan-coffee": {
+      "weekly": {
+        "0": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "1": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "2": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "3": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "4": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "5": [
+          [
+            "08:30",
+            "19:30"
+          ]
+        ],
+        "6": [
+          [
+            "08:30",
+            "19:30"
+          ]
+        ]
+      },
+      "source_url": "https://madalcafe.hu/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Published café hours. Laptop policy, holiday changes and seating availability need confirmation.",
+      "exceptions": {}
+    },
+    "madal-alkotmany-coffee": {
+      "weekly": {
+        "0": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "1": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "2": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "3": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "4": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "5": [
+          [
+            "08:30",
+            "19:30"
+          ]
+        ],
+        "6": [
+          [
+            "08:30",
+            "19:30"
+          ]
+        ]
+      },
+      "source_url": "https://madalcafe.hu/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Published café hours. Laptop policy, holiday changes and seating availability need confirmation.",
+      "exceptions": {}
+    },
+    "madal-ferenciek-coffee": {
+      "weekly": {
+        "0": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "1": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "2": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "3": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "4": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "5": [
+          [
+            "08:30",
+            "19:30"
+          ]
+        ],
+        "6": [
+          [
+            "08:30",
+            "19:30"
+          ]
+        ]
+      },
+      "source_url": "https://madalcafe.hu/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Published café hours. Laptop policy, holiday changes and seating availability need confirmation.",
+      "exceptions": {}
+    },
+    "madal-kiraly-coffee": {
+      "weekly": {
+        "0": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "1": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "2": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "3": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "4": [
+          [
+            "07:30",
+            "19:30"
+          ]
+        ],
+        "5": [
+          [
+            "08:30",
+            "19:30"
+          ]
+        ],
+        "6": [
+          [
+            "08:30",
+            "19:30"
+          ]
+        ]
+      },
+      "source_url": "https://madalcafe.hu/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Published café hours. Laptop policy, holiday changes and seating availability need confirmation.",
+      "exceptions": {}
+    },
+    "ludwig-shop": {
+      "weekly": {
+        "0": [],
+        "1": [
+          [
+            "10:00",
+            "19:30"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "19:30"
+          ]
+        ],
+        "3": [
+          [
+            "10:00",
+            "19:30"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "19:30"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "19:30"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "19:30"
+          ]
+        ]
+      },
+      "source_url": "https://www.ludwigmuseum.hu/en/opening-hours-and-ticket-prices",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Museum-shop hours only; museum-floor and exhibition opening hours differ.",
+      "exceptions": {}
+    },
+    "dobrumba-mezze": {
+      "weekly": {
+        "0": [
+          [
+            "12:00",
+            "23:30"
+          ]
+        ],
+        "1": [
+          [
+            "12:00",
+            "23:30"
+          ]
+        ],
+        "2": [
+          [
+            "12:00",
+            "23:30"
+          ]
+        ],
+        "3": [
+          [
+            "12:00",
+            "23:30"
+          ]
+        ],
+        "4": [
+          [
+            "12:00",
+            "23:30"
+          ]
+        ],
+        "5": [
+          [
+            "12:00",
+            "23:30"
+          ]
+        ],
+        "6": [
+          [
+            "12:00",
+            "23:30"
+          ]
+        ]
+      },
+      "source_url": "https://dobrumba.hu/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Venue operating hours only. Confirm kitchen service and table availability before travelling.",
+      "exceptions": {}
+    },
+    "mazel-tov-dinner": {
+      "weekly": {
+        "0": [
+          [
+            "12:00",
+            "23:00"
+          ]
+        ],
+        "1": [
+          [
+            "12:00",
+            "23:00"
+          ]
+        ],
+        "2": [
+          [
+            "12:00",
+            "23:00"
+          ]
+        ],
+        "3": [
+          [
+            "12:00",
+            "23:00"
+          ]
+        ],
+        "4": [
+          [
+            "12:00",
+            "24:00"
+          ]
+        ],
+        "5": [
+          [
+            "12:00",
+            "24:00"
+          ]
+        ],
+        "6": [
+          [
+            "12:00",
+            "24:00"
+          ]
+        ]
+      },
+      "source_url": "https://mazeltov.hu/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Venue operating hours only. Confirm kitchen service and table availability before travelling.",
+      "exceptions": {}
+    },
+    "pingrumba-meal": {
+      "weekly": {
+        "0": [
+          [
+            "17:00",
+            "23:30"
+          ]
+        ],
+        "1": [
+          [
+            "17:00",
+            "23:30"
+          ]
+        ],
+        "2": [
+          [
+            "12:00",
+            "24:00"
+          ]
+        ],
+        "3": [
+          [
+            "12:00",
+            "24:00"
+          ]
+        ],
+        "4": [
+          [
+            "12:00",
+            "24:00"
+          ]
+        ],
+        "5": [
+          [
+            "12:00",
+            "24:00"
+          ]
+        ],
+        "6": [
+          [
+            "12:00",
+            "22:00"
+          ]
+        ]
+      },
+      "source_url": "https://pingrumba.hu/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Venue operating hours only. Confirm kitchen service and table availability before travelling.",
+      "exceptions": {}
+    },
+    "marumba-meal": {
+      "weekly": {
+        "0": [
+          [
+            "17:00",
+            "22:00"
+          ]
+        ],
+        "1": [
+          [
+            "17:00",
+            "22:00"
+          ]
+        ],
+        "2": [
+          [
+            "17:00",
+            "22:00"
+          ]
+        ],
+        "3": [
+          [
+            "17:00",
+            "22:00"
+          ]
+        ],
+        "4": [
+          [
+            "17:00",
+            "22:00"
+          ]
+        ],
+        "5": [
+          [
+            "12:00",
+            "22:00"
+          ]
+        ],
+        "6": [
+          [
+            "12:00",
+            "22:00"
+          ]
+        ]
+      },
+      "source_url": "https://marumba.hu/",
+      "checked_on": "2026-11-22",
+      "scope": "food_service",
+      "appointment_required": false,
+      "note": "The kitchen closes at 22:00, before the venue’s 23:00 closing time.",
+      "exceptions": {},
+      "usage_hours": {
+        "weekly": {
+          "0": [
+            [
+              "17:00",
+              "23:00"
+            ]
+          ],
+          "1": [
+            [
+              "17:00",
+              "23:00"
+            ]
+          ],
+          "2": [
+            [
+              "17:00",
+              "23:00"
+            ]
+          ],
+          "3": [
+            [
+              "17:00",
+              "23:00"
+            ]
+          ],
+          "4": [
+            [
+              "17:00",
+              "23:00"
+            ]
+          ],
+          "5": [
+            [
+              "12:00",
+              "23:00"
+            ]
+          ],
+          "6": [
+            [
+              "12:00",
+              "23:00"
+            ]
+          ]
+        },
+        "exceptions": {},
+        "note": "The kitchen stops at 22:00; the published venue closing time is 23:00. Confirm meal preparation and waiting time."
+      }
+    },
+    "cookie-basilica-brunch": {
+      "weekly": {
+        "0": [
+          [
+            "08:00",
+            "17:00"
+          ]
+        ],
+        "1": [
+          [
+            "08:00",
+            "17:00"
+          ]
+        ],
+        "2": [
+          [
+            "08:00",
+            "17:00"
+          ]
+        ],
+        "3": [
+          [
+            "08:00",
+            "17:00"
+          ]
+        ],
+        "4": [
+          [
+            "08:00",
+            "17:00"
+          ]
+        ],
+        "5": [
+          [
+            "09:00",
+            "17:00"
+          ]
+        ],
+        "6": [
+          [
+            "09:00",
+            "17:00"
+          ]
+        ]
+      },
+      "source_url": "https://www.cookiebeacon.com/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Venue operating hours only. Confirm kitchen service and table availability before travelling.",
+      "exceptions": {}
+    },
+    "cookie-ferenciek-brunch": {
+      "weekly": {
+        "0": [
+          [
+            "08:00",
+            "17:00"
+          ]
+        ],
+        "1": [
+          [
+            "08:00",
+            "17:00"
+          ]
+        ],
+        "2": [
+          [
+            "08:00",
+            "17:00"
+          ]
+        ],
+        "3": [
+          [
+            "08:00",
+            "17:00"
+          ]
+        ],
+        "4": [
+          [
+            "08:00",
+            "17:00"
+          ]
+        ],
+        "5": [
+          [
+            "09:00",
+            "17:00"
+          ]
+        ],
+        "6": [
+          [
+            "09:00",
+            "17:00"
+          ]
+        ]
+      },
+      "source_url": "https://www.cookiebeacon.com/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Venue operating hours only. Confirm kitchen service and table availability before travelling.",
+      "exceptions": {}
+    },
+    "fine-arts-visit": {
+      "weekly": {
+        "0": [],
+        "1": [
+          [
+            "10:00",
+            "17:00"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "17:00"
+          ]
+        ],
+        "3": [
+          [
+            "10:00",
+            "17:00"
+          ]
+        ],
+        "4": null,
+        "5": [
+          [
+            "10:00",
+            "17:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "17:00"
+          ]
+        ]
+      },
+      "source_url": "https://www.mfab.hu/plan-your-visit-2/",
+      "checked_on": "2026-11-22",
+      "scope": "admission",
+      "appointment_required": false,
+      "note": "General last entry is 17:00. Fridays are left unconfirmed because the published schedule notes exceptions for some Fridays and exhibitions.",
+      "exceptions": {},
+      "usage_hours": {
+        "weekly": {
+          "0": [],
+          "1": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "2": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "3": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "4": null,
+          "5": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "6": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ]
+        },
+        "exceptions": {},
+        "note": "General visitor hours end at 18:00; last entry is 17:00. Friday variations remain unconfirmed."
+      }
+    },
+    "national-gallery-art": {
+      "weekly": {
+        "0": [],
+        "1": [
+          [
+            "10:00",
+            "17:00"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "17:00"
+          ]
+        ],
+        "3": [
+          [
+            "10:00",
+            "17:00"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "17:00"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "17:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "17:00"
+          ]
+        ]
+      },
+      "source_url": "https://en.mng.hu/",
+      "checked_on": "2026-11-22",
+      "scope": "admission",
+      "appointment_required": false,
+      "note": "Last entry is 17:00; the museum closes at 18:00. Check seasonal and exhibition-specific notices.",
+      "exceptions": {},
+      "usage_hours": {
+        "weekly": {
+          "0": [],
+          "1": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "2": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "3": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "4": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "5": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "6": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ]
+        },
+        "exceptions": {},
+        "note": "General visitor hours end at 18:00; last entry is 17:00."
+      }
+    },
+    "magnolia-body": {
+      "weekly": {
+        "0": [],
+        "1": [
+          [
+            "12:00",
+            "20:00"
+          ]
+        ],
+        "2": [
+          [
+            "12:00",
+            "20:00"
+          ]
+        ],
+        "3": [
+          [
+            "12:00",
+            "20:00"
+          ]
+        ],
+        "4": [
+          [
+            "12:00",
+            "20:00"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ]
+      },
+      "source_url": "https://magnoliadayspa.hu/en/treatments/therapeutic-massages/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": true,
+      "note": "Published salon hours; the selected treatment requires confirmation with the provider.",
+      "exceptions": {}
+    },
+    "magnolia-facial": {
+      "weekly": {
+        "0": [],
+        "1": [
+          [
+            "12:00",
+            "20:00"
+          ]
+        ],
+        "2": [
+          [
+            "12:00",
+            "20:00"
+          ]
+        ],
+        "3": [
+          [
+            "12:00",
+            "20:00"
+          ]
+        ],
+        "4": [
+          [
+            "12:00",
+            "20:00"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ]
+      },
+      "source_url": "https://magnoliadayspa.hu/en/treatments/facial-treatments/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": true,
+      "note": "Published salon hours; the selected treatment requires confirmation with the provider.",
+      "exceptions": {}
+    },
+    "buda-thai-traditional": {
+      "weekly": {
+        "0": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "1": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "3": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ]
+      },
+      "source_url": "https://budathaimassage.hu/masszazs-arak/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": true,
+      "note": "Appointment required; current treatment-slot availability has not been checked.",
+      "exceptions": {}
+    },
+    "buda-thai-foot": {
+      "weekly": {
+        "0": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "1": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "3": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ]
+      },
+      "source_url": "https://budathaimassage.hu/masszazs-arak/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": true,
+      "note": "Appointment required; current treatment-slot availability has not been checked.",
+      "exceptions": {}
+    },
+    "buda-thai-face": {
+      "weekly": {
+        "0": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "1": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "3": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ]
+      },
+      "source_url": "https://budathaimassage.hu/masszazs-arak/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": true,
+      "note": "Appointment required; current treatment-slot availability has not been checked.",
+      "exceptions": {}
+    },
+    "printa-browse": {
+      "weekly": {
+        "0": [
+          [
+            "10:00",
+            "19:00"
+          ]
+        ],
+        "1": [
+          [
+            "10:00",
+            "19:00"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "19:00"
+          ]
+        ],
+        "3": [
+          [
+            "10:00",
+            "19:00"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "19:00"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "19:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "19:00"
+          ]
+        ]
+      },
+      "source_url": "https://printa.hu/pages/kapcsolat",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "",
+      "exceptions": {}
+    },
+    "normafa-food": {
+      "weekly": {
+        "0": [],
+        "1": [
+          [
+            "12:00",
+            "22:00"
+          ]
+        ],
+        "2": [
+          [
+            "12:00",
+            "22:00"
+          ]
+        ],
+        "3": [
+          [
+            "12:00",
+            "22:00"
+          ]
+        ],
+        "4": [
+          [
+            "12:00",
+            "22:00"
+          ]
+        ],
+        "5": [
+          [
+            "11:00",
+            "22:00"
+          ]
+        ],
+        "6": [
+          [
+            "11:00",
+            "22:00"
+          ]
+        ]
+      },
+      "source_url": "https://normafasihaz.hu/en/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Venue operating hours only. Confirm kitchen service and table availability before travelling.",
+      "exceptions": {}
+    },
+    "a38-bistro": {
+      "weekly": {
+        "0": [
+          [
+            "11:00",
+            "22:00"
+          ]
+        ],
+        "1": [
+          [
+            "11:00",
+            "22:00"
+          ]
+        ],
+        "2": [
+          [
+            "11:00",
+            "22:00"
+          ]
+        ],
+        "3": [
+          [
+            "11:00",
+            "22:00"
+          ]
+        ],
+        "4": [
+          [
+            "11:00",
+            "22:00"
+          ]
+        ],
+        "5": [
+          [
+            "11:00",
+            "22:00"
+          ]
+        ],
+        "6": []
+      },
+      "source_url": "https://www.a38.hu/en",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Bistro operating hours only. Concerts have their own dated schedules; confirm kitchen service.",
+      "exceptions": {}
+    },
+    "overture-12ae1f74-47df-4531-97c3-1888f9c56ced-place": {
+      "weekly": {
+        "0": [
+          [
+            "06:30",
+            "22:30"
+          ]
+        ],
+        "1": [
+          [
+            "06:30",
+            "22:30"
+          ]
+        ],
+        "2": [
+          [
+            "06:30",
+            "22:30"
+          ]
+        ],
+        "3": [
+          [
+            "06:30",
+            "22:30"
+          ]
+        ],
+        "4": [
+          [
+            "06:30",
+            "21:30"
+          ]
+        ],
+        "5": [
+          [
+            "08:00",
+            "20:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "20:00"
+          ]
+        ]
+      },
+      "source_url": "https://goactive.hu/hu/tagsag/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Club opening hours do not confirm a place in a particular group class or treatment.",
+      "exceptions": {}
+    },
+    "overture-056404ce-4e72-4b63-8b8d-cbbf11337415-place": {
+      "weekly": {
+        "0": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "1": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "3": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "21:00"
+          ]
+        ]
+      },
+      "source_url": "https://royalthai.hu/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": true,
+      "note": "Mammut I, ground floor L010. Contact the salon to confirm your treatment appointment.",
+      "exceptions": {}
+    },
+    "overture-d11fe2d1-f366-4eaa-8dfb-bbfdfec32df5-place": {
+      "weekly": {
+        "0": [
+          [
+            "08:00",
+            "20:00"
+          ]
+        ],
+        "1": [
+          [
+            "08:00",
+            "20:00"
+          ]
+        ],
+        "2": [
+          [
+            "08:00",
+            "20:00"
+          ]
+        ],
+        "3": [
+          [
+            "08:00",
+            "20:00"
+          ]
+        ],
+        "4": [
+          [
+            "08:00",
+            "20:00"
+          ]
+        ],
+        "5": [
+          [
+            "09:00",
+            "15:00"
+          ]
+        ],
+        "6": []
+      },
+      "source_url": "https://darabosevi.hu/elerhetoseg/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": true,
+      "note": "Appointments are arranged with the selected technician.",
+      "exceptions": {}
+    },
+    "overture-cb96a722-8334-4394-ba2b-a1b59d54f45a-place": {
+      "weekly": {
+        "0": [
+          [
+            "08:00",
+            "20:00"
+          ]
+        ],
+        "1": [
+          [
+            "08:00",
+            "20:00"
+          ]
+        ],
+        "2": [
+          [
+            "08:00",
+            "20:00"
+          ]
+        ],
+        "3": [
+          [
+            "08:00",
+            "20:00"
+          ]
+        ],
+        "4": [
+          [
+            "08:00",
+            "20:00"
+          ]
+        ],
+        "5": null,
+        "6": null
+      },
+      "source_url": "https://mainstreetbeauty.hu/arlista/",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": true,
+      "note": "Saturday is by appointment without published clock hours; Sunday clock hours have not been confirmed.",
+      "exceptions": {}
+    },
+    "fuveszkert-garden": {
+      "weekly": {
+        "0": [
+          [
+            "09:00",
+            "15:30"
+          ]
+        ],
+        "1": [
+          [
+            "09:00",
+            "15:30"
+          ]
+        ],
+        "2": [
+          [
+            "09:00",
+            "15:30"
+          ]
+        ],
+        "3": [
+          [
+            "09:00",
+            "15:30"
+          ]
+        ],
+        "4": [
+          [
+            "09:00",
+            "15:30"
+          ]
+        ],
+        "5": [
+          [
+            "09:00",
+            "15:30"
+          ]
+        ],
+        "6": [
+          [
+            "09:00",
+            "15:30"
+          ]
+        ]
+      },
+      "source_url": "https://www.fuveszkert.org/nyitvatartas/",
+      "checked_on": "2026-11-22",
+      "scope": "admission",
+      "appointment_required": false,
+      "note": "Verified winter admission hours only. Last entry is 15:30; the garden closes at 16:00. Published winter closures take precedence.",
+      "exceptions": {},
+      "valid_from": "2026-11-01",
+      "valid_until": "2027-03-31",
+      "usage_hours": {
+        "weekly": {
+          "0": [
+            [
+              "09:00",
+              "16:00"
+            ]
+          ],
+          "1": [
+            [
+              "09:00",
+              "16:00"
+            ]
+          ],
+          "2": [
+            [
+              "09:00",
+              "16:00"
+            ]
+          ],
+          "3": [
+            [
+              "09:00",
+              "16:00"
+            ]
+          ],
+          "4": [
+            [
+              "09:00",
+              "16:00"
+            ]
+          ],
+          "5": [
+            [
+              "09:00",
+              "16:00"
+            ]
+          ],
+          "6": [
+            [
+              "09:00",
+              "16:00"
+            ]
+          ]
+        },
+        "exceptions": {},
+        "note": "Winter garden use ends at 16:00; last entry is 15:30."
+      }
+    },
+    "overture-7f570460-db29-4a92-a268-3821df393edd-place": {
+      "weekly": {
+        "0": [
+          [
+            "08:00",
+            "16:00"
+          ]
+        ],
+        "1": [
+          [
+            "08:00",
+            "16:00"
+          ]
+        ],
+        "2": [
+          [
+            "08:00",
+            "16:00"
+          ]
+        ],
+        "3": [
+          [
+            "08:00",
+            "16:00"
+          ]
+        ],
+        "4": [
+          [
+            "08:00",
+            "16:00"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "16:00"
+          ]
+        ],
+        "6": []
+      },
+      "source_url": "https://www.dunaipoly.hu/hu/helyek/bemutatohelyek/jokai-kert",
+      "checked_on": "2026-11-22",
+      "scope": "venue",
+      "appointment_required": false,
+      "note": "Winter garden hours; independent entry is closed on Sundays and public holidays. Exhibitions have different schedules.",
+      "exceptions": {},
+      "valid_from": "2026-11-01",
+      "valid_until": "2027-03-31",
+      "holiday_hours": []
+    },
+    "overture-c9ee2c41-fca8-42f3-8d69-0ef6250a4a82-place": {
+      "weekly": {
+        "0": [],
+        "1": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "3": [
+          [
+            "12:00",
+            "19:30"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ]
+      },
+      "source_url": "https://www.mucsarnok.hu/jegyek/index.php",
+      "checked_on": "2026-11-24",
+      "scope": "admission",
+      "appointment_required": false,
+      "exceptions": {
+        "2026-12-24": [],
+        "2026-12-25": [],
+        "2026-12-26": [],
+        "2026-12-31": [],
+        "2027-01-01": [],
+        "2026-12-03": null,
+        "2026-12-10": null,
+        "2026-12-18": null,
+        "2026-12-28": null
+      },
+      "note": "Early exhibition closures on 3, 10 and 18 December; last entry on those dates is unconfirmed. Special Monday opening on 28 December has no confirmed admission cutoff.",
+      "usage_hours": {
+        "weekly": {
+          "0": [],
+          "1": [
+            [
+              "10:00",
+              "17:45"
+            ]
+          ],
+          "2": [
+            [
+              "10:00",
+              "17:45"
+            ]
+          ],
+          "3": [
+            [
+              "12:00",
+              "19:45"
+            ]
+          ],
+          "4": [
+            [
+              "10:00",
+              "17:45"
+            ]
+          ],
+          "5": [
+            [
+              "10:00",
+              "17:45"
+            ]
+          ],
+          "6": [
+            [
+              "10:00",
+              "17:45"
+            ]
+          ]
+        },
+        "exceptions": {
+          "2026-12-24": [],
+          "2026-12-25": [],
+          "2026-12-26": [],
+          "2026-12-31": [],
+          "2027-01-01": [],
+          "2026-12-03": [
+            [
+              "12:00",
+              "17:00"
+            ]
+          ],
+          "2026-12-10": [
+            [
+              "12:00",
+              "17:00"
+            ]
+          ],
+          "2026-12-18": [
+            [
+              "10:00",
+              "14:00"
+            ]
+          ],
+          "2026-12-28": null
+        },
+        "note": "Exhibition rooms normally close 15 minutes after last admission, before the building closes."
+      }
+    },
+    "overture-b5cd4a1d-46e4-43b8-a4d1-6aae3107e5c2-place": {
+      "weekly": {
+        "0": [],
+        "1": [
+          [
+            "10:00",
+            "13:30"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "13:30"
+          ]
+        ],
+        "3": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ]
+      },
+      "source_url": "https://www.rothmuzeum.hu/english/opening-hours/",
+      "checked_on": "2026-11-24",
+      "scope": "admission",
+      "appointment_required": false,
+      "exceptions": {
+        "2026-12-28": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "2026-12-29": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ]
+      },
+      "note": "Published Christmas closures and special 28–29 December opening replace the usual weekday pattern.",
+      "usage_hours": {
+        "weekly": {
+          "0": [],
+          "1": [
+            [
+              "10:00",
+              "14:00"
+            ]
+          ],
+          "2": [
+            [
+              "10:00",
+              "14:00"
+            ]
+          ],
+          "3": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "4": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "5": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "6": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ]
+        },
+        "exceptions": {
+          "2026-12-28": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "2026-12-29": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ]
+        },
+        "note": "Last admission is 30 minutes before museum closing, including the published special opening days."
+      }
+    },
+    "overture-1f5599de-71e4-4ffc-9a2e-920983f7ea3b-place": {
+      "weekly": {
+        "0": [],
+        "1": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "2": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "3": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "4": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "17:30"
+          ]
+        ]
+      },
+      "source_url": "https://mkvm.hu/en/contact/",
+      "checked_on": "2026-11-24",
+      "scope": "admission",
+      "appointment_required": false,
+      "exceptions": {},
+      "note": "",
+      "source_urls": [
+        "https://mkvm.hu/belepok/"
+      ],
+      "usage_hours": {
+        "weekly": {
+          "0": [],
+          "1": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "2": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "3": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "4": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "5": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ],
+          "6": [
+            [
+              "10:00",
+              "18:00"
+            ]
+          ]
+        },
+        "note": "Ticket sales finish at 17:30; museum visiting hours end at 18:00."
+      }
+    },
+    "overture-98f6bdcf-856b-474d-8808-61f33c621de5-place": {
+      "weekly": {
+        "0": [
+          [
+            "06:30",
+            "22:30"
+          ]
+        ],
+        "1": [
+          [
+            "06:30",
+            "22:30"
+          ]
+        ],
+        "2": [
+          [
+            "06:30",
+            "22:30"
+          ]
+        ],
+        "3": [
+          [
+            "06:30",
+            "22:30"
+          ]
+        ],
+        "4": [
+          [
+            "06:30",
+            "22:30"
+          ]
+        ],
+        "5": [
+          [
+            "09:00",
+            "19:00"
+          ]
+        ],
+        "6": [
+          [
+            "09:00",
+            "17:00"
+          ]
+        ]
+      },
+      "source_url": "https://r70fitness.hu/",
+      "checked_on": "2026-11-24",
+      "scope": "venue",
+      "appointment_required": false,
+      "exceptions": {},
+      "note": ""
+    },
+    "overture-d8456b56-86a9-4bcc-a445-404b4a286894-place": {
+      "weekly": {
+        "0": [
+          [
+            "06:30",
+            "22:00"
+          ]
+        ],
+        "1": [
+          [
+            "06:30",
+            "22:00"
+          ]
+        ],
+        "2": [
+          [
+            "06:30",
+            "22:00"
+          ]
+        ],
+        "3": [
+          [
+            "06:30",
+            "22:00"
+          ]
+        ],
+        "4": [
+          [
+            "06:30",
+            "22:00"
+          ]
+        ],
+        "5": [
+          [
+            "10:00",
+            "18:00"
+          ]
+        ],
+        "6": [
+          [
+            "10:00",
+            "18:00"
+          ]
+        ]
+      },
+      "source_url": "https://brillfitness.hu/",
+      "checked_on": "2026-11-24",
+      "scope": "venue",
+      "appointment_required": false,
+      "exceptions": {},
+      "note": "Gym hours only. Wellness normally starts at 16:00 on weekdays and is available on request on weekends.",
+      "holiday_hours": [
+        [
+          "10:00",
+          "18:00"
+        ]
+      ]
+    },
+    "overture-d2a4818e-3811-4a96-85f1-3279ee3c4e26-place": {
+      "weekly": {
+        "0": [
+          [
+            "08:00",
+            "16:00"
+          ]
+        ],
+        "1": [
+          [
+            "08:00",
+            "16:00"
+          ]
+        ],
+        "2": [
+          [
+            "08:00",
+            "16:00"
+          ]
+        ],
+        "3": [
+          [
+            "08:00",
+            "16:00"
+          ]
+        ],
+        "4": [
+          [
+            "08:00",
+            "16:00"
+          ]
+        ],
+        "5": [
+          [
+            "08:00",
+            "16:00"
+          ]
+        ],
+        "6": [
+          [
+            "08:00",
+            "16:00"
+          ]
+        ]
+      },
+      "source_url": "https://budaiarboretum.uni-mate.hu/nyitvatartas",
+      "checked_on": "2026-11-24",
+      "scope": "venue",
+      "appointment_required": false,
+      "exceptions": {
+        "2026-12-12": [
+          [
+            "08:00",
+            "16:00"
+          ]
+        ],
+        "2026-12-31": [
+          [
+            "08:00",
+            "16:00"
+          ]
+        ]
+      },
+      "note": "Lower garden winter schedule only; the upper garden is closed on weekends, rest days and holidays.",
+      "holiday_hours": [
+        [
+          "08:00",
+          "16:00"
+        ]
+      ],
+      "valid_from": "2026-10-24",
+      "valid_until": "2027-02-28"
+    },
+    "overture-64ec40bf-c520-4656-9152-5f78d059c904-place": {
+      "weekly": {
+        "0": [
+          [
+            "12:00",
+            "21:00"
+          ]
+        ],
+        "1": [
+          [
+            "12:00",
+            "21:00"
+          ]
+        ],
+        "2": [
+          [
+            "12:00",
+            "21:00"
+          ]
+        ],
+        "3": [
+          [
+            "12:00",
+            "21:00"
+          ]
+        ],
+        "4": [
+          [
+            "12:00",
+            "21:00"
+          ]
+        ],
+        "5": [
+          [
+            "12:00",
+            "21:00"
+          ]
+        ],
+        "6": [
+          [
+            "12:00",
+            "21:00"
+          ]
+        ]
+      },
+      "source_url": "https://www.delannathai.com/contact",
+      "checked_on": "2026-11-24",
+      "scope": "venue",
+      "appointment_required": true,
+      "exceptions": {},
+      "note": "Published salon hours do not establish available treatment slots. Confirm the Klauzál utca branch and an appointment."
+    },
+    "overture-c6fcfde7-a945-4187-8824-2d2756d8acd8-place": {
+      "weekly": {
+        "0": [
+          [
+            "09:00",
+            "17:00"
+          ]
+        ],
+        "1": [
+          [
+            "09:00",
+            "17:00"
+          ]
+        ],
+        "2": null,
+        "3": [
+          [
+            "09:00",
+            "17:00"
+          ]
+        ],
+        "4": [
+          [
+            "09:00",
+            "17:00"
+          ]
+        ],
+        "5": [],
+        "6": []
+      },
+      "source_url": "https://konyvtar.rgy.hu/nyitva-tartas/",
+      "checked_on": "2026-11-24",
+      "scope": "venue",
+      "appointment_required": false,
+      "exceptions": {},
+      "note": "Wednesday hours conflict: Hungarian text and footer say 13:00–17:00, English text says 09:00–17:00. Wednesday is unconfirmed; July–August access is by arrangement.",
+      "holiday_hours": [],
+      "valid_from": "2026-09-01",
+      "valid_until": "2027-06-30"
+    }
+  }
+}

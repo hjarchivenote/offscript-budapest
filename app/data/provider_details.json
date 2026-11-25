@@ -1,0 +1,1945 @@
+{
+  "checked_on": "2026-11-22",
+  "places": {
+    "12ae1f74-47df-4531-97c3-1888f9c56ced": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://goactive.hu/hu/tagsag/",
+      "source_urls": [
+        "https://goactive.hu/en/home/"
+      ],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://goactive.hu/hu/tagsag/",
+          "fields": [
+            "price_context",
+            "booking"
+          ],
+          "checked_on": "2026-11-22"
+        },
+        {
+          "url": "https://goactive.hu/en/home/",
+          "fields": [
+            "description",
+            "hours",
+            "student_offer"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "price_context",
+        "booking",
+        "description",
+        "hours",
+        "student_offer"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "title": "GoActive · independent gym, pool & wellness visit",
+      "description": "Use the gym, 18-metre pool or wellness facilities independently. Group classes, personal training and massage appointments are separate activities with their own timing.",
+      "highlight": "The tourist ticket is three entries within ten days, rather than a single day pass.",
+      "price_note": "Published day ticket: 8,000 Ft; tourist ticket: 15,000 Ft for three entries within ten days. The membership page also lists a 5,000 Ft new-registration fee; its applicability to a day ticket needs confirmation, so no total is assumed.",
+      "hours": "Mon–Thu 06:30–22:30; Fri 06:30–21:30; Sat 08:00–20:00; Sun 10:00–20:00.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "student_discount": true,
+      "student_note": "The English site advertises a 10% student discount. Confirm eligible tickets, required proof and registration charges; the discount is not applied to an assumed total.",
+      "booking_url": "https://goactive.hu/hu/tagsag/",
+      "booking_label": "Tickets & membership details",
+      "categories": [
+        "fitness",
+        "wellness"
+      ],
+      "features": [
+        "indoor"
+      ],
+      "moods": [
+        "active",
+        "reset"
+      ],
+      "company": [
+        "solo",
+        "friends"
+      ],
+      "effort": "high",
+      "setting": "indoor",
+      "requirements": [
+        "Check which facilities and classes your ticket covers before paying."
+      ],
+      "duration_kind": "flexible",
+      "duration_note": "Independent gym, pool or wellness use: you choose your stay within opening hours and ticket conditions. Group classes, personal training and massage appointments have their own session lengths.",
+      "timing_source_url": "https://goactive.hu/en/home/",
+      "timing_checked_on": "2026-11-24"
+    },
+    "373b0df2-b130-41b2-a7f8-1d99abbe3c5f": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://centralgymbudapest.hu/",
+      "source_urls": [],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://centralgymbudapest.hu/",
+          "fields": [
+            "description",
+            "prices",
+            "booking"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "prices",
+        "booking"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "title": "Central Gym · try a coached class",
+      "description": "Try boxing, Thai boxing, Krav Maga or strength training by contacting the relevant coach.",
+      "highlight": "The published single-session rate is separate from private coaching prices.",
+      "price_low": 4000,
+      "price_high": 4000,
+      "price_note": "Published daily rate for listed group training: 4,000 Ft. Private coaching costs more. Confirm the selected class and any first-visit charges with its coach.",
+      "hours": "Use the published class timetable and arrange attendance with the coach; general walk-in hours are not confirmed.",
+      "booking_url": "https://centralgymbudapest.hu/",
+      "booking_label": "Find a coach & enquire",
+      "requirements": [
+        "Contact the selected coach before attending. The timetable is not a live reservation system."
+      ],
+      "features": [
+        "indoor"
+      ],
+      "moods": [
+        "active",
+        "curious"
+      ],
+      "company": [
+        "solo",
+        "friends"
+      ],
+      "effort": "high",
+      "setting": "indoor",
+      "duration_kind": "unknown",
+      "duration_note": "A coached group class, not independent gym entry. Choose a class and confirm its full timetable length with the coach; a single-session price does not establish the duration."
+    },
+    "d88db040-18e5-4cf7-b91f-41235f1ba951": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://www.lianmassage.hu/",
+      "source_urls": [],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://www.lianmassage.hu/",
+          "fields": [
+            "description",
+            "prices",
+            "duration",
+            "hours",
+            "booking",
+            "access"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "prices",
+        "duration",
+        "hours",
+        "booking",
+        "access"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "title": "Lian Thai Massage · 45-minute Thai massage",
+      "kind": "service",
+      "description": "A traditional Thai massage at the Wesselényi utca salon, with a published 45-minute option.",
+      "highlight": "The salon also lists separate two-person treatments; their package prices are different.",
+      "price_low": 13000,
+      "price_high": 13000,
+      "price_note": "13,000 Ft per person for the 45-minute traditional Thai massage. Oils, longer sessions and couples packages have separate prices.",
+      "duration": 45,
+      "duration_note": "Published treatment time: 45 minutes; allow additional time for arrival.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "hours": "Every day 09:00–21:00; reserve a treatment slot.",
+      "booking_url": "https://lianmassage.onlinefoglalas.hu/",
+      "booking_label": "Choose a treatment & time",
+      "instagram_url": "https://www.instagram.com/lianthaimassagebudapest/",
+      "features": [
+        "quiet",
+        "indoor"
+      ],
+      "moods": [
+        "reset",
+        "treat"
+      ],
+      "company": [
+        "solo",
+        "friends",
+        "date"
+      ],
+      "effort": "low",
+      "setting": "indoor",
+      "requirements": [
+        "The salon asks visitors to silence phones and avoid loud conversation.",
+        "A late arrival can shorten the booked treatment."
+      ],
+      "duration_kind": "fixed"
+    },
+    "056404ce-4e72-4b63-8b8d-cbbf11337415": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://royalthai.hu/",
+      "source_urls": [],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://royalthai.hu/",
+          "fields": [
+            "description",
+            "hours",
+            "booking",
+            "access"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "hours",
+        "booking",
+        "access"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "description": "A Thai massage salon inside Mammut I, now on the ground floor at unit L010.",
+      "highlight": "The operator reports a move within Mammut I; use the ground-floor location.",
+      "venue_location": "District II · Lövőház utca 2–6 · Mammut I, ground floor L010 · 1024 Budapest",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "hours": "Every day 10:00–21:00; contact the salon to arrange an appointment.",
+      "price_note": "Ask the salon for the current price of your chosen treatment and duration.",
+      "booking_url": "https://royalthai.hu/contact",
+      "booking_label": "Contact & appointment details",
+      "instagram_url": "https://www.instagram.com/royalthaimassage/",
+      "features": [
+        "indoor"
+      ],
+      "moods": [
+        "reset",
+        "treat"
+      ],
+      "company": [
+        "solo"
+      ],
+      "effort": "low",
+      "setting": "indoor",
+      "duration_kind": "unknown",
+      "duration_note": "Choose the massage treatment and confirm its full appointment length. A service menu or an open salon does not establish how long your selected treatment takes."
+    },
+    "31a44010-825a-4814-a60e-ff3aa89144e1": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://www.exoticnailbar.hu/",
+      "source_urls": [],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://www.exoticnailbar.hu/",
+          "fields": [
+            "description",
+            "prices",
+            "booking",
+            "access"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "prices",
+        "booking",
+        "access"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "title": "Exotic Nail Bar · classic manicure",
+      "kind": "service",
+      "description": "A classic manicure at the Pannónia utca salon, with weekend charges included in the displayed range.",
+      "highlight": "Cash payment only; Saturday and Sunday carry a 1,500 Ft surcharge.",
+      "price_low": 6500,
+      "price_high": 8000,
+      "price_note": "Classic manicure: 6,500 Ft; with the published weekend surcharge: 8,000 Ft. Polish removal, gel and decoration are separate services. Listed tariff effective from 1 June 2025 until withdrawn; reconfirm your quote.",
+      "booking_url": "https://www.exoticnailbar.hu/",
+      "booking_label": "Request an appointment",
+      "requirements": [
+        "Pay in cash.",
+        "Ask the salon to confirm the service, any removal charge and appointment time."
+      ],
+      "features": [
+        "indoor"
+      ],
+      "moods": [
+        "treat",
+        "reset"
+      ],
+      "company": [
+        "solo"
+      ],
+      "effort": "low",
+      "setting": "indoor",
+      "duration_kind": "unknown",
+      "duration_note": "The full nail appointment length is unconfirmed. Confirm the selected service, removal, preparation and any design extras; this is not a visit whose length can be shortened freely."
+    },
+    "d11fe2d1-f366-4eaa-8dfb-bbfdfec32df5": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://darabosevi.hu/elerhetoseg/",
+      "source_urls": [
+        "https://darabosevi.hu/"
+      ],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://darabosevi.hu/elerhetoseg/",
+          "fields": [
+            "hours",
+            "booking",
+            "access"
+          ],
+          "checked_on": "2026-11-22"
+        },
+        {
+          "url": "https://darabosevi.hu/",
+          "fields": [
+            "description"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "hours",
+        "booking",
+        "access",
+        "description"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "description": "Choose manicure, gel polish or nail extensions and contact the relevant nail technician to book.",
+      "highlight": "Appointments are arranged with individual technicians; the contact page lists their details.",
+      "hours": "Mon–Fri 08:00–20:00; Sat 09:00–15:00, by appointment. Sunday opening is not listed.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "booking_url": "https://darabosevi.hu/elerhetoseg/",
+      "booking_label": "Find your nail technician",
+      "instagram_url": "https://www.instagram.com/evadarabos/",
+      "price_note": "Confirm the selected technician’s service, removal charges and total before booking; no universal salon price is assumed.",
+      "requirements": [
+        "Late cancellations within 24 hours can incur the treatment price if the slot cannot be filled; check the salon’s booking terms."
+      ],
+      "features": [
+        "indoor"
+      ],
+      "moods": [
+        "treat",
+        "reset"
+      ],
+      "company": [
+        "solo"
+      ],
+      "effort": "low",
+      "setting": "indoor",
+      "duration_kind": "unknown",
+      "duration_note": "The full nail appointment length is unconfirmed. Confirm the selected service, removal, preparation and any design extras; this is not a visit whose length can be shortened freely."
+    },
+    "e9d4cea1-0966-435f-86db-000c2009203f": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://www.paskalfurdo.hu/en/prices",
+      "source_urls": [
+        "https://www.paskalfurdo.hu/en/opening-hours"
+      ],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://www.paskalfurdo.hu/en/prices",
+          "fields": [
+            "prices",
+            "student_offer",
+            "booking",
+            "access"
+          ],
+          "checked_on": "2026-11-22"
+        },
+        {
+          "url": "https://www.paskalfurdo.hu/en/opening-hours",
+          "fields": [
+            "hours"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "prices",
+        "student_offer",
+        "booking",
+        "access",
+        "hours"
+      ],
+      "availability_note": "The geothermal sauna is under reconstruction. Check the bath’s current notice and ticket availability.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "title": "Paskál · adult bath entry",
+      "description": "An adult entry to Paskál Thermal and Open-air Bath; massage appointments are sold separately.",
+      "highlight": "The site lists reduced student tickets and a current geothermal-sauna reconstruction notice.",
+      "price_low": 4700,
+      "price_high": 5700,
+      "price_note": "Standard adult entrance: 4,700 Ft on weekdays; 5,700 Ft on weekends and holidays. Towels, massages and other extras are separate.",
+      "student_discount": true,
+      "student_note": "Published student entrance: 4,000 Ft on weekdays and 4,400 Ft on weekends/holidays. Confirm accepted student identification and eligibility before purchase.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "hours": "Mon–Fri 09:00–20:00; Sat 08:00–20:00; Sun 08:00–22:00. Special notice: closes at 16:00 on 8 December 2026.",
+      "booking_url": "https://tickets.paskalfurdo.hu/",
+      "booking_label": "Official bath tickets",
+      "features": [
+        "indoor"
+      ],
+      "moods": [
+        "reset",
+        "treat"
+      ],
+      "company": [
+        "solo",
+        "friends",
+        "date"
+      ],
+      "effort": "medium",
+      "setting": "mixed",
+      "duration_kind": "flexible",
+      "duration_note": "Independent bath entry: you choose your stay within opening hours and the selected ticket's time and zone limits. Massage, sauna programmes and treatment packages have separate session lengths; shorter stays still require the full ticket."
+    },
+    "c94c538d-9a56-464f-acad-c78bfb6d37aa": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://5elements-massage-spa.hu/balinese/",
+      "source_urls": [
+        "https://5elements-massage-spa.hu/contacts/"
+      ],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://5elements-massage-spa.hu/balinese/",
+          "fields": [
+            "description",
+            "prices",
+            "duration"
+          ],
+          "checked_on": "2026-11-22"
+        },
+        {
+          "url": "https://5elements-massage-spa.hu/contacts/",
+          "fields": [
+            "hours",
+            "booking",
+            "access"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "prices",
+        "duration",
+        "hours",
+        "booking",
+        "access"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "title": "5 Elements Buda · 60-minute Balinese oil massage",
+      "kind": "service",
+      "description": "A 60-minute Balinese oil massage at the Csalogány utca Day Spa in Buda.",
+      "highlight": "The spa also offers separate couples programmes and optional sauna services.",
+      "price_low": 14900,
+      "price_high": 14900,
+      "price_note": "Provider’s reference price: 14,900 Ft per person for 60 minutes of Balinese oil massage. Sauna and couples programmes are separate; confirm the final quote.",
+      "duration": 60,
+      "duration_note": "Published treatment time: 60 minutes, excluding arrival and changing.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "hours": "Every day 10:00–22:00; book with the Buda branch.",
+      "booking_url": "https://5elements-massage-spa.hu/contacts/#cbal",
+      "booking_label": "Request a Buda appointment",
+      "whatsapp_url": "https://wa.me/36302353555",
+      "instagram_url": "https://www.instagram.com/5_elements_spa_budapest/",
+      "features": [
+        "indoor"
+      ],
+      "moods": [
+        "reset",
+        "treat"
+      ],
+      "company": [
+        "solo",
+        "date"
+      ],
+      "effort": "low",
+      "setting": "indoor",
+      "requirements": [
+        "The displayed price is for one treatment and one person. Ask for the separate couples package if you want two therapists in a shared room."
+      ],
+      "duration_kind": "fixed"
+    },
+    "325133c4-7337-486a-9b7a-bdb540562398": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://www.kollergaleria.hu/where_we_are_%C2%A0opening_hours-142.php",
+      "source_urls": [
+        "https://www.kollergaleria.hu/"
+      ],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://www.kollergaleria.hu/where_we_are_%C2%A0opening_hours-142.php",
+          "fields": [
+            "hours",
+            "access"
+          ],
+          "checked_on": "2026-11-22"
+        },
+        {
+          "url": "https://www.kollergaleria.hu/",
+          "fields": [
+            "description"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "hours",
+        "access",
+        "description"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "description": "Explore Hungarian art and the gallery’s current exhibitions in the Buda Castle district.",
+      "highlight": "Tuesday and Wednesday appointments are restricted to selected artwork purchases or order collection.",
+      "weekdays": [
+        0,
+        3,
+        4,
+        5,
+        6
+      ],
+      "hours": "General visits: Mon and Thu–Sun 10:00–18:00. Tue–Wed: purchase/collection appointments only.",
+      "price_note": "A general admission charge or free-entry policy has not been confirmed on the checked pages.",
+      "requirements": [
+        "Check the current exhibition and visitor conditions before travelling. Tuesday and Wednesday purchase appointments are not general leisure visits."
+      ],
+      "features": [
+        "indoor"
+      ],
+      "moods": [
+        "curious"
+      ],
+      "company": [
+        "solo",
+        "friends",
+        "date"
+      ],
+      "effort": "low",
+      "setting": "indoor",
+      "duration_kind": "flexible",
+      "duration_note": "Independent exhibition visit: you choose your visit length within opening hours, admission conditions and any ticket limit. Guided tours, workshops and scheduled shows need their own confirmed duration."
+    },
+    "490799b3-d5a3-4a24-88f2-74395b273241": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://varmuzeum.hu/jegyinformaciok/",
+      "source_urls": [
+        "https://varmuzeum.hu/latogatoknak/"
+      ],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://varmuzeum.hu/jegyinformaciok/",
+          "fields": [
+            "prices",
+            "student_offer",
+            "booking",
+            "access"
+          ],
+          "checked_on": "2026-11-22"
+        },
+        {
+          "url": "https://varmuzeum.hu/latogatoknak/",
+          "fields": [
+            "description",
+            "hours"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "prices",
+        "student_offer",
+        "booking",
+        "access",
+        "description",
+        "hours"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "title": "BHM Castle Museum · general admission",
+      "description": "Visit the Budapest History Museum’s Castle Museum exhibitions in the southern part of Buda Palace.",
+      "highlight": "St Stephen’s Hall requires a separate timed booking or combined ticket.",
+      "price_low": 3800,
+      "price_high": 3800,
+      "price_note": "Full-price general admission: 3,800 Ft. Guided tours, special programmes and St Stephen’s Hall have separate or combined tickets.",
+      "student_discount": true,
+      "student_note": "Published student/youth ticket: 1,900 Ft. The page restricts this concession to EEA citizens and states age/student-ID conditions; studying in Hungary alone does not establish eligibility.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "hours": "Published general hours: daily 10:00–18:00. Last admission/ticket sales 17:30; exhibition closure starts at 17:45. Check special-opening notices.",
+      "booking_url": "https://varmuzeum.jegy.hu/",
+      "booking_label": "Official museum tickets",
+      "features": [
+        "indoor"
+      ],
+      "moods": [
+        "curious"
+      ],
+      "company": [
+        "solo",
+        "friends",
+        "date"
+      ],
+      "effort": "low",
+      "setting": "indoor",
+      "duration_kind": "flexible",
+      "duration_note": "Independent exhibition visit: you choose your visit length within opening hours, admission conditions and any ticket limit. Guided tours, workshops and scheduled shows need their own confirmed duration."
+    },
+    "6a740479-b01f-49fa-bab7-ab1ba275030c": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://www.houseofhoudinibudapest.com/",
+      "source_urls": [],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://www.houseofhoudinibudapest.com/",
+          "fields": [
+            "description",
+            "prices",
+            "hours",
+            "booking",
+            "language",
+            "access"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "prices",
+        "hours",
+        "booking",
+        "language",
+        "access"
+      ],
+      "availability_note": "No same-day booking requests. A requested time is not confirmed until the operator accepts it.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "title": "The House of Houdini · tour & magic show",
+      "description": "A guided collection visit followed by a live magic show, booked for a confirmed programme time.",
+      "highlight": "Reservation or invitation required; the operator does not accept same-day booking requests.",
+      "published_price_label": "€15 · adult",
+      "price_note": "Adult programme: €15. A HUF total is not confirmed; euro prices are excluded when a HUF budget limit is selected.",
+      "hours": "Daily 10:00–19:00. Programmes start at 30-minute intervals, subject to confirmation; this is not the total visit duration.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "booking_lead_days": 1,
+      "duration_note": "This is a guided tour followed by a magic show, not an independent museum browse. Confirm the full programme length; the interval between departures is not its duration.",
+      "language": "Guided programmes offered in English or Hungarian; request and confirm your language.",
+      "booking_url": "https://www.houseofhoudinibudapest.com/",
+      "booking_label": "Request a future programme",
+      "features": [
+        "indoor"
+      ],
+      "moods": [
+        "curious",
+        "social"
+      ],
+      "company": [
+        "solo",
+        "friends",
+        "date"
+      ],
+      "effort": "low",
+      "setting": "indoor",
+      "duration_kind": "unknown"
+    },
+    "b5e5866b-68fc-4a30-b1ec-4a1eba7b2211": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://www.omikk.bme.hu/en/library-use/fees",
+      "source_urls": [
+        "https://www.omikk.bme.hu/en/library-use/registration/user-options",
+        "https://www.omikk.bme.hu/en/"
+      ],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://www.omikk.bme.hu/en/library-use/fees",
+          "fields": [
+            "prices",
+            "student_offer"
+          ],
+          "checked_on": "2026-11-22"
+        },
+        {
+          "url": "https://www.omikk.bme.hu/en/library-use/registration/user-options",
+          "fields": [
+            "description",
+            "access"
+          ],
+          "checked_on": "2026-11-22"
+        },
+        {
+          "url": "https://www.omikk.bme.hu/en/",
+          "fields": [
+            "hours"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "prices",
+        "student_offer",
+        "description",
+        "access",
+        "hours"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "title": "BME OMIKK · registered reading-room visit",
+      "description": "Use reading rooms, study areas and Wi-Fi after choosing the appropriate library registration.",
+      "highlight": "A free unregistered library visit does not include registered reading-room access.",
+      "price_low": 300,
+      "price_high": 300,
+      "price_note": "Published daily registration ticket: 300 Ft. This is a day-use option, not borrowing membership; ask reception which registration suits your visit. Fee page updated 7 May 2026.",
+      "student_discount": true,
+      "student_note": "The fee page distinguishes BME students, non-BME students and under-25s. Non-BME students: 2,500 Ft yearly; BME/under-25 categories list a 300 Ft card charge and waived registration. Confirm documents and eligibility.",
+      "hours": "Use the library’s live opening calendar for your chosen date; the checked calendar lists 08:00–20:00, not a guaranteed permanent weekly schedule.",
+      "requirements": [
+        "Register before using the reading rooms, study areas or registered Wi-Fi. A general visit without registration provides fewer services."
+      ],
+      "features": [
+        "study",
+        "indoor"
+      ],
+      "moods": [
+        "focus"
+      ],
+      "company": [
+        "solo",
+        "friends"
+      ],
+      "effort": "low",
+      "setting": "indoor",
+      "duration_kind": "flexible",
+      "duration_note": "Independent reading or study visit: you choose your visit length within opening hours and your registration's access conditions. This does not cover guided visits or booked group rooms."
+    },
+    "3fab9a77-fe82-4129-973e-095e7564cde9": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://oik.oszk.hu/web/guest/nyitvatartas",
+      "source_urls": [
+        "https://oik.oszk.hu/web/guest/beiratkozas"
+      ],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://oik.oszk.hu/web/guest/nyitvatartas",
+          "fields": [
+            "hours"
+          ],
+          "checked_on": "2026-11-22"
+        },
+        {
+          "url": "https://oik.oszk.hu/web/guest/beiratkozas",
+          "fields": [
+            "access",
+            "price_context"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "hours",
+        "access",
+        "price_context"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "description": "Check reader access and Wi-Fi options at the National Library of Foreign Literature on Molnár utca.",
+      "highlight": "The checked schedule closes on Thursdays and weekends; the published fee page is dated 2017.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "hours": "Published schedule: Mon–Tue 10:00–17:00; Wed and Fri 10:00–19:00; Thu, Sat and Sun closed.",
+      "price_note": "The accessible fee table states an effective date in 2017. Ask the library for current day-use and registration charges; those old amounts are not used in the budget filter.",
+      "student_note": "Current student registration conditions have not been verified; the old fee table is not treated as a current offer.",
+      "requirements": [
+        "Confirm the current reader ticket and study-room access with the library."
+      ],
+      "features": [
+        "study",
+        "indoor"
+      ],
+      "moods": [
+        "focus"
+      ],
+      "company": [
+        "solo"
+      ],
+      "effort": "low",
+      "setting": "indoor",
+      "duration_kind": "flexible",
+      "duration_note": "Independent reading or study visit: you choose your visit length within opening hours and your registration's access conditions. This does not cover guided visits or booked group rooms."
+    },
+    "7f570460-db29-4a92-a268-3821df393edd": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://www.dunaipoly.hu/hu/helyek/bemutatohelyek/jokai-kert",
+      "source_urls": [],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://www.dunaipoly.hu/hu/helyek/bemutatohelyek/jokai-kert",
+          "fields": [
+            "description",
+            "prices",
+            "hours",
+            "access"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "prices",
+        "hours",
+        "access"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "title": "Jókai Garden · independent garden visit",
+      "description": "Walk around the protected historic garden associated with the Hungarian writer Mór Jókai.",
+      "highlight": "Independent garden entry is free; the exhibition and organised group walks have separate tickets.",
+      "price_low": 0,
+      "price_high": 0,
+      "price_note": "Free independent entry to the garden during its visitor hours. Exhibitions, tours, photography bookings and group services are separate.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "hours": "Apr–Oct: working days 08:00–18:00, Sat 10:00–18:00. Nov–Mar: working days 08:00–16:00, Sat 10:00–16:00. Closed Sundays and public holidays.",
+      "requirements": [
+        "Check holiday access and the weather. The exhibition’s limited schedule is different from the garden’s."
+      ],
+      "features": [
+        "outdoor"
+      ],
+      "moods": [
+        "reset",
+        "curious"
+      ],
+      "company": [
+        "solo",
+        "friends",
+        "date"
+      ],
+      "effort": "medium",
+      "setting": "outdoor",
+      "duration_kind": "flexible",
+      "duration_note": "Independent outdoor visit: you choose your visit length within visitor opening hours and access rules. Guided walks, exhibitions and paid attractions have separate schedules."
+    },
+    "c36cb71b-0ec3-4914-90f1-c1f15abf27a8": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://millenaris.hu/gyik-faq/",
+      "source_urls": [],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://millenaris.hu/gyik-faq/",
+          "fields": [
+            "description",
+            "hours",
+            "access"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "hours",
+        "access"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "description": "Explore the Millenáris and Széllkapu parks, using the operator’s seasonal visitor hours.",
+      "highlight": "Event arrangements can change park access; the underground garage’s 24-hour schedule is not the park schedule.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "hours": "Daily: summer 06:00–23:00; winter 06:00–21:00. Event days can have different access.",
+      "price_note": "No fixed personal spend or general entry tariff has been verified; tickets for particular events are separate.",
+      "requirements": [
+        "The operator prohibits cycling and bringing pets; certified assistance animals are an exception. Check current park rules."
+      ],
+      "features": [
+        "outdoor"
+      ],
+      "moods": [
+        "reset",
+        "social"
+      ],
+      "company": [
+        "solo",
+        "friends",
+        "date"
+      ],
+      "effort": "low",
+      "setting": "outdoor",
+      "duration_kind": "flexible",
+      "duration_note": "Independent outdoor visit: you choose your visit length within visitor opening hours and access rules. Guided walks, exhibitions and paid attractions have separate schedules."
+    },
+    "c552b3b1-1970-47f6-af6f-bf8823d0a58c": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://goosebumps.hu/kavezo/",
+      "source_urls": [],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://goosebumps.hu/kavezo/",
+          "fields": [
+            "description",
+            "hours",
+            "access"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "hours",
+        "access"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "description": "Try the café’s own-roasted specialty coffee, with vegan breakfast, sandwich, bowl and cake options.",
+      "highlight": "The Fekete Sas utca café is closed on Sundays.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "hours": "Mon–Fri 07:30–16:30; Sat 09:00–16:30; Sun closed.",
+      "price_note": "Check the café’s drink and food menu for current prices; no fixed café spend is assumed.",
+      "features": [
+        "indoor"
+      ],
+      "moods": [
+        "reset",
+        "social"
+      ],
+      "company": [
+        "solo",
+        "friends",
+        "date"
+      ],
+      "effort": "low",
+      "setting": "indoor",
+      "duration_kind": "flexible",
+      "duration_note": "Independent café visit: you choose your visit length within opening hours. Seating, laptop rules and any table time limit still apply."
+    },
+    "a8027740-2f61-40fd-a275-76c4e5502ab0": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://ohanacoffee.hu/",
+      "source_urls": [
+        "https://ohanacoffee.hu/pages/etlep-itallap"
+      ],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://ohanacoffee.hu/",
+          "fields": [
+            "description",
+            "identity"
+          ],
+          "checked_on": "2026-11-22"
+        },
+        {
+          "url": "https://ohanacoffee.hu/pages/etlep-itallap",
+          "fields": [
+            "menu"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "identity",
+        "menu"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "title": "Ohana Jászai · a coffee stop",
+      "description": "Visit the Ohana Jászai branch on Balassi Bálint utca, separate from the brand’s Kálvin tér location.",
+      "highlight": "The operator identifies two cafés; use the Jászai branch details for this listing.",
+      "venue_name": "Ohana Coffee · Jászai",
+      "venue_location": "District V · Balassi Bálint utca 25 · 1055 Budapest",
+      "hours": "Ask the Jászai branch for current opening hours; the two cafés may have different schedules.",
+      "price_note": "Use the café menu or ask the branch for current drink and food prices; no total has been verified.",
+      "features": [],
+      "moods": [
+        "reset",
+        "social"
+      ],
+      "company": [
+        "solo",
+        "friends",
+        "date"
+      ],
+      "effort": "low",
+      "setting": null,
+      "duration_kind": "flexible",
+      "duration_note": "Independent café visit: you choose your visit length within opening hours. Seating, laptop rules and any table time limit still apply."
+    },
+    "13ade11e-1765-4000-a080-0f0985af3709": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://bestsellers.hu/contact-us",
+      "source_urls": [],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://bestsellers.hu/contact-us",
+          "fields": [
+            "description",
+            "hours",
+            "access"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "hours",
+        "access"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "description": "Browse English and other foreign-language books, stationery and gifts at the Október 6. utca bookshop.",
+      "highlight": "The shop publishes Sunday opening and separate online stock information.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "hours": "Mon–Tue, Thu–Fri 10:00–18:30; Wed 10:00–19:00; Sat 11:00–18:00; Sun 12:00–18:00.",
+      "price_note": "Book and gift prices vary. No purchase or fixed shopping spend is assumed.",
+      "instagram_url": "https://www.instagram.com/bestsellersbookshop/",
+      "features": [
+        "indoor"
+      ],
+      "moods": [
+        "curious",
+        "reset"
+      ],
+      "company": [
+        "solo",
+        "friends",
+        "date"
+      ],
+      "effort": "low",
+      "setting": "indoor",
+      "duration_kind": "flexible",
+      "duration_note": "Independent shop browsing: you choose your visit length within opening hours. This listing does not cover a workshop or booked personal-shopping appointment."
+    },
+    "49624605-082e-4187-a918-330a49b67bc1": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://www.kiosk-budapest.hu/kapcsolat",
+      "source_urls": [],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://www.kiosk-budapest.hu/kapcsolat",
+          "fields": [
+            "description",
+            "hours",
+            "booking",
+            "access"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "hours",
+        "booking",
+        "access"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "description": "Plan a meal at the restaurant on Március 15. tér and use its linked table-request service.",
+      "highlight": "The kitchen pauses from 16:30 to 17:30 and closes daily at 22:00, before some bar closing times.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "hours": "Mon–Wed and Sun 12:00–23:00; Thu–Sat 12:00–00:00. No food service 16:30–17:30; kitchen closes 22:00.",
+      "price_note": "Your meal total depends on your order and any applicable charges. Check the current menu and full quote; no fixed meal budget is assumed.",
+      "booking_url": "https://www.sevenrooms.com/reservations/kioskbudapest",
+      "booking_label": "Request a table",
+      "instagram_url": "https://www.instagram.com/kioskbudapest/",
+      "features": [
+        "indoor"
+      ],
+      "moods": [
+        "social",
+        "treat"
+      ],
+      "company": [
+        "solo",
+        "friends",
+        "date"
+      ],
+      "effort": "low",
+      "setting": "indoor",
+      "duration_kind": "flexible",
+      "duration_note": "An ordinary menu-based meal, rather than a timed dining programme. You choose your visit length within opening hours and any table limit; food preparation, service and waiting time are not guaranteed."
+    },
+    "cb96a722-8334-4394-ba2b-a1b59d54f45a": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://mainstreetbeauty.hu/arlista/",
+      "source_urls": [
+        "https://mainstreetbeauty.hu/"
+      ],
+      "source_checked_on": "2026-11-22",
+      "provider_sources": [
+        {
+          "url": "https://mainstreetbeauty.hu/arlista/",
+          "fields": [
+            "description",
+            "prices",
+            "duration"
+          ],
+          "checked_on": "2026-11-22"
+        },
+        {
+          "url": "https://mainstreetbeauty.hu/",
+          "fields": [
+            "hours",
+            "booking",
+            "access"
+          ],
+          "checked_on": "2026-11-22"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "prices",
+        "duration",
+        "hours",
+        "booking",
+        "access"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "title": "Main Street Beauty · 50-minute Hydradermie 1000 facial",
+      "kind": "service",
+      "description": "A 50-minute Hydradermie 1000 facial listed on the Fő utca salon’s treatment menu.",
+      "highlight": "The price is for the specified 50-minute option; the salon also lists longer and combined treatments.",
+      "price_low": 25500,
+      "price_high": 25500,
+      "price_note": "Published price for Hydradermie 1000, 50 minutes: 25,500 Ft. Longer sessions and add-ons are separate; confirm the selected treatment before booking.",
+      "duration": 50,
+      "duration_note": "Published treatment time: 50 minutes; allow extra time for consultation and arrival.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "hours": "Mon–Fri 08:00–20:00; Saturday by appointment. No Sunday visitor hours are published.",
+      "booking_url": "https://mainstreetbeauty.hu/",
+      "booking_label": "Request a treatment appointment",
+      "features": [
+        "indoor"
+      ],
+      "moods": [
+        "treat",
+        "reset"
+      ],
+      "company": [
+        "solo"
+      ],
+      "effort": "low",
+      "setting": "indoor",
+      "duration_kind": "fixed"
+    },
+    "c9ee2c41-fca8-42f3-8d69-0ef6250a4a82": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://www.mucsarnok.hu/jegyek/index.php",
+      "source_urls": [],
+      "source_checked_on": "2026-11-24",
+      "provider_sources": [
+        {
+          "url": "https://www.mucsarnok.hu/jegyek/index.php",
+          "fields": [
+            "description",
+            "prices",
+            "hours",
+            "booking",
+            "student_offer",
+            "access"
+          ],
+          "checked_on": "2026-11-24"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "prices",
+        "hours",
+        "booking",
+        "student_offer",
+        "access"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "duration_kind": "flexible",
+      "duration": null,
+      "features": [
+        "indoor"
+      ],
+      "setting": "indoor",
+      "effort": "low",
+      "company": [
+        "solo",
+        "friends",
+        "date"
+      ],
+      "title": "Műcsarnok · main exhibition visit",
+      "description": "Explore the main art exhibitions independently; guided programmes have separate tickets and timing.",
+      "highlight": "Last admission and exhibition-room closing are earlier than building closing.",
+      "price_low": 4500,
+      "price_high": 4500,
+      "price_note": "Current main-exhibition adult ticket at the venue: 4,500 Ft. The separate Műcsarnok 130 exhibition is 1,800 Ft; an all-exhibition combined ticket is unavailable. Online purchases add a partner fee.",
+      "student_discount": true,
+      "student_note": "Main-exhibition student ticket: 2,250 Ft up to age 26 with valid ID. The displayed budget uses the full adult price.",
+      "weekdays": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "hours": "Tue–Sun 10:00–18:00, Thu 12:00–20:00; Mon closed. Last entry 17:30 (Thu 19:30); rooms close 17:45 (Thu 19:45). Check the linked December exceptions.",
+      "duration_note": "Self-guided visit: choose your stay within admission and exhibition-room hours; tours are separate.",
+      "booking_url": "https://www.mucsarnok.hu/jegyek/index.php",
+      "booking_label": "Tickets & visitor details",
+      "moods": [
+        "curious",
+        "reset"
+      ],
+      "requirements": [
+        "Groups require advance registration. Confirm the exhibition and ticket type before buying."
+      ]
+    },
+    "b5cd4a1d-46e4-43b8-a4d1-6aae3107e5c2": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://www.rothmuzeum.hu/english/tickets/",
+      "source_urls": [
+        "https://www.rothmuzeum.hu/english/opening-hours/"
+      ],
+      "source_checked_on": "2026-11-24",
+      "provider_sources": [
+        {
+          "url": "https://www.rothmuzeum.hu/english/tickets/",
+          "fields": [
+            "description",
+            "prices",
+            "student_offer",
+            "access",
+            "booking"
+          ],
+          "checked_on": "2026-11-24"
+        },
+        {
+          "url": "https://www.rothmuzeum.hu/english/opening-hours/",
+          "fields": [
+            "hours"
+          ],
+          "checked_on": "2026-11-24"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "prices",
+        "student_offer",
+        "access",
+        "booking",
+        "hours"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "duration_kind": "flexible",
+      "duration": null,
+      "features": [
+        "indoor"
+      ],
+      "setting": "indoor",
+      "effort": "low",
+      "company": [
+        "solo",
+        "friends",
+        "date"
+      ],
+      "title": "Róth Museum · stained glass & mosaics",
+      "description": "Visit the museum's glass and mosaic displays independently. English guided tours must be arranged separately.",
+      "highlight": "Tuesday and Wednesday close at 14:00; other open days close at 18:00.",
+      "price_low": 3200,
+      "price_high": 3200,
+      "price_note": "Standard adult entry: 3,200 Ft. Guided programmes and eligibility-based free admission are separate.",
+      "student_discount": true,
+      "student_note": "Published student entry: 1,600 Ft for ages 6–26. Bring proof of eligibility; the budget uses the adult rate.",
+      "weekdays": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "hours": "Tue–Wed 10:00–14:00; Thu–Sun 10:00–18:00. Last admission 30 minutes earlier. Closed 21–27 December and 30 December–4 January; 28–29 December open 10:00–18:00.",
+      "closed_ranges": [
+        [
+          "2026-12-21",
+          "2026-12-27"
+        ],
+        [
+          "2026-12-30",
+          "2027-01-04"
+        ]
+      ],
+      "duration_note": "Independent museum visit: choose your stay before closing; last entry is 30 minutes earlier. Guided tours have separate timing.",
+      "booking_url": "https://www.rothmuzeum.hu/english/tickets/",
+      "booking_label": "Admission & visitor conditions",
+      "moods": [
+        "curious"
+      ],
+      "requirements": [
+        "The museum building is not wheelchair accessible."
+      ]
+    },
+    "1f5599de-71e4-4ffc-9a2e-920983f7ea3b": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://mkvm.hu/belepok/",
+      "source_urls": [
+        "https://mkvm.hu/en/contact/"
+      ],
+      "source_checked_on": "2026-11-24",
+      "provider_sources": [
+        {
+          "url": "https://mkvm.hu/belepok/",
+          "fields": [
+            "prices",
+            "student_offer",
+            "hours",
+            "booking",
+            "access"
+          ],
+          "checked_on": "2026-11-24"
+        },
+        {
+          "url": "https://mkvm.hu/en/contact/",
+          "fields": [
+            "identity",
+            "hours",
+            "description"
+          ],
+          "checked_on": "2026-11-24"
+        }
+      ],
+      "verified_fields": [
+        "prices",
+        "student_offer",
+        "hours",
+        "booking",
+        "access",
+        "identity",
+        "description"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "duration_kind": "flexible",
+      "duration": null,
+      "features": [
+        "indoor"
+      ],
+      "setting": "indoor",
+      "effort": "low",
+      "company": [
+        "solo",
+        "friends",
+        "date"
+      ],
+      "venue_name": "Hungarian Museum of Trade & Tourism (MKVM)",
+      "title": "MKVM · trade & hospitality museum visit",
+      "description": "Visit the Hungarian Museum of Trade and Tourism at Korona tér. Guided tours and educational programmes cost extra.",
+      "highlight": "Ordinary entry is separate from the museum's bookable group programmes.",
+      "price_low": 3000,
+      "price_high": 3000,
+      "price_note": "Standard adult museum entry: 3,000 Ft. Group guides and workshops have additional fees.",
+      "student_discount": true,
+      "student_note": "Student entry: 2,000 Ft for students older than 6 and younger than 26. Confirm accepted proof; the budget uses adult entry.",
+      "weekdays": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "hours": "Tue–Sun 10:00–18:00; Mon closed. Ticket sales end at 17:30.",
+      "duration_note": "Independent museum visit: choose your stay within visitor hours and buy admission before 17:30. Guided programmes are separate.",
+      "booking_url": "https://mkvm.hu/en/prices/",
+      "booking_label": "Admission & programme prices",
+      "moods": [
+        "curious"
+      ],
+      "requirements": []
+    },
+    "98f6bdcf-856b-474d-8808-61f33c621de5": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://r70fitness.hu/",
+      "source_urls": [
+        "https://r70fitness.hu/images/marcius-1-magyar.jpg"
+      ],
+      "source_checked_on": "2026-11-24",
+      "provider_sources": [
+        {
+          "url": "https://r70fitness.hu/",
+          "fields": [
+            "description",
+            "hours",
+            "booking",
+            "student_offer",
+            "price_context"
+          ],
+          "checked_on": "2026-11-24"
+        },
+        {
+          "url": "https://r70fitness.hu/images/marcius-1-magyar.jpg",
+          "fields": [
+            "price_context"
+          ],
+          "checked_on": "2026-11-24"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "hours",
+        "booking",
+        "student_offer",
+        "price_context"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "duration_kind": "flexible",
+      "duration": null,
+      "features": [
+        "indoor"
+      ],
+      "setting": "indoor",
+      "effort": "high",
+      "company": [
+        "solo",
+        "friends"
+      ],
+      "title": "R70 Fitness · independent gym visit",
+      "description": "Use the gym independently; personal training and massage are separate services. Day-ticket holders can also use the Finnish sauna.",
+      "highlight": "The website's student-day rate and its linked full price image disagree; confirm the current tariff.",
+      "price_low": null,
+      "price_high": null,
+      "price_note": "No confirmed current total: the homepage lists student day entry at 2,500 Ft, while its linked price image shows 2,200 Ft adult / 1,800 Ft student. Ask which tariff and first-visit charges apply.",
+      "student_discount": true,
+      "student_note": "Student tickets are advertised, but the two official price displays conflict. No discount or numeric total is assumed.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "hours": "Mon–Fri 06:30–22:30; Sat 09:00–19:00; Sun 09:00–17:00.",
+      "duration_note": "Independent workout: choose your stay within gym hours and ticket conditions. A day ticket is not a fixed-length coached session.",
+      "booking_url": "https://r70fitness.hu/",
+      "booking_label": "Gym contact & current tariff",
+      "moods": [
+        "active",
+        "reset"
+      ],
+      "requirements": [
+        "Confirm the total day-entry price before travelling."
+      ]
+    },
+    "d8456b56-86a9-4bcc-a445-404b4a286894": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://brillfitness.hu/termek/napijegy/",
+      "source_urls": [
+        "https://brillfitness.hu/",
+        "https://brillfitness.hu/hazirend/"
+      ],
+      "source_checked_on": "2026-11-24",
+      "provider_sources": [
+        {
+          "url": "https://brillfitness.hu/termek/napijegy/",
+          "fields": [
+            "description",
+            "price_context",
+            "booking"
+          ],
+          "checked_on": "2026-11-24"
+        },
+        {
+          "url": "https://brillfitness.hu/",
+          "fields": [
+            "hours",
+            "price_context"
+          ],
+          "checked_on": "2026-11-24"
+        },
+        {
+          "url": "https://brillfitness.hu/hazirend/",
+          "fields": [
+            "access",
+            "price_context"
+          ],
+          "checked_on": "2026-11-24"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "price_context",
+        "booking",
+        "hours",
+        "access"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "duration_kind": "flexible",
+      "duration": null,
+      "features": [
+        "indoor"
+      ],
+      "setting": "indoor",
+      "effort": "high",
+      "company": [
+        "solo",
+        "friends"
+      ],
+      "title": "Brill Fitness · independent gym day entry",
+      "description": "Use the gym and cardio equipment independently. The ticket also includes one group class, whose timetable and booking conditions are separate.",
+      "highlight": "Confirm the access-card arrangement before budgeting for a first visit.",
+      "price_low": null,
+      "price_high": null,
+      "price_note": "Day ticket: 3,500 Ft. A 3,000 Ft magnetic-card deposit is listed; rules distinguish returned white cards from deposit-based black cards without confirming which a new day visitor needs. Total upfront cost remains unconfirmed. Bring a towel or pay the 400 Ft rental.",
+      "student_discount": false,
+      "student_note": "The published student offer is a monthly membership, not a discount on this day ticket.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "hours": "Gym: Mon–Fri 06:30–22:00; weekends and public holidays 10:00–18:00. Wellness: weekdays from 16:00, weekends on request.",
+      "duration_note": "Independent gym use: choose your workout length within opening hours. The included group class has its own fixed timetable and is not covered by this flexible-visit timing.",
+      "booking_url": "https://brillfitness.hu/termek/napijegy/",
+      "booking_label": "Day ticket & conditions",
+      "moods": [
+        "active",
+        "reset"
+      ],
+      "requirements": [
+        "First-visit registration, suitable indoor sports shoes and a towel are required.",
+        "Class booking has separate rules and may need a 2,000 Ft reservation pass; it is not required for independent gym use."
+      ]
+    },
+    "d2a4818e-3811-4a96-85f1-3279ee3c4e26": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://budaiarboretum.uni-mate.hu/latogatasi-szabalyok",
+      "source_urls": [
+        "https://budaiarboretum.uni-mate.hu/nyitvatartas",
+        "https://budaiarboretum.uni-mate.hu/en/megkozelites"
+      ],
+      "source_checked_on": "2026-11-24",
+      "provider_sources": [
+        {
+          "url": "https://budaiarboretum.uni-mate.hu/latogatasi-szabalyok",
+          "fields": [
+            "description",
+            "prices",
+            "access"
+          ],
+          "checked_on": "2026-11-24"
+        },
+        {
+          "url": "https://budaiarboretum.uni-mate.hu/nyitvatartas",
+          "fields": [
+            "hours"
+          ],
+          "checked_on": "2026-11-24"
+        },
+        {
+          "url": "https://budaiarboretum.uni-mate.hu/en/megkozelites",
+          "fields": [
+            "identity",
+            "booking"
+          ],
+          "checked_on": "2026-11-24"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "prices",
+        "access",
+        "hours",
+        "identity",
+        "booking"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "duration_kind": "flexible",
+      "duration": null,
+      "features": [
+        "outdoor"
+      ],
+      "setting": "outdoor",
+      "effort": "medium",
+      "company": [
+        "solo",
+        "friends",
+        "date"
+      ],
+      "title": "Buda Arboretum · lower-garden walk",
+      "description": "Walk through the lower garden of the university arboretum, entering from Villányi út. This is a protected plant collection.",
+      "highlight": "The lower garden is open on winter weekends; the upper garden is closed then.",
+      "price_low": 0,
+      "price_high": 0,
+      "price_note": "Independent visits during opening hours are free. Special guided programmes are separate.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "hours": "Lower garden: daily 08:00–16:00 from 24 October to 28 February; 08:00–18:00 from 1 March to 23 October. The timed schedule covers the current winter season.",
+      "duration_note": "Self-guided lower-garden walk: choose your stay before the seasonal garden closing time. Guided activities are separate.",
+      "booking_url": "https://budaiarboretum.uni-mate.hu/latogatasi-szabalyok",
+      "booking_label": "Garden access & visiting rules",
+      "moods": [
+        "reset",
+        "curious"
+      ],
+      "requirements": [
+        "Follow the protected-garden rules; sport, loud music and disturbing wildlife are restricted. Check weather conditions before visiting."
+      ]
+    },
+    "64ec40bf-c520-4656-9152-5f78d059c904": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://www.delannathai.com/",
+      "source_urls": [
+        "https://www.delannathai.com/contact",
+        "https://static.wixstatic.com/media/8dab10_49c4541d1a1346e6ad5d3b574717e5d4~mv2.jpg",
+        "https://de-lanna-thai-kft.salonic.hu/"
+      ],
+      "source_checked_on": "2026-11-24",
+      "provider_sources": [
+        {
+          "url": "https://www.delannathai.com/",
+          "fields": [
+            "description",
+            "duration",
+            "access"
+          ],
+          "checked_on": "2026-11-24"
+        },
+        {
+          "url": "https://www.delannathai.com/contact",
+          "fields": [
+            "identity",
+            "hours"
+          ],
+          "checked_on": "2026-11-24"
+        },
+        {
+          "url": "https://static.wixstatic.com/media/8dab10_49c4541d1a1346e6ad5d3b574717e5d4~mv2.jpg",
+          "fields": [
+            "prices",
+            "duration"
+          ],
+          "checked_on": "2026-11-24"
+        },
+        {
+          "url": "https://de-lanna-thai-kft.salonic.hu/",
+          "fields": [
+            "booking"
+          ],
+          "checked_on": "2026-11-24"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "duration",
+        "access",
+        "identity",
+        "hours",
+        "prices",
+        "booking"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "duration_kind": "fixed",
+      "duration": 60,
+      "features": [
+        "indoor"
+      ],
+      "setting": "indoor",
+      "effort": "low",
+      "company": [
+        "solo"
+      ],
+      "title": "De Lanna · 60-minute traditional Thai massage",
+      "kind": "service",
+      "description": "A 60-minute traditional dry Thai massage at the Klauzál utca salon, performed through clothing.",
+      "highlight": "Choose the Klauzál utca 35 branch when arranging your treatment.",
+      "price_low": 12900,
+      "price_high": 12900,
+      "price_note": "Published 60-minute traditional dry Thai massage: 12,900 Ft per person, from the menu valid since January 2025 and currently linked by the salon. Other treatments and four-hand massage cost more; reconfirm before booking.",
+      "duration_note": "Published treatment length: 60 minutes. Allow extra arrival and changing time; this is not a 60-minute door-to-door plan.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "hours": "Daily 12:00–21:00, subject to an available appointment.",
+      "booking_url": "https://de-lanna-thai-kft.salonic.hu/",
+      "booking_label": "Choose branch, treatment & time",
+      "moods": [
+        "reset",
+        "treat"
+      ],
+      "requirements": [
+        "Arrive 10 minutes early, or 15 minutes for appointments from 20:00. Booking 24 hours ahead is recommended for Friday–Sunday; this is not a mandatory one-day lead time."
+      ]
+    },
+    "c6fcfde7-a945-4187-8824-2d2756d8acd8": {
+      "source_kind": "provider_enriched",
+      "source_label": "Official venue information",
+      "source_url": "https://konyvtar.rgy.hu/rolunk/konyvtarhasznalat/",
+      "source_urls": [
+        "https://konyvtar.rgy.hu/nyitva-tartas/",
+        "https://konyvtar.rgy.hu/kapcsolat/"
+      ],
+      "source_checked_on": "2026-11-24",
+      "provider_sources": [
+        {
+          "url": "https://konyvtar.rgy.hu/rolunk/konyvtarhasznalat/",
+          "fields": [
+            "description",
+            "prices",
+            "access",
+            "booking"
+          ],
+          "checked_on": "2026-11-24"
+        },
+        {
+          "url": "https://konyvtar.rgy.hu/nyitva-tartas/",
+          "fields": [
+            "hours",
+            "access"
+          ],
+          "checked_on": "2026-11-24"
+        },
+        {
+          "url": "https://konyvtar.rgy.hu/kapcsolat/",
+          "fields": [
+            "identity"
+          ],
+          "checked_on": "2026-11-24"
+        }
+      ],
+      "verified_fields": [
+        "description",
+        "prices",
+        "access",
+        "booking",
+        "hours",
+        "identity"
+      ],
+      "availability_note": "Check the venue for current availability; published details can change.",
+      "editorial_note": "Mood, company and energy tags are our suggestions, not venue guarantees.",
+      "duration_kind": "flexible",
+      "duration": null,
+      "features": [
+        "indoor"
+      ],
+      "setting": "indoor",
+      "effort": "low",
+      "company": [
+        "solo"
+      ],
+      "venue_name": "Ráday Library",
+      "title": "Ráday Library · reading-room day visit",
+      "description": "Read or consult library material on site with a day ticket. Enter from Markusovszky tér.",
+      "highlight": "The on-site day ticket is separate from annual borrowing membership.",
+      "price_low": 1000,
+      "price_high": 1000,
+      "price_note": "On-site-use day ticket: 1,000 Ft in the rules effective 2 March 2026. Annual borrowing registration and its student or age-based reductions are different products.",
+      "student_discount": false,
+      "student_note": "The fee table gives student and age reductions for annual registration, not for this 1,000 Ft day ticket.",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "hours": "Mon–Tue and Thu–Fri 09:00–17:00. Wednesday starts at 13:00 in Hungarian and 09:00 in English; confirm directly. Closed on state and Reformed Church holidays. July–August reading-room access is by arrangement, weekdays 10:00–15:00.",
+      "duration_note": "Independent on-site reading: choose your stay within confirmed reading-room hours. A day ticket does not specify a fixed session length.",
+      "booking_url": "https://konyvtar.rgy.hu/kapcsolat/",
+      "booking_label": "Reading-room access & contact",
+      "moods": [
+        "focus",
+        "curious"
+      ],
+      "requirements": [
+        "Confirm reader registration requirements and permission for personal study or laptop use; neither seating nor a workspace is reserved by this listing."
+      ]
+    }
+  }
+}

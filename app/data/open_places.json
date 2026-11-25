@@ -1,0 +1,4829 @@
+{
+  "name": "Overture Maps Foundation · selected Budapest places",
+  "url": "https://docs.overturemaps.org/guides/places/",
+  "release": "2026-11-18.0",
+  "imported_on": "2026-11-22",
+  "license": "CDLA-Permissive-2.0",
+  "license_url": "/static/licenses/CDLA-Permissive-2.0.txt",
+  "attribution_url": "https://docs.overturemaps.org/attribution/",
+  "contributors": [
+    "Overture",
+    "Uberall",
+    "meta"
+  ],
+  "note": "Selected basic place identities, categories, addresses and website links. Website reachability is not confirmation of opening hours, prices, visitor access or current operation.",
+  "places": [
+    {
+      "id": "c552b3b1-1970-47f6-af6f-bf8823d0a58c",
+      "name": "Goosebumps Coffee Lab",
+      "source_name": "Goosebumps Coffee Lab",
+      "category": "coffee",
+      "source_category": "cafe",
+      "type_label": "A café",
+      "location": "District II · Margit Palace, Fekete Sas u. 3/b · 1027 Budapest",
+      "address": {
+        "freeform": "Margit Palace, Fekete Sas u. 3/b",
+        "locality": "Budapest",
+        "postcode": "1027",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.512718,
+        "longitude": 19.036296
+      },
+      "website": "https://www.goosebumps.hu",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "333569519837063",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9319961071014404,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "a8027740-2f61-40fd-a275-76c4e5502ab0",
+      "name": "Ohana the Coffee Family",
+      "source_name": "Ohana the Coffee Family",
+      "category": "coffee",
+      "source_category": "coffee_shop",
+      "type_label": "A café",
+      "location": "District V · Budapest Balassi Bálint utca 25 Alagsor 3 · 1055 Budapest",
+      "address": {
+        "freeform": "Budapest Balassi Bálint utca 25 Alagsor 3",
+        "locality": "Budapest",
+        "postcode": "1055",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.511967,
+        "longitude": 19.047736
+      },
+      "website": "https://ohanacoffee.hu",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "505881945940389",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.926688015460968,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "efc29a58-64ab-4339-80bd-21097ddf95ac",
+      "name": "Művész Coffee House",
+      "source_name": "Művész Coffee House",
+      "category": "coffee",
+      "source_category": "cafe",
+      "type_label": "A café",
+      "location": "District VI · Andrássy út 29 · 1061 Budapest",
+      "address": {
+        "freeform": "Andrássy út 29",
+        "locality": "Budapest",
+        "postcode": "1061",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.50272,
+        "longitude": 19.059912
+      },
+      "website": "https://muveszkavehaz.com/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "259319590851988",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9887370467185974,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "d0d2de78-93e9-40df-a3dd-2b869cfe56ff",
+      "name": "Montázs Art Café",
+      "source_name": "Montázs Art Café",
+      "category": "coffee",
+      "source_category": "coffee_shop",
+      "type_label": "A café",
+      "location": "District XI · Etele út 55 · 1119 Budapest",
+      "address": {
+        "freeform": "Etele út 55",
+        "locality": "Budapest",
+        "postcode": "1119",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.464867,
+        "longitude": 19.031757
+      },
+      "website": "https://www.montazsartcafe.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "1436443876622361",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9880515336990356,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "546af335-5be5-4830-bada-6da31acb2778",
+      "name": "Mad Dog Coffee",
+      "source_name": "Mad Dog Coffee",
+      "category": "coffee",
+      "source_category": "cafe",
+      "type_label": "A café",
+      "location": "District XIII · Dunavirág u. 2 · 1138 Budapest",
+      "address": {
+        "freeform": "Dunavirág u. 2",
+        "locality": "Budapest",
+        "postcode": "1138",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.535069,
+        "longitude": 19.060765
+      },
+      "website": "https://maddog.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "428083043959196",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9877005815505981,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "cb273bbc-470d-4d24-bdb3-2501bb81ccda",
+      "name": "Csészényi Kávézó és Pörkölő",
+      "source_name": "Csészényi Kávézó és Pörkölő",
+      "category": "coffee",
+      "source_category": "cafe",
+      "type_label": "A café",
+      "location": "District I · Krisztina krt. 34 · 1013 Budapest",
+      "address": {
+        "freeform": "Krisztina krt. 34",
+        "locality": "Budapest",
+        "postcode": "1013",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.497402,
+        "longitude": 19.03109
+      },
+      "website": "https://www.cseszenyi.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "306594846107717",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9869151711463928,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "ade636e9-9658-420f-9dc0-ad7e194b241c",
+      "name": "Kontakt",
+      "source_name": "Kontakt",
+      "category": "coffee",
+      "source_category": "coffee_shop",
+      "type_label": "A café",
+      "location": "District V · Károly krt. 22 · 1052 Budapest",
+      "address": {
+        "freeform": "Károly krt. 22",
+        "locality": "Budapest",
+        "postcode": "1052",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.495419,
+        "longitude": 19.057697
+      },
+      "website": "https://kontakt-speciality-coffee-and-brunch.mailerpage.io/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "430521516990463",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9807590842247009,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "e0296f7e-1ab3-4cbf-8f9b-7c2d72884991",
+      "name": "Gross Arnold Gallery and Cafe",
+      "source_name": "Gross Arnold Gallery and Cafe",
+      "category": "coffee",
+      "source_category": "cafe",
+      "type_label": "A café",
+      "location": "District XI · Bartók Béla út 46 · 1111 Budapest",
+      "address": {
+        "freeform": "Bartók Béla út 46",
+        "locality": "Budapest",
+        "postcode": "1111",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.478767,
+        "longitude": 19.050059
+      },
+      "website": "https://grossarnold.com/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "388324221267881",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9864619374275208,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "4504895c-8122-4f5f-a02d-176bdea96762",
+      "name": "Matcha Tsuki",
+      "source_name": "Matcha Tsuki",
+      "category": "coffee",
+      "source_category": "coffee_shop",
+      "type_label": "A café",
+      "location": "District V · Kálvin tér 2 · 1053 Budapest",
+      "address": {
+        "freeform": "Kálvin tér 2",
+        "locality": "Budapest",
+        "postcode": "1053",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.48941,
+        "longitude": 19.061068
+      },
+      "website": "https://matchatsukishop.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "109452287606988",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9863685965538025,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "29696de1-aef9-430d-9d73-8ea56aec8f89",
+      "name": "Premier Kultcafé",
+      "source_name": "Premier Kultcafé",
+      "category": "coffee",
+      "source_category": "cafe",
+      "type_label": "A café",
+      "location": "District VIII · Üllői út 2-4 · 1085 Budapest",
+      "address": {
+        "freeform": "Üllői út 2-4",
+        "locality": "Budapest",
+        "postcode": "1085",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.489433,
+        "longitude": 19.063273
+      },
+      "website": "https://premiercafe.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "134276733597901",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9863647222518921,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "f5c18fd6-49f3-46ca-8501-2a1ad4e222d4",
+      "name": "Charbon Art Café / Bar",
+      "source_name": "Charbon Art Café / Bar",
+      "category": "coffee",
+      "source_category": "cafe",
+      "type_label": "A café",
+      "location": "District VIII · Gutenberg tér 1 · 1085 Budapest",
+      "address": {
+        "freeform": "Gutenberg tér 1",
+        "locality": "Budapest",
+        "postcode": "1085",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.492973,
+        "longitude": 19.06914
+      },
+      "website": "https://www.charbon.art/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "117811580070471",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9861802458763123,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "f0c58287-abcf-4b6c-8f08-b464bcdef831",
+      "name": "Matild Café & Cabaret",
+      "source_name": "Matild Café & Cabaret",
+      "category": "coffee",
+      "source_category": "cafe",
+      "type_label": "A café",
+      "location": "District V · Váci utca 36 · 1056 Budapest",
+      "address": {
+        "freeform": "Váci utca 36",
+        "locality": "Budapest",
+        "postcode": "1056",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.492439,
+        "longitude": 19.054197
+      },
+      "website": "https://matildcafe.com/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "102151771300587",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9786396026611328,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "49624605-082e-4187-a918-330a49b67bc1",
+      "name": "KIOSK Budapest",
+      "source_name": "KIOSK Budapest",
+      "category": "food",
+      "source_category": "hungarian_restaurant",
+      "type_label": "A restaurant",
+      "location": "District V · Március 15. tér 4 · 1056 Budapest",
+      "address": {
+        "freeform": "Március 15. tér 4",
+        "locality": "Budapest",
+        "postcode": "1056",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.492794,
+        "longitude": 19.052049
+      },
+      "website": "https://www.kiosk-budapest.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "299738606774380",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9876973032951355,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "66996c22-a0f2-487a-9a0c-fa173596f138",
+      "name": "Bamba Marha Burger Bár",
+      "source_name": "Bamba Marha Burger Bár",
+      "category": "food",
+      "source_category": "burger_restaurant",
+      "type_label": "A restaurant",
+      "location": "District VI · Váci Street 1-3 · 1062 Budapest",
+      "address": {
+        "freeform": "Váci Street 1-3",
+        "locality": "Budapest",
+        "postcode": "1062",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.514263,
+        "longitude": 19.05925
+      },
+      "website": "https://www.bambamarha.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "104025435232795",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9863408803939819,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "028e8e7c-9987-443f-8ecc-8c9f3b5b2978",
+      "name": "KOLLÁZS Brasserie and Bar",
+      "source_name": "KOLLÁZS Brasserie and Bar",
+      "category": "food",
+      "source_category": "european_restaurant",
+      "type_label": "A restaurant",
+      "location": "District V · Széchenyi István tér 5-6 · 1051 Budapest",
+      "address": {
+        "freeform": "Széchenyi István tér 5-6",
+        "locality": "Budapest",
+        "postcode": "1051",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.499847,
+        "longitude": 19.047845
+      },
+      "website": "https://www.kollazs.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "654185514714604",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9858348965644836,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "0282328d-1a48-401e-b598-73c88cd2a610",
+      "name": "Komédiás Étterem és Kávéház - Hungarian Restaurant & Café",
+      "source_name": "Komédiás Étterem és Kávéház - Hungarian Restaurant & Café",
+      "category": "food",
+      "source_category": "restaurant",
+      "type_label": "A restaurant",
+      "location": "District VI · Komédiás Kávéház, Nagymező u. 26 · 1065 Budapest",
+      "address": {
+        "freeform": "Komédiás Kávéház, Nagymező u. 26",
+        "locality": "Budapest",
+        "postcode": "1065",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.503906,
+        "longitude": 19.059533
+      },
+      "website": "https://restaurant-and-cafe-komedias.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "282577316702",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9834929704666138,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "f8a003ca-3ff6-44ac-89e5-da5116e142e2",
+      "name": "Cafe Brunch",
+      "source_name": "Cafe Brunch",
+      "category": "food",
+      "source_category": "breakfast_and_brunch_restaurant",
+      "type_label": "A restaurant",
+      "location": "District VI · Hajós u. 26/b · 1065 Budapest",
+      "address": {
+        "freeform": "Hajós u. 26/b",
+        "locality": "Budapest",
+        "postcode": "1065",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.504696,
+        "longitude": 19.05646
+      },
+      "website": "https://www.cafebrunchbudapest.com/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "111219028038063",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.983151912689209,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "792716d8-aacb-4dfb-9aee-11a850eeaad4",
+      "name": "ÉS Bisztró",
+      "source_name": "ÉS Bisztró",
+      "category": "food",
+      "source_category": "restaurant",
+      "type_label": "A restaurant",
+      "location": "District V · Deák Ferenc u. 12 · 1052 Budapest",
+      "address": {
+        "freeform": "Deák Ferenc u. 12",
+        "locality": "Budapest",
+        "postcode": "1052",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.49688,
+        "longitude": 19.052454
+      },
+      "website": "https://esbisztro.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "160677147416678",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.982715368270874,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "5eb6bfb3-60da-4851-a9cc-facc561d9dc5",
+      "name": "Spago Budapest",
+      "source_name": "Spago Budapest",
+      "category": "food",
+      "source_category": "restaurant",
+      "type_label": "A restaurant",
+      "location": "District V · Váci u 36 · 1056 Budapest",
+      "address": {
+        "freeform": "Váci u 36",
+        "locality": "Budapest",
+        "postcode": "1056",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.492069,
+        "longitude": 19.053872
+      },
+      "website": "https://www.spagobudapest.com/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "108340164640369",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9824845194816589,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "f9588a91-4f8b-49d0-aa72-c3ba1edc0469",
+      "name": "Gyros Kerkyra Görög Ételbár",
+      "source_name": "Gyros Kerkyra Görög Ételbár",
+      "category": "food",
+      "source_category": "greek_restaurant",
+      "type_label": "A restaurant",
+      "location": "District XIII · Petneházy u. 37-47 · 1139 Budapest",
+      "address": {
+        "freeform": "Petneházy u. 37-47",
+        "locality": "Budapest",
+        "postcode": "1139",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.53273,
+        "longitude": 19.080007
+      },
+      "website": "https://kerkyragyros.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "358557427508407",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9806011915206909,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "7064f735-2036-4ea0-9776-6d235cd29ea8",
+      "name": "Zincenco Kitchen",
+      "source_name": "Zincenco Kitchen",
+      "category": "food",
+      "source_category": "restaurant",
+      "type_label": "A restaurant",
+      "location": "District V · Bihari János u. 20 · 1055 Budapest",
+      "address": {
+        "freeform": "Bihari János u. 20",
+        "locality": "Budapest",
+        "postcode": "1055",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.510342,
+        "longitude": 19.053942
+      },
+      "website": "https://www.zincencokitchen.com/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "282408639033930",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9786524176597595,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "a5c8cc2c-b2da-4ba0-95c1-2848415c9214",
+      "name": "Spoon The Boat",
+      "source_name": "Spoon The Boat",
+      "category": "food",
+      "source_category": "restaurant",
+      "type_label": "A restaurant",
+      "location": "District V · Vigadó tér 3 · 1052 Budapest",
+      "address": {
+        "freeform": "Vigadó tér 3",
+        "locality": "Budapest",
+        "postcode": "1052",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.496983,
+        "longitude": 19.047198
+      },
+      "website": "https://spoonboat.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "159525390758184",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.975298285484314,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "c5c145b3-62c0-4079-a8be-3e9fa5301934",
+      "name": "Retro Lángos Budapest",
+      "source_name": "Retro Lángos Budapest",
+      "category": "food",
+      "source_category": "hungarian_restaurant",
+      "type_label": "A restaurant",
+      "location": "District VI · Bajcsy-Zsilinszky út 25 · 1065 Budapest",
+      "address": {
+        "freeform": "Bajcsy-Zsilinszky út 25",
+        "locality": "Budapest",
+        "postcode": "1065",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.503269,
+        "longitude": 19.055079
+      },
+      "website": "https://www.retrolangos.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "184876781550118",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9685830473899841,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "e5e2918a-2c2d-4166-84db-47f62139e0b2",
+      "name": "Sawasdee Thai Étterem",
+      "source_name": "Sawasdee Thai Étterem",
+      "category": "food",
+      "source_category": "thai_restaurant",
+      "type_label": "A restaurant",
+      "location": "District V · Semmelweis u. 2 · 1052 Budapest",
+      "address": {
+        "freeform": "Semmelweis u. 2",
+        "locality": "Budapest",
+        "postcode": "1052",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.494118,
+        "longitude": 19.058599
+      },
+      "website": "https://www.sawasdeebudapest.com/hu",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "1364144910288723",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9871684312820435,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "1f5599de-71e4-4ffc-9a2e-920983f7ea3b",
+      "name": "MNM KK - Magyar Kereskedelmi és Vendéglátóipari Múzeum",
+      "source_name": "MNM KK - Magyar Kereskedelmi és Vendéglátóipari Múzeum",
+      "category": "culture",
+      "source_category": "history_museum",
+      "type_label": "A cultural venue",
+      "location": "District III · Korona tér 1 · 1036 Budapest",
+      "address": {
+        "freeform": "Korona tér 1",
+        "locality": "Budapest",
+        "postcode": "1036",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.538372,
+        "longitude": 19.043001
+      },
+      "website": "https://www.mkvm.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "236874639702232",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9862309098243713,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "325133c4-7337-486a-9b7a-bdb540562398",
+      "name": "Koller Gallery",
+      "source_name": "Koller Gallery",
+      "category": "culture",
+      "source_category": "art_gallery",
+      "type_label": "A cultural venue",
+      "location": "District I · Táncsics Mihály u. 5 · 1014 Budapest",
+      "address": {
+        "freeform": "Táncsics Mihály u. 5",
+        "locality": "Budapest",
+        "postcode": "1014",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.503628,
+        "longitude": 19.032714
+      },
+      "website": "https://www.kollergaleria.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "366993393855",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9857821464538574,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "490799b3-d5a3-4a24-88f2-74395b273241",
+      "name": "BTM Vármúzeum",
+      "source_name": "BTM Vármúzeum",
+      "category": "culture",
+      "source_category": "history_museum",
+      "type_label": "A cultural venue",
+      "location": "District I · Budavári palota, Szent György tér 2 · 1013 Budapest",
+      "address": {
+        "freeform": "Budavári palota, Szent György tér 2",
+        "locality": "Budapest",
+        "postcode": "1013",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.495354,
+        "longitude": 19.040398
+      },
+      "website": "https://varmuzeum.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "264949437776073",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9831711649894714,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "6a740479-b01f-49fa-bab7-ab1ba275030c",
+      "name": "The House of Houdini Budapest",
+      "source_name": "The House of Houdini Budapest",
+      "category": "culture",
+      "source_category": "museum",
+      "type_label": "A cultural venue",
+      "location": "District I · Dísz tér 11 · 1014 Budapest",
+      "address": {
+        "freeform": "Dísz tér 11",
+        "locality": "Budapest",
+        "postcode": "1014",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.499416,
+        "longitude": 19.035014
+      },
+      "website": "https://thehouseofhoudini.com/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "196747404011360",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9829073548316956,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "a21f7ea7-c49e-4771-9940-0dd106b5003b",
+      "name": "Hungarian Jewish Museum and Archives",
+      "source_name": "Hungarian Jewish Museum and Archives",
+      "category": "culture",
+      "source_category": "museum",
+      "type_label": "A cultural venue",
+      "location": "District VII · Dohány u. 2 · 1077 Budapest",
+      "address": {
+        "freeform": "Dohány u. 2",
+        "locality": "Budapest",
+        "postcode": "1077",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.495995,
+        "longitude": 19.06006
+      },
+      "website": "https://www.milev.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "126573312166",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.980697751045227,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "b5cd4a1d-46e4-43b8-a4d1-6aae3107e5c2",
+      "name": "Róth Museum",
+      "source_name": "Róth Museum",
+      "category": "culture",
+      "source_category": "history_museum",
+      "type_label": "A cultural venue",
+      "location": "District VII · Nefelejcs u. 26 · 1078 Budapest",
+      "address": {
+        "freeform": "Nefelejcs u. 26",
+        "locality": "Budapest",
+        "postcode": "1078",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.50349,
+        "longitude": 19.081206
+      },
+      "website": "https://www.rothmuzeum.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "107868958117772",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.979358971118927,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "f9f7b99d-7ea3-408e-ad89-ccafc3240f61",
+      "name": "Karinthy Szalon",
+      "source_name": "Karinthy Szalon",
+      "category": "culture",
+      "source_category": "art_gallery",
+      "type_label": "A cultural venue",
+      "location": "District XI · Karinthy Frigyes út 22 · 1111 Budapest",
+      "address": {
+        "freeform": "Karinthy Frigyes út 22",
+        "locality": "Budapest",
+        "postcode": "1111",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.476643,
+        "longitude": 19.051888
+      },
+      "website": "https://karinthyszalon.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "190627097634884",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9792766571044922,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "f7fb22cb-56d0-48ad-af0a-c480bc03cdbb",
+      "name": "Molnár C. Pál Műterem-Múzeum",
+      "source_name": "Molnár C. Pál Műterem-Múzeum",
+      "category": "culture",
+      "source_category": "art_museum",
+      "type_label": "A cultural venue",
+      "location": "District XI · Ménesi út 65 · 1118 Budapest",
+      "address": {
+        "freeform": "Ménesi út 65",
+        "locality": "Budapest",
+        "postcode": "1118",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.483154,
+        "longitude": 19.035736
+      },
+      "website": "https://www.mcpmuzeum.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "111037652267349",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9792429208755493,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "ac00ce89-7937-4807-9a5f-05ab3773f79e",
+      "name": "Béla Bartók Memorial House",
+      "source_name": "Béla Bartók Memorial House",
+      "category": "culture",
+      "source_category": "history_museum",
+      "type_label": "A cultural venue",
+      "location": "District II · Csalán út 29 · 1025 Budapest",
+      "address": {
+        "freeform": "Csalán út 29",
+        "locality": "Budapest",
+        "postcode": "1025",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.52795,
+        "longitude": 18.992147
+      },
+      "website": "https://www.bartokmemorialhouse.com/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "635884226466594",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9780991673469543,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "74871223-44ea-47c0-b108-39b001ab6485",
+      "name": "Óbudai Múzeum",
+      "source_name": "Óbudai Múzeum",
+      "category": "culture",
+      "source_category": "museum",
+      "type_label": "A cultural venue",
+      "location": "District III · Fő tér 1 · 1033 Budapest",
+      "address": {
+        "freeform": "Fő tér 1",
+        "locality": "Budapest",
+        "postcode": "1033",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.540485,
+        "longitude": 19.046001
+      },
+      "website": "https://www.obudaimuzeum.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "316648485126953",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9769881963729858,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "d09dde7e-fd71-4155-820e-3416f8fe14bc",
+      "name": "Eötvös Természettudományi Múzeum",
+      "source_name": "Eötvös Természettudományi Múzeum",
+      "category": "culture",
+      "source_category": "history_museum",
+      "type_label": "A cultural venue",
+      "location": "District XI · Pázmány Péter stny. 1/c · 1117 Budapest",
+      "address": {
+        "freeform": "Pázmány Péter stny. 1/c",
+        "locality": "Budapest",
+        "postcode": "1117",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.472195,
+        "longitude": 19.063022
+      },
+      "website": "https://muzeum.elte.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "190353774488060",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9753744006156921,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "c9ee2c41-fca8-42f3-8d69-0ef6250a4a82",
+      "name": "Kunsthalle (Műcsarnok)",
+      "source_name": "Kunsthalle (Műcsarnok)",
+      "category": "culture",
+      "source_category": "art_museum",
+      "type_label": "A cultural venue",
+      "location": "District XIV · Dózsa György út 37 · 1146 Budapest",
+      "address": {
+        "freeform": "Dózsa György út 37",
+        "locality": "Budapest",
+        "postcode": "1146",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.514259,
+        "longitude": 19.078383
+      },
+      "website": "https://www.mucsarnok.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "151890219861",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9752807021141052,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "55299b89-6415-4122-9f72-7f13bad25450",
+      "name": "CrossFit BBros 2",
+      "source_name": "CrossFit BBros 2",
+      "category": "fitness",
+      "source_category": "gym",
+      "type_label": "A gym or training studio",
+      "location": "District IX · Márton u. 4 · 1094 Budapest",
+      "address": {
+        "freeform": "Márton u. 4",
+        "locality": "Budapest",
+        "postcode": "1094",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.476955,
+        "longitude": 19.077806
+      },
+      "website": "https://www.crossfitbbros.com/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "114675645869553",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9937537312507629,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "8001adcf-000f-4fcf-a89f-df3a7def3b99",
+      "name": "CrossFit GRUND",
+      "source_name": "CrossFit GRUND",
+      "category": "fitness",
+      "source_category": "gym",
+      "type_label": "A gym or training studio",
+      "location": "District XIII · Hegedűs Gyula utca 14 · 1136 Budapest",
+      "address": {
+        "freeform": "Hegedűs Gyula utca 14",
+        "locality": "Budapest",
+        "postcode": "1136",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.513706,
+        "longitude": 19.053516
+      },
+      "website": "https://www.crossfitgrund.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "763765033668642",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9902002215385437,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "373b0df2-b130-41b2-a7f8-1d99abbe3c5f",
+      "name": "Central Gym",
+      "source_name": "Central Gym",
+      "category": "fitness",
+      "source_category": "gym",
+      "type_label": "A gym or training studio",
+      "location": "District V · Kálmán Imre u. 15 · 1054 Budapest",
+      "address": {
+        "freeform": "Kálmán Imre u. 15",
+        "locality": "Budapest",
+        "postcode": "1054",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.506802,
+        "longitude": 19.052684
+      },
+      "website": "https://centralgymbudapest.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "848496408632606",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9796721339225769,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "12ae1f74-47df-4531-97c3-1888f9c56ced",
+      "name": "Go Active",
+      "source_name": "Go Active",
+      "category": "fitness",
+      "source_category": "gym",
+      "type_label": "A gym or training studio",
+      "location": "District VII · Holló u. 12-14 · 1075 Budapest",
+      "address": {
+        "freeform": "Holló u. 12-14",
+        "locality": "Budapest",
+        "postcode": "1075",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.498932,
+        "longitude": 19.059525
+      },
+      "website": "https://goactive.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "101304832555659",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9780564308166504,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "4be3419e-2486-4cbe-85c8-890dcb43be36",
+      "name": "Bárdosi Küzdősport Akadémia SE",
+      "source_name": "Bárdosi Küzdősport Akadémia SE",
+      "category": "fitness",
+      "source_category": "gym",
+      "type_label": "A gym or training studio",
+      "location": "District XI · Bertalan Lajos utca 20. (bejárat a Budafoki út felől) · 1111 Budapest",
+      "address": {
+        "freeform": "Bertalan Lajos utca 20. (bejárat a Budafoki út felől)",
+        "locality": "Budapest",
+        "postcode": "1111",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.479332,
+        "longitude": 19.053682
+      },
+      "website": "https://www.bardosisandor.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "282744961838350",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9514315128326416,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "f6e58d46-6546-476f-ba08-2ce985f5a017",
+      "name": "JOHN REED Fitness Budapest",
+      "source_name": "JOHN REED Fitness Budapest",
+      "category": "fitness",
+      "source_category": "gym",
+      "type_label": "A gym or training studio",
+      "location": "District XIII · Váci út 45 · 1134 Budapest",
+      "address": {
+        "freeform": "Váci út 45",
+        "locality": "Budapest",
+        "postcode": "1134",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.527912,
+        "longitude": 19.066527
+      },
+      "website": "https://johnreed.fitness/hu/club-budapest",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "106617985658006",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9494627714157104,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "7241ba4a-8936-4d98-9523-2217172c8da2",
+      "name": "Birds of Paradise",
+      "source_name": "Birds of Paradise",
+      "category": "fitness",
+      "source_category": "yoga_studio",
+      "type_label": "A gym or training studio",
+      "location": "District I · Hattyú u. 14 · 1015 Budapest",
+      "address": {
+        "freeform": "Hattyú u. 14",
+        "locality": "Budapest",
+        "postcode": "1015",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.507565,
+        "longitude": 19.028968
+      },
+      "website": "https://birdsofparadise.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "111489244798408",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9455521702766418,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "0cec00b2-68f5-4a36-bd1d-6c7397c8f4f5",
+      "name": "CrossFit Glasshouse",
+      "source_name": "CrossFit Glasshouse",
+      "category": "fitness",
+      "source_category": "gym",
+      "type_label": "A gym or training studio",
+      "location": "District XI · Nándorfejérvári út 40 · 1116 Budapest",
+      "address": {
+        "freeform": "Nándorfejérvári út 40",
+        "locality": "Budapest",
+        "postcode": "1116",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.4608,
+        "longitude": 19.046389
+      },
+      "website": "https://crossfitglasshouse.com/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "1880504668712177",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9887807369232178,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "f3491361-774f-4a6f-87f7-fa89b4641063",
+      "name": "T-Klub",
+      "source_name": "T-Klub",
+      "category": "fitness",
+      "source_category": "gym",
+      "type_label": "A gym or training studio",
+      "location": "District XI · Dió utca 2 · 1118 Budapest",
+      "address": {
+        "freeform": "Dió utca 2",
+        "locality": "Budapest",
+        "postcode": "1118",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.464481,
+        "longitude": 19.006094
+      },
+      "website": "https://www.tklubfitness.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "191704107559904",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9881263971328735,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "d8456b56-86a9-4bcc-a445-404b4a286894",
+      "name": "Brill Fitness",
+      "source_name": "Brill Fitness",
+      "category": "fitness",
+      "source_category": "gym",
+      "type_label": "A gym or training studio",
+      "location": "District XIII · Váci út 28 · 1132 Budapest",
+      "address": {
+        "freeform": "Váci út 28",
+        "locality": "Budapest",
+        "postcode": "1132",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.51482,
+        "longitude": 19.058809
+      },
+      "website": "https://www.brillfitness.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "106798334072155",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9877043962478638,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "dabd8469-71f6-4cb9-ba75-8ea8be7ff8c1",
+      "name": "Sun Palace Fitness & Spa",
+      "source_name": "Sun Palace Fitness & Spa",
+      "category": "fitness",
+      "source_category": "gym",
+      "type_label": "A gym or training studio",
+      "location": "District III · Nagyszombat utca 1 · 1036 Budapest",
+      "address": {
+        "freeform": "Nagyszombat utca 1",
+        "locality": "Budapest",
+        "postcode": "1036",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.532532,
+        "longitude": 19.042504
+      },
+      "website": "https://www.sunpalacefitnessandspa.com/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "747112988694480",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9876049757003784,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "98f6bdcf-856b-474d-8808-61f33c621de5",
+      "name": "R70 Fitness",
+      "source_name": "R70 Fitness",
+      "category": "fitness",
+      "source_category": "gym",
+      "type_label": "A gym or training studio",
+      "location": "District VII · Rákóczi út 70 · 1074 Budapest",
+      "address": {
+        "freeform": "Rákóczi út 70",
+        "locality": "Budapest",
+        "postcode": "1074",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.498699,
+        "longitude": 19.075397
+      },
+      "website": "https://r70fitness.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "549968701824441",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9873802661895752,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "04cb0bd1-090f-466b-a4cf-933fe3e90a57",
+      "name": "Wings Beauty Szalon",
+      "source_name": "Wings Beauty Szalon",
+      "category": "beauty",
+      "source_category": "beauty_salon",
+      "type_label": "A beauty salon",
+      "location": "District VII · Rózsa u. 23-25 · 1077 Budapest",
+      "address": {
+        "freeform": "Rózsa u. 23-25",
+        "locality": "Budapest",
+        "postcode": "1077",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.50415,
+        "longitude": 19.073787
+      },
+      "website": "https://www.wingsbeauty.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "297672537026000",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9691662788391113,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/operating_status",
+          "dataset": "Uberall",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "175170193",
+          "update_time": "2026-11-09T06:13:43.547Z",
+          "confidence": null,
+          "between": null,
+          "provider": "uberall",
+          "resource": "uberall",
+          "version": "2026-11-08"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "a724d136-76a6-4448-9cd4-98e53b1f3165",
+      "name": "Harmony Beauty Land Szépségszalon",
+      "source_name": "Harmony Beauty Land Szépségszalon",
+      "category": "beauty",
+      "source_category": "beauty_salon",
+      "type_label": "A beauty salon",
+      "location": "District XIII · Kassák Lajos u. 10 · 1134 Budapest",
+      "address": {
+        "freeform": "Kassák Lajos u. 10",
+        "locality": "Budapest",
+        "postcode": "1134",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.519318,
+        "longitude": 19.062755
+      },
+      "website": "https://hblszepsegszalon.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "103566951037027",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9859117269515991,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "65a6347d-6dd1-40fd-bd4d-ebdf2b575abc",
+      "name": "Kleopatra Szepsegszalonok",
+      "source_name": "Kleopatra Szepsegszalonok",
+      "category": "beauty",
+      "source_category": "beauty_salon",
+      "type_label": "A beauty salon",
+      "location": "District XIII · Visegrádi u. 3 · 1132 Budapest",
+      "address": {
+        "freeform": "Visegrádi u. 3",
+        "locality": "Budapest",
+        "postcode": "1132",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.511826,
+        "longitude": 19.053698
+      },
+      "website": "https://www.kleoszalon.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "106065026130344",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.989766538143158,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "cb96a722-8334-4394-ba2b-a1b59d54f45a",
+      "name": "Main Street Beauty & Pilates",
+      "source_name": "Main Street Beauty & Pilates",
+      "category": "beauty",
+      "source_category": "beauty_salon",
+      "type_label": "A beauty salon",
+      "location": "District II · Fő u. 77 · 1027 Budapest",
+      "address": {
+        "freeform": "Fő u. 77",
+        "locality": "Budapest",
+        "postcode": "1027",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.510582,
+        "longitude": 19.038461
+      },
+      "website": "https://www.mainstreetbeauty.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "127712117252410",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9824858903884888,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "72477958-f920-4275-b5fc-0a68f3c1d2b1",
+      "name": "Bártfai Beauty Salon",
+      "source_name": "Bártfai Beauty Salon",
+      "category": "beauty",
+      "source_category": "beauty_salon",
+      "type_label": "A beauty salon",
+      "location": "District XI · Bártfai u. 6 · 1115 Budapest",
+      "address": {
+        "freeform": "Bártfai u. 6",
+        "locality": "Budapest",
+        "postcode": "1115",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.467304,
+        "longitude": 19.042886
+      },
+      "website": "https://bartfai-szepsegszalon.salonic.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "424820124273233",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9820247888565063,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "f5eb2cb2-eeff-473d-85ea-3b172b51426d",
+      "name": "Szegedi Szalon",
+      "source_name": "Szegedi Szalon",
+      "category": "beauty",
+      "source_category": "beauty_salon",
+      "type_label": "A beauty salon",
+      "location": "District XIII · Reitter Ferenc utca 14 · 1135 Budapest",
+      "address": {
+        "freeform": "Reitter Ferenc utca 14",
+        "locality": "Budapest",
+        "postcode": "1135",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.525793,
+        "longitude": 19.08233
+      },
+      "website": "https://www.szegediszalon.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "134268999932307",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9800348281860352,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "ddea5b8b-b706-4194-8f99-2fda6f0638b4",
+      "name": "Fodor's Beauty Salon",
+      "source_name": "Fodor's Beauty Salon",
+      "category": "beauty",
+      "source_category": "beauty_salon",
+      "type_label": "A beauty salon",
+      "location": "District XII · Szendrő u. 30 · 1126 Budapest",
+      "address": {
+        "freeform": "Szendrő u. 30",
+        "locality": "Budapest",
+        "postcode": "1126",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.499352,
+        "longitude": 19.004251
+      },
+      "website": "https://szepsegszalonbuda.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "132742693501270",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.978333055973053,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "c35231a7-fc2d-4297-bc25-7a4504623c14",
+      "name": "Vanília Szépségszalon",
+      "source_name": "Vanília Szépségszalon",
+      "category": "beauty",
+      "source_category": "beauty_salon",
+      "type_label": "A beauty salon",
+      "location": "District VII · Rottenbiller u. 64 · 1077 Budapest",
+      "address": {
+        "freeform": "Rottenbiller u. 64",
+        "locality": "Budapest",
+        "postcode": "1077",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.506317,
+        "longitude": 19.072962
+      },
+      "website": "https://www.vanilia-szepsegszalon.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "534578166639616",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9768053293228149,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "6595260a-f622-4428-bd4b-38a6f36590fa",
+      "name": "Essential Beauty Salon",
+      "source_name": "Essential Beauty Salon",
+      "category": "beauty",
+      "source_category": "beauty_salon",
+      "type_label": "A beauty salon",
+      "location": "District V · Deák Ferenc u. 21 · 1052 Budapest",
+      "address": {
+        "freeform": "Deák Ferenc u. 21",
+        "locality": "Budapest",
+        "postcode": "1052",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.497017,
+        "longitude": 19.0533
+      },
+      "website": "https://www.essentialbeauty.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "248086492034910",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9756098985671997,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "f1f10bce-028d-4204-962d-9353aba56822",
+      "name": "Erabelle Beauty Salon",
+      "source_name": "Erabelle Beauty Salon",
+      "category": "beauty",
+      "source_category": "beauty_salon",
+      "type_label": "A beauty salon",
+      "location": "District XIII · Hegedűs Gyula utca 43 · 1136 Budapest",
+      "address": {
+        "freeform": "Hegedűs Gyula utca 43",
+        "locality": "Budapest",
+        "postcode": "1136",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.517242,
+        "longitude": 19.056047
+      },
+      "website": "https://erabelle.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "1519077258311389",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9751101136207581,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "e4170a99-7e34-48b9-b33a-6c8c9bb6554d",
+      "name": "Berendi & Pápai Hair & Beauty",
+      "source_name": "Berendi&Pápai Hair&Beauty; Fodrászat, Manikűr, Pedikűr, balayage, ombre, géllakk, gyógypedikűr",
+      "category": "nails",
+      "source_category": "beauty_salon",
+      "type_label": "A nail salon",
+      "location": "District VII · Dob utca 2 · 1075 Budapest",
+      "address": {
+        "freeform": "Dob utca 2",
+        "locality": "Budapest",
+        "postcode": "1075",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.496307,
+        "longitude": 19.059046
+      },
+      "website": "https://www.berendipapai.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "1389313464657389",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9857268929481506,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "31a44010-825a-4814-a60e-ff3aa89144e1",
+      "name": "Exotic Nail Bar",
+      "source_name": "Exotic Nail Bar",
+      "category": "nails",
+      "source_category": "beauty_salon",
+      "type_label": "A nail salon",
+      "location": "District XIII · Pannónia u. 33 · 1136 Budapest",
+      "address": {
+        "freeform": "Pannónia u. 33",
+        "locality": "Budapest",
+        "postcode": "1136",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.516575,
+        "longitude": 19.054036
+      },
+      "website": "https://www.exoticnailbar.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "421251551291638",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9751356244087219,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "d11fe2d1-f366-4eaa-8dfb-bbfdfec32df5",
+      "name": "Darabos Évi Körömszalon",
+      "source_name": "Darabos Évi Körömszalon",
+      "category": "nails",
+      "source_category": "beauty_salon",
+      "type_label": "A nail salon",
+      "location": "District VI · Jókai u. 7 · 1066 Budapest",
+      "address": {
+        "freeform": "Jókai u. 7",
+        "locality": "Budapest",
+        "postcode": "1066",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.506588,
+        "longitude": 19.060267
+      },
+      "website": "https://darabosevi.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "277808495694275",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.919904887676239,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "79e82803-fd08-4371-8070-e5ab1f090696",
+      "name": "Lulu Nails",
+      "source_name": "Lulu Nails",
+      "category": "nails",
+      "source_category": "beauty_salon",
+      "type_label": "A nail salon",
+      "location": "District IX · Budapest Tompa utca 12, csengő/doorbell: 2 · 1094 Budapest",
+      "address": {
+        "freeform": "Budapest Tompa utca 12, csengő/doorbell: 2",
+        "locality": "Budapest",
+        "postcode": "1094",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.482895,
+        "longitude": 19.06973
+      },
+      "website": "https://lulunailsbudapest.salonic.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "1452780048284694",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9197377562522888,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "7a906618-18ce-4729-b8a9-f29e9b891b16",
+      "name": "Illusion Körömszalon",
+      "source_name": "Illusion Körömszalon",
+      "category": "nails",
+      "source_category": "beauty_salon",
+      "type_label": "A nail salon",
+      "location": "District II · Ürömi u. 3 · 1023 Budapest",
+      "address": {
+        "freeform": "Ürömi u. 3",
+        "locality": "Budapest",
+        "postcode": "1023",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.524906,
+        "longitude": 19.036514
+      },
+      "website": "https://www.illusionsalon.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "227853690667283",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9813668727874756,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "d5c28443-fb61-4f1f-8524-ea95db560f04",
+      "name": "Miracle salon",
+      "source_name": "Miracle salon",
+      "category": "nails",
+      "source_category": "nail_salon",
+      "type_label": "A nail salon",
+      "location": "District XIII · Gyöngyház u. 10 · 1132 Budapest",
+      "address": {
+        "freeform": "Gyöngyház u. 10",
+        "locality": "Budapest",
+        "postcode": "1132",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.515236,
+        "longitude": 19.055051
+      },
+      "website": "https://www.miracleszalon.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "523678807980112",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9183460474014282,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "829bc2da-d539-4bcd-b5ec-0c6af7ec88c6",
+      "name": "Wik Nails",
+      "source_name": "Wik Nails",
+      "category": "nails",
+      "source_category": "beauty_salon",
+      "type_label": "A nail salon",
+      "location": "District XIV · Mogyoródi út 112 · 1141 Budapest",
+      "address": {
+        "freeform": "Mogyoródi út 112",
+        "locality": "Budapest",
+        "postcode": "1141",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.516174,
+        "longitude": 19.128585
+      },
+      "website": "https://www.wiknails.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "133403710424965",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9792681932449341,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "a212ba27-9d12-4faf-86cc-f6537e18dabe",
+      "name": "Color Nails Szalon",
+      "source_name": "Color Nails Szalon",
+      "category": "nails",
+      "source_category": "beauty_salon",
+      "type_label": "A nail salon",
+      "location": "District XIII · Váci út 178 · 1138 Budapest",
+      "address": {
+        "freeform": "Váci út 178",
+        "locality": "Budapest",
+        "postcode": "1138",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.549145,
+        "longitude": 19.071894
+      },
+      "website": "https://colornails.salonic.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "371816282912620",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.8924807906150818,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "d730c64f-83a2-43d2-b2ae-c56c63305403",
+      "name": "Spirit Thai Masszázs",
+      "source_name": "Spirit Thai Masszázs",
+      "category": "massage",
+      "source_category": "massage_therapy",
+      "type_label": "A massage venue",
+      "location": "District VI · Dessewffy u. 47 · 1066 Budapest",
+      "address": {
+        "freeform": "Dessewffy u. 47",
+        "locality": "Budapest",
+        "postcode": "1066",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.50663,
+        "longitude": 19.059131
+      },
+      "website": "https://www.thai-masszazs.net/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "183353358361264",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9835010766983032,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "d88db040-18e5-4cf7-b91f-41235f1ba951",
+      "name": "Lian Thai Massage & Spa",
+      "source_name": "Lian Thai Massage & Spa",
+      "category": "massage",
+      "source_category": "massage_therapy",
+      "type_label": "A massage venue",
+      "location": "District VII · Wesselényi utca 9 · 1077 Budapest",
+      "address": {
+        "freeform": "Wesselényi utca 9",
+        "locality": "Budapest",
+        "postcode": "1077",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.496899,
+        "longitude": 19.061608
+      },
+      "website": "https://www.lianmassage.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "261619607405",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9710057377815247,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "056404ce-4e72-4b63-8b8d-cbbf11337415",
+      "name": "Royal Thai Massage Budapest",
+      "source_name": "Royal Thai Massage Budapest",
+      "category": "massage",
+      "source_category": "massage_therapy",
+      "type_label": "A massage venue",
+      "location": "District II · BarberShop mögött, Mammut1 Földszint L010, Lövőház u. 2-6 · 1024 Budapest",
+      "address": {
+        "freeform": "BarberShop mögött, Mammut1 Földszint L010, Lövőház u. 2-6",
+        "locality": "Budapest",
+        "postcode": "1024",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.508835,
+        "longitude": 19.025947
+      },
+      "website": "https://royalthai.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "1580376992233339",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9703383445739746,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "b5e0d470-d8b6-421c-8071-6d53b4af3b3a",
+      "name": "Thaijola Thai Masszázsszalon",
+      "source_name": "Thaijola Thai Masszázsszalon",
+      "category": "massage",
+      "source_category": "massage_therapy",
+      "type_label": "A massage venue",
+      "location": "District XII · Németvölgyi út 91 · 1124 Budapest",
+      "address": {
+        "freeform": "Németvölgyi út 91",
+        "locality": "Budapest",
+        "postcode": "1124",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.488224,
+        "longitude": 19.008265
+      },
+      "website": "https://www.thaijola.hu",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "128256073954280",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9576143622398376,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "d759fe9f-a0bd-411c-b1b2-3c13e14c6cdd",
+      "name": "Similan Thai Massage",
+      "source_name": "Similan Thai Massage",
+      "category": "massage",
+      "source_category": "massage_therapy",
+      "type_label": "A massage venue",
+      "location": "District III · Miklós u. 7 · 1033 Budapest",
+      "address": {
+        "freeform": "Miklós u. 7",
+        "locality": "Budapest",
+        "postcode": "1033",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.543125,
+        "longitude": 19.043093
+      },
+      "website": "https://www.similan.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "107927903914180",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9273587465286255,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "ef1134c9-3c76-4d92-8305-7f7216174719",
+      "name": "Im Thai Massage",
+      "source_name": "Im Thai Massage",
+      "category": "massage",
+      "source_category": "massage_therapy",
+      "type_label": "A massage venue",
+      "location": "District VII · Szövetség u. 5-7 · 1074 Budapest",
+      "address": {
+        "freeform": "Szövetség u. 5-7",
+        "locality": "Budapest",
+        "postcode": "1074",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.498966,
+        "longitude": 19.074543
+      },
+      "website": "https://www.imthaimassage.com/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "165390464317228",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9521890878677368,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "e575464d-2c47-4478-af18-aa584b610f97",
+      "name": "Kristina Masszázs Szalon",
+      "source_name": "Kristina Masszázs Szalon",
+      "category": "massage",
+      "source_category": "massage_therapy",
+      "type_label": "A massage venue",
+      "location": "District XIII · Csanády u. 5 · 1132 Budapest",
+      "address": {
+        "freeform": "Csanády u. 5",
+        "locality": "Budapest",
+        "postcode": "1132",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.516335,
+        "longitude": 19.057803
+      },
+      "website": "https://www.krisztinamasszazs.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "824227414341834",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9507330656051636,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "64ec40bf-c520-4656-9152-5f78d059c904",
+      "name": "De Lanna Thai Massage",
+      "source_name": "De Lanna Thai Massage",
+      "category": "massage",
+      "source_category": "massage_therapy",
+      "type_label": "A massage venue",
+      "location": "District VII · Klauzál u. 35 · 1072 Budapest",
+      "address": {
+        "freeform": "Klauzál u. 35",
+        "locality": "Budapest",
+        "postcode": "1072",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.499352,
+        "longitude": 19.064994
+      },
+      "website": "https://www.delannathai.com/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "1682947402033837",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9507073163986206,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "c94c538d-9a56-464f-acad-c78bfb6d37aa",
+      "name": "5 Elements Day Spa",
+      "source_name": "5 Elements Day Spa",
+      "category": "wellness",
+      "source_category": "spa",
+      "type_label": "A wellness venue",
+      "location": "District I · Csalogány u. 4a · 1015 Budapest",
+      "address": {
+        "freeform": "Csalogány u. 4a",
+        "locality": "Budapest",
+        "postcode": "1015",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.507633,
+        "longitude": 19.037966
+      },
+      "website": "https://5elements-massage-spa.hu/balinese/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "260890014350882",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9806485772132874,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "9bb2ca1d-eb78-4892-81a3-bcb07f8d97db",
+      "name": "Harmony Spa Budapest",
+      "source_name": "Harmony Spa Budapest",
+      "category": "wellness",
+      "source_category": "spa",
+      "type_label": "A wellness venue",
+      "location": "District V · Hercegprímás u. 5 · 1051 Budapest",
+      "address": {
+        "freeform": "Hercegprímás u. 5",
+        "locality": "Budapest",
+        "postcode": "1051",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.499889,
+        "longitude": 19.053504
+      },
+      "website": "https://www.harmonyspabudapest.com/hu/offers.html",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "800283960175770",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9792701005935669,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "e9d4cea1-0966-435f-86db-000c2009203f",
+      "name": "Paskál Gyógy- és Strandfürdő - Hivatalos oldal",
+      "source_name": "Paskál Gyógy- és Strandfürdő - Hivatalos oldal",
+      "category": "wellness",
+      "source_category": "spa",
+      "type_label": "A wellness venue",
+      "location": "District XIV · Egressy út 178 · 1141 Budapest",
+      "address": {
+        "freeform": "Egressy út 178",
+        "locality": "Budapest",
+        "postcode": "1141",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.521233,
+        "longitude": 19.127109
+      },
+      "website": "https://www.paskalfurdo.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "1455639664453635",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9753697514533997,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "00168299-a01f-4bb6-b4a3-92d618506b82",
+      "name": "Ananda Thai Masszázs & Spa",
+      "source_name": "Ananda Thai Masszázs & Spa",
+      "category": "wellness",
+      "source_category": "spa",
+      "type_label": "A wellness venue",
+      "location": "District XIV · Fogarasi út 170 · 1141 Budapest",
+      "address": {
+        "freeform": "Fogarasi út 170",
+        "locality": "Budapest",
+        "postcode": "1141",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.515827,
+        "longitude": 19.140189
+      },
+      "website": "https://anandathaimasszazs.hu",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "104190038156712",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.953387975692749,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "13ade11e-1765-4000-a080-0f0985af3709",
+      "name": "Bestsellers",
+      "source_name": "Bestsellers",
+      "category": "shopping",
+      "source_category": "bookstore",
+      "type_label": "A shop",
+      "location": "District V · Október 6. u. 11 · 1051 Budapest",
+      "address": {
+        "freeform": "Október 6. u. 11",
+        "locality": "Budapest",
+        "postcode": "1051",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.500965,
+        "longitude": 19.051084
+      },
+      "website": "https://bestsellers.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "104667176256763",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9841514825820923,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "a6269093-627b-4711-b625-f13030f1be9c",
+      "name": "Írók Boltja Kft.",
+      "source_name": "Írók Boltja Kft.",
+      "category": "shopping",
+      "source_category": "bookstore",
+      "type_label": "A shop",
+      "location": "District VI · Andrássy út 45 · 1061 Budapest",
+      "address": {
+        "freeform": "Andrássy út 45",
+        "locality": "Budapest",
+        "postcode": "1061",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.50423,
+        "longitude": 19.062257
+      },
+      "website": "https://www.irokboltja.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "122743074422356",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9818404316902161,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "373eb4c0-8e90-4ec4-bf1f-d5820d3c61dd",
+      "name": "Treasure Budapest",
+      "source_name": "Treasure Budapest",
+      "category": "shopping",
+      "source_category": "clothing_store",
+      "type_label": "A shop",
+      "location": "District V · Aulich u. 5 · 1054 Budapest",
+      "address": {
+        "freeform": "Aulich u. 5",
+        "locality": "Budapest",
+        "postcode": "1054",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.50539,
+        "longitude": 19.051453
+      },
+      "website": "https://treasurebudapest.store/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "1407347456203437",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9799880981445312,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "9979d44a-ee77-4652-a55e-cfda08f7f8b7",
+      "name": "Lucky Shepherd Designer Store",
+      "source_name": "Lucky Shepherd Designer Store",
+      "category": "shopping",
+      "source_category": "clothing_store",
+      "type_label": "A shop",
+      "location": "District II · Fő u. 63 · 1027 Budapest",
+      "address": {
+        "freeform": "Fő u. 63",
+        "locality": "Budapest",
+        "postcode": "1027",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.509235,
+        "longitude": 19.038522
+      },
+      "website": "https://www.luckyshepherd.com/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "122396494579901",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9772856831550598,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "8a04f648-5653-45a8-95a6-5cd34421c82d",
+      "name": "Footshop",
+      "source_name": "Footshop",
+      "category": "shopping",
+      "source_category": "clothing_store",
+      "type_label": "A shop",
+      "location": "District V · Kristóf tér 4 · 1052 Budapest",
+      "address": {
+        "freeform": "Kristóf tér 4",
+        "locality": "Budapest",
+        "postcode": "1052",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.495621,
+        "longitude": 19.052321
+      },
+      "website": "https://www.footshop.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "2240544745988503",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9711002707481384,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "276d4b96-0061-4e54-80cd-8133b8c86bd8",
+      "name": "Központi Antikvárium",
+      "source_name": "Központi Antikvárium",
+      "category": "shopping",
+      "source_category": "bookstore",
+      "type_label": "A shop",
+      "location": "District V · Múzeum krt. 13-15 · 1053 Budapest",
+      "address": {
+        "freeform": "Múzeum krt. 13-15",
+        "locality": "Budapest",
+        "postcode": "1053",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.49268,
+        "longitude": 19.060641
+      },
+      "website": "https://kozpontiantikvarium.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "679223772136737",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.968195915222168,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "90831f7a-a7b8-427e-aa0c-d2fa270201f6",
+      "name": "Nanushka Store and Café",
+      "source_name": "Nanushka Store and Café",
+      "category": "shopping",
+      "source_category": "womens_clothing_store",
+      "type_label": "A shop",
+      "location": "District V · Bécsi u. 3 · 1052 Budapest",
+      "address": {
+        "freeform": "Bécsi u. 3",
+        "locality": "Budapest",
+        "postcode": "1052",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.496082,
+        "longitude": 19.052291
+      },
+      "website": "https://www.nanushka.com/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "1541740835850113",
+          "update_time": "2026-09-14T00:00:00.000Z",
+          "confidence": 0.9511432647705078,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-09-14"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "f9b55090-5c64-4b5b-965c-8e317446981f",
+      "name": "Balaton Butik",
+      "source_name": "Balaton Butik",
+      "category": "shopping",
+      "source_category": "clothing_store",
+      "type_label": "A shop",
+      "location": "District XII · Alkotás u. 39/a · 1123 Budapest",
+      "address": {
+        "freeform": "Alkotás u. 39/a",
+        "locality": "Budapest",
+        "postcode": "1123",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.49353,
+        "longitude": 19.023715
+      },
+      "website": "https://balatonbutik.hu",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "2145598672372914",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9370768666267395,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "3fab9a77-fe82-4129-973e-095e7564cde9",
+      "name": "Országos Idegennyelvű Könyvtár",
+      "source_name": "Országos Idegennyelvű Könyvtár",
+      "category": "study",
+      "source_category": "library",
+      "type_label": "A library",
+      "location": "District V · Molnár utca 11 · 1056 Budapest",
+      "address": {
+        "freeform": "Molnár utca 11",
+        "locality": "Budapest",
+        "postcode": "1056",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.490198,
+        "longitude": 19.053599
+      },
+      "website": "https://www.oik.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "286326263130",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9731822609901428,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "b5e5866b-68fc-4a30-b1ec-4a1eba7b2211",
+      "name": "BME OMIKK",
+      "source_name": "BME OMIKK",
+      "category": "study",
+      "source_category": "library",
+      "type_label": "A library",
+      "location": "District XI · Budafoki út 4-6 · 1111 Budapest",
+      "address": {
+        "freeform": "Budafoki út 4-6",
+        "locality": "Budapest",
+        "postcode": "1111",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.480919,
+        "longitude": 19.054265
+      },
+      "website": "https://www.omikk.bme.hu",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "174175216060889",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9526306986808777,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "c6fcfde7-a945-4187-8824-2d2756d8acd8",
+      "name": "Ráday Könyvtár",
+      "source_name": "Ráday Könyvtár",
+      "category": "study",
+      "source_category": "library",
+      "type_label": "A library",
+      "location": "District IX · Ráday utca 28 · 1092 Budapest",
+      "address": {
+        "freeform": "Ráday utca 28",
+        "locality": "Budapest",
+        "postcode": "1092",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.485786,
+        "longitude": 19.064397
+      },
+      "website": "https://konyvtar.rgy.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "236156266432587",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9799932837486267,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "18d457fe-d2df-4dbe-a01f-86286d223dfb",
+      "name": "Óbudai Egyetem Doberdó Úti Könyvtár",
+      "source_name": "Óbudai Egyetem Doberdó Úti Könyvtár",
+      "category": "study",
+      "source_category": "library",
+      "type_label": "A library",
+      "location": "District III · Doberdó út 6 · 1034 Budapest",
+      "address": {
+        "freeform": "Doberdó út 6",
+        "locality": "Budapest",
+        "postcode": "1034",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.533596,
+        "longitude": 19.033397
+      },
+      "website": "https://lib.uni-obuda.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "456040294497522",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.96380215883255,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "d2a4818e-3811-4a96-85f1-3279ee3c4e26",
+      "name": "Buda Arboretum",
+      "source_name": "Buda Arboretum",
+      "category": "outdoors",
+      "source_category": "park",
+      "type_label": "A park or garden",
+      "location": "District XI · Villányi út 29-43 · 1114 Budapest",
+      "address": {
+        "freeform": "Villányi út 29-43",
+        "locality": "Budapest",
+        "postcode": "1114",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.482491,
+        "longitude": 19.039978
+      },
+      "website": "https://budaiarboretum.uni-mate.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "1499404576784053",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9689346551895142,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "7f570460-db29-4a92-a268-3821df393edd",
+      "name": "Jókai kert",
+      "source_name": "Jókai kert",
+      "category": "outdoors",
+      "source_category": "park",
+      "type_label": "A park or garden",
+      "location": "District XII · Költő u. 21 · 1121 Budapest",
+      "address": {
+        "freeform": "Költő u. 21",
+        "locality": "Budapest",
+        "postcode": "1121",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.498432,
+        "longitude": 18.992725
+      },
+      "website": "https://www.dunaipoly.hu/hu/helyek/bemutatohelyek/jokai-kert",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "240769123291769",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.975324809551239,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "c36cb71b-0ec3-4914-90f1-c1f15abf27a8",
+      "name": "Millenáris Park",
+      "source_name": "Millenáris Park",
+      "category": "outdoors",
+      "source_category": "park",
+      "type_label": "A park or garden",
+      "location": "District II · Kis Rókus u. 16-20 · 1024 Budapest",
+      "address": {
+        "freeform": "Kis Rókus u. 16-20",
+        "locality": "Budapest",
+        "postcode": "1024",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.511154,
+        "longitude": 19.024936
+      },
+      "website": "https://www.millenaris.hu",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "1050636668298733",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.8921482563018799,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "37fd121d-3881-4e6e-8b08-03339ceb20e5",
+      "name": "HOPAHOLIC Craft Beer Bar & Food",
+      "source_name": "HOPAHOLIC Craft Beer Bar & Food",
+      "category": "nightlife",
+      "source_category": "bar",
+      "type_label": "A bar or pub",
+      "location": "District VII · Akácfa u. 38 · 1072 Budapest",
+      "address": {
+        "freeform": "Akácfa u. 38",
+        "locality": "Budapest",
+        "postcode": "1072",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.499928,
+        "longitude": 19.065701
+      },
+      "website": "https://hopaholic.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "657376574404974",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9855731129646301,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "19074e0b-4e4a-40a1-b24b-9d5005f2d803",
+      "name": "Davy Byrne's",
+      "source_name": "Davy Byrne's",
+      "category": "nightlife",
+      "source_category": "bar",
+      "type_label": "A bar or pub",
+      "location": "District V · Sörház u. 4 · 1056 Budapest",
+      "address": {
+        "freeform": "Sörház u. 4",
+        "locality": "Budapest",
+        "postcode": "1056",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.489223,
+        "longitude": 19.054705
+      },
+      "website": "https://www.davybyrnes.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "108571797218845",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9897767305374146,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "ac4cd7d2-f4bd-422c-b969-5bba7df57238",
+      "name": "Grund",
+      "source_name": "Grund",
+      "category": "nightlife",
+      "source_category": "pub",
+      "type_label": "A bar or pub",
+      "location": "District VIII · Nagy Templom utca 30 · 1082 Budapest",
+      "address": {
+        "freeform": "Nagy Templom utca 30",
+        "locality": "Budapest",
+        "postcode": "1082",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.484993,
+        "longitude": 19.076252
+      },
+      "website": "https://www.agrund.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "118133121564770",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9892920255661011,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "0d80a273-afc8-4790-8ce6-9f7ca48053c8",
+      "name": "Rabbit Hole Bar and Café",
+      "source_name": "Rabbit Hole Bar and Café",
+      "category": "nightlife",
+      "source_category": "cocktail_bar",
+      "type_label": "A bar or pub",
+      "location": "District VI · Jókai u. 18 · 1066 Budapest",
+      "address": {
+        "freeform": "Jókai u. 18",
+        "locality": "Budapest",
+        "postcode": "1066",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.507164,
+        "longitude": 19.059195
+      },
+      "website": "https://www.rabbithole.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "1941932499414419",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9889118671417236,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "85aa25b0-5c6e-462b-a709-9fc15b7690bb",
+      "name": "Why Not Budapest",
+      "source_name": "Why Not Budapest",
+      "category": "nightlife",
+      "source_category": "bar",
+      "type_label": "A bar or pub",
+      "location": "District V · Belgrád rakpart 3 · 1056 Budapest",
+      "address": {
+        "freeform": "Belgrád rakpart 3",
+        "locality": "Budapest",
+        "postcode": "1056",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.487778,
+        "longitude": 19.055719
+      },
+      "website": "https://whynotcafe.hu/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "320166398152128",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9882412552833557,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "b8739912-7b71-4b85-80d2-c485701dcff4",
+      "name": "Gravity Brewing",
+      "source_name": "Gravity Brewing",
+      "category": "nightlife",
+      "source_category": "bar",
+      "type_label": "A bar or pub",
+      "location": "District IX · Lónyay u. 22 · 1093 Budapest",
+      "address": {
+        "freeform": "Lónyay u. 22",
+        "locality": "Budapest",
+        "postcode": "1093",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.485809,
+        "longitude": 19.062082
+      },
+      "website": "https://gravitybp.com/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "937210529715294",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9870636463165283,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "148257e1-3934-4f4e-8113-a2af4dfff6c3",
+      "name": "Hintaló Bár",
+      "source_name": "Hintaló Bár",
+      "category": "nightlife",
+      "source_category": "cocktail_bar",
+      "type_label": "A bar or pub",
+      "location": "District VIII · Bacsó Béla u. 15 · 1081 Budapest",
+      "address": {
+        "freeform": "Bacsó Béla u. 15",
+        "locality": "Budapest",
+        "postcode": "1081",
+        "region": null,
+        "country": "HU"
+      },
+      "coordinates": {
+        "latitude": 47.494778,
+        "longitude": 19.071883
+      },
+      "website": "https://www.hintalobar.com/",
+      "website_checked_on": "2026-11-22",
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "162426210481866",
+          "update_time": "2026-11-02T00:00:00.000Z",
+          "confidence": 0.9867292642593384,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-11-02"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-11-11T15:48:27Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-11-11"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+# First run: python3 scripts/prepare_local.py
+# Start: docker compose up --build --wait
+# Open: http://localhost:8767
+# Stop: docker compose down (the named database volume is retained)
+name: offscript-local
+
+x-app-base: &app-base
+    image: ${OFFSCRIPT_IMAGE:-offscript:0.1.0-local}
+    build:
+      context: .
+      target: runtime
+    environment:
+      APP_ENV: production
+      DATABASE_HOST: db
+      DATABASE_PORT: "5432"
+      DATABASE_NAME: offscript
+      DATABASE_USER: offscript
+      DATABASE_PASSWORD_FILE: /run/secrets/db_password
+      # Local HTTP preview; set COOKIE_SECURE=1 when deployed behind HTTPS.
+      COOKIE_SECURE: "0"
+    secrets:
+      - db_password
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+services:
+  init:
+    <<: *app-base
+    command: ["python", "-m", "app.bootstrap"]
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  app:
+    <<: *app-base
+    ports:
+      - "127.0.0.1:${APP_PORT:-8767}:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      init:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  db:
+    image: postgres:17-bookworm@sha256:1eff563f6c868b9b433566e9f3cf6e5c79fbd3b95bf70ec7277d376cdbfc50d7
+    environment:
+      POSTGRES_DB: offscript
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_admin_password
+    secrets:
+      - db_admin_password
+      - db_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/init-app-db.sql:/docker-entrypoint-initdb.d/10-offscript.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d offscript"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 20s
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+secrets:
+  db_password:
+    file: ./.local/container-secrets/db-password
+  db_admin_password:
+    file: ./.local/container-secrets/admin-password

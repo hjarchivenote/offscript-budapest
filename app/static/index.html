@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#c9fa55">
+  <meta name="description" content="Find your kind of Budapest: coffee, culture, classes, self-care and a plan your friends can agree on.">
+  <title>Offscript — Budapest, your way</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header wrap">
+    <a class="wordmark" href="/" aria-label="Offscript home"><span class="brand-mark">✳</span> offscript<span class="brand-period">.</span></a>
+    <span class="city-label">BUDAPEST, YOUR WAY</span>
+    <nav aria-label="Main navigation">
+      <a href="/" class="nav-link">Explore</a>
+      <a id="back-to-plan" class="nav-link" hidden>Our plan</a>
+      <button class="button dark small" id="new-plan">Plan with friends <span aria-hidden="true">+</span></button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="explore-view">
+      <div class="hero wrap">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="tiny-sun" aria-hidden="true">✳</span> FOR YOUR DAYS OFF. AND YOUR HOURS OFF.</p>
+          <h1>Your day.<br>A little less <span class="underline">ordinary.</span></h1>
+          <p class="hero-description">Good coffee. A fresh set. Something you've never tried.<br> Find your kind of Budapest.</p>
+          <div class="when-switch" role="group" aria-label="When do you want to go?">
+            <button data-when="today" class="active" aria-pressed="true">Today</button>
+            <button data-when="weekend" aria-pressed="false">This weekend</button>
+            <button data-when="anytime" aria-pressed="false">Any day</button>
+          </div>
+          <p class="local-date" id="local-date">A little inspiration, close to home.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-caption">GO WITH YOUR OWN FLOW</div>
+          <div class="hero-tile tile-coffee"><svg viewBox="0 0 320 230"><use href="/static/art.svg#coffee"></use></svg><span>coffee first.</span></div>
+          <div class="hero-tile tile-nails"><svg viewBox="0 0 320 230"><use href="/static/art.svg#nails"></use></svg><span>a little me-time.</span></div>
+          <span class="hero-sticker">NO BIG PLAN<br>NECESSARY.</span>
+          <span class="hero-spark">✳</span>
+        </div>
+      </div>
+
+      <section class="discovery wrap" aria-labelledby="discovery-heading">
+        <div class="section-heading"><div><p class="eyebrow">A CITY FULL OF POSSIBILITIES</p><h2 id="discovery-heading">What are you in the mood for?</h2></div><span class="small-caption">Your time. Your budget. Your vibe.</span></div>
+        <div class="categories" id="categories" role="group" aria-label="Activity categories"></div>
+        <form id="filters" class="filter-panel" aria-label="Find activities">
+          <label class="search-field"><span class="field-label">Something in mind?</span><input name="q" type="search" placeholder="Coffee, a fresh set, something creative…" maxlength="120"></label>
+          <label><span class="field-label">My mood</span><select name="mood"><option value="">A bit of everything</option><option value="reset">Need a reset</option><option value="curious">Feeling curious</option><option value="active">Let's move</option><option value="focus">Time to focus</option><option value="social">Feeling social</option><option value="treat">Treat myself</option></select></label>
+          <label><span class="field-label">I'm going</span><select name="company"><option value="">However I like</option><option value="solo">Solo</option><option value="date">On a date</option><option value="friends">With friends</option></select></label>
+          <label><span class="field-label">My budget</span><select name="max_price"><option value="">Keep it open</option><option value="3000">Up to 3,000 Ft</option><option value="6000">Up to 6,000 Ft</option><option value="10000">Up to 10,000 Ft</option><option value="20000">Up to 20,000 Ft</option></select></label>
+          <button class="button lime" type="submit">Find my thing</button>
+          <details class="extra-filters"><summary>A few more preferences <span aria-hidden="true">+</span></summary><div class="extra-grid">
+            <label><span class="field-label">My energy</span><select name="energy"><option value="">Any energy level</option><option value="low">Keeping it low-key</option><option value="medium">Up for a little effort</option><option value="high">Ready for anything</option></select></label>
+            <label><span class="field-label">Time for the activity</span><select name="max_minutes"><option value="">No time limit</option><option value="60">Up to an hour</option><option value="120">Up to two hours</option><option value="240">Up to four hours</option></select></label>
+            <div class="check-options"><label><input type="checkbox" name="feature" value="quiet"> Quiet setting</label><label><input type="checkbox" name="feature" value="study"> Study-friendly</label><label><input type="checkbox" name="feature" value="indoor"> Indoors</label><label><input type="checkbox" name="feature" value="outdoor"> Outdoors</label><label><input type="checkbox" name="student" value="true"> Student offers</label></div>
+          </div></details>
+        </form>
+        <div class="opening-filter"><label><input id="open-now" type="checkbox" name="open_now" value="true" form="filters"> Open now</label><span>Budapest time · based on published hours</span></div>
+        <div id="active-plan-banner" class="plan-banner" hidden></div>
+        <div class="results-heading"><h3 id="results-title" aria-live="polite">Finding your next thing…</h3><button id="clear-filters" class="text-button">Clear filters</button></div>
+        <p class="results-note" id="results-note">Check current hours and booking availability with each venue.</p>
+        <details class="ranking-help"><summary>How are ideas ordered?</summary><p id="ranking-description">All selected filters are required. Check each idea’s published details.</p></details>
+        <div id="opening-update" class="opening-update" role="status" hidden><p id="opening-update-message"></p><button id="retry-opening" class="text-button">Try again</button></div>
+        <div id="activity-grid" class="activity-grid" aria-busy="true"></div>
+        <div id="load-more-wrap" class="load-more-wrap" hidden><button id="load-more" class="button outline">Show more ideas</button><p id="showing-count"></p></div>
+        <div id="empty-state" class="empty-state" hidden><span class="empty-star" aria-hidden="true">✳</span><h3 id="empty-title">Let's try a different angle.</h3><p id="empty-message">No matches in this starter collection. Try another day or loosen a filter.</p><button class="button dark" id="empty-reset">Reset filters</button><div id="event-links"></div></div>
+      </section>
+      <section class="friends-band wrap"><div><p class="eyebrow">LESS “I DON'T MIND”. MORE ACTUAL PLANS.</p><h2>Send ideas.<br>Find your collective yes.</h2><p>Make a plan, share one link, and let your friends suggest and vote.</p></div><button class="button dark" id="friends-cta">Make a plan together <span aria-hidden="true">+</span></button><span class="band-star" aria-hidden="true">✳</span></section>
+    </section>
+
+    <section id="plan-view" class="wrap plan-view" hidden aria-labelledby="plan-title"><div id="plan-content"></div></section>
+  </main>
+
+  <footer class="footer wrap"><a class="wordmark" href="/">offscript.</a><p>Place data: <a href="https://docs.overturemaps.org/guides/places/" target="_blank" rel="noopener noreferrer">Overture Maps</a> and contributors · <a href="/static/licenses/CDLA-Permissive-2.0.txt" target="_blank" rel="noopener noreferrer">Data licence</a></p><span id="app-version">Budapest · local edition</span></footer>
+  <dialog id="detail-dialog" aria-labelledby="detail-title"><button class="dialog-close" data-close aria-label="Close activity details">×</button><div id="detail-content"></div></dialog>
+  <dialog id="plan-dialog" class="compact-dialog" aria-labelledby="create-title"><button class="dialog-close" data-close aria-label="Close plan form">×</button><p class="eyebrow">THE GROUP CHAT CAN RELAX.</p><h2 id="create-title">Let's make a plan.</h2><p>Share a link. Everyone gets a say.</p><form id="create-plan-form" class="stacked-form"><label>Your name or nickname<input name="nickname" required minlength="2" maxlength="40" placeholder="What should your friends call you?"></label><label>Give your plan a name<input name="title" required minlength="2" maxlength="100" placeholder="A little Saturday adventure"></label><label>Pick a day<input name="day" type="date" required></label><button class="button lime" type="submit">Create our plan</button><p class="form-error" role="alert"></p></form></dialog>
+  <dialog id="join-dialog" class="compact-dialog" aria-labelledby="join-title"><button class="dialog-close" data-close aria-label="Close join form">×</button><p class="eyebrow">YOU'RE INVITED.</p><h2 id="join-title">Your friends want your take.</h2><form id="join-plan-form" class="stacked-form"><label>Your name or nickname<input name="nickname" required minlength="2" maxlength="40" placeholder="Your nickname"></label><button class="button lime" type="submit">Join the plan</button><p class="form-error" role="alert"></p></form></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  quality:
+    name: Lint and automated tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: |
+            requirements.lock
+            requirements-runtime.lock
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install pinned Python dependencies
+        run: |
+          python -m pip install --only-binary=:all: -r requirements.lock -c requirements-runtime.lock
+          python -m pip check
+      - name: Run quality checks
+        run: python -u -m scripts.ci quality
+      - name: Keep Python test results
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: python-test-results
+          path: .local/ci/python-tests.xml
+          include-hidden-files: true
+          if-no-files-found: ignore
+          retention-days: 7
+
+  container:
+    name: Build, security and real application checks
+    needs: quality
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      OFFSCRIPT_IMAGE: offscript:ci-${{ github.sha }}
+      CI_COMMIT_SHA: ${{ github.sha }}
+    steps:
+      - name: Check out the same source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: |
+            requirements.lock
+            requirements-runtime.lock
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install pinned Python dependencies
+        run: |
+          python -m pip install --only-binary=:all: -r requirements.lock -c requirements-runtime.lock
+          python -m pip check
+      - name: Validate the exact image
+        run: python -u -m scripts.ci container
+      - name: Keep scan and browser diagnostics
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: container-check-results
+          path: |
+            .local/ci/reports/security.json
+            .local/ci/reports/source-secrets.json
+            .local/ci/reports/browser-desktop.png
+            .local/ci/reports/browser-mobile.png
+            .local/ci/reports/browser-failure.png
+            .local/ci/reports/browser-trace.zip
+          include-hidden-files: true
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Keep the validated image for a later release step
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: validated-image-${{ github.sha }}
+          path: |
+            .local/ci/image.tar
+            .local/ci/image.tar.sha256
+            .local/ci/validated-image.json
+          include-hidden-files: true
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+
+  gate:
+    name: CI passed
+    if: ${{ always() }}
+    needs: [quality, container]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    env:
+      QUALITY_RESULT: ${{ needs.quality.result }}
+      CONTAINER_RESULT: ${{ needs.container.result }}
+    steps:
+      - name: Require every validation job to succeed
+        run: |
+          if [[ "$QUALITY_RESULT" == success && "$CONTAINER_RESULT" == success ]]; then
+            echo 'All required checks passed.'
+          else
+            echo '::error::A required validation failed, was skipped, or was cancelled.'
+            exit 1
+          fi

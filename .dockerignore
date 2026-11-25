@@ -1,0 +1,14 @@
+# Allow only the application and its runtime dependencies into the build context.
+**
+!Dockerfile
+!requirements-runtime.lock
+!run.py
+!app/
+!app/**
+app/**/__pycache__/
+app/**/*.pyc
+app/**/*.pyo
+app/**/.env*
+app/**/*.db
+app/**/*.db-shm
+app/**/*.db-wal
