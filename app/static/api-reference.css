@@ -1,0 +1,16 @@
+:root { font-family: system-ui, sans-serif; color: #1d2621; background: #f6f8f4; }
+body { margin: 0; }
+main { max-width: 1000px; padding: 32px 20px 72px; margin: auto; }
+nav { display: flex; flex-wrap: wrap; gap: 16px; padding-bottom: 28px; border-bottom: 1px solid #cbd2c9; }
+a { color: #254c25; text-underline-offset: 3px; }
+header { padding: 28px 0; }
+h1 { font-size: clamp(1.9rem, 5vw, 3rem); margin: 12px 0; }
+h2 { margin-top: 36px; }
+p { max-width: 75ch; line-height: 1.6; }
+.eyebrow { font-size: .8rem; letter-spacing: .08em; font-weight: 700; }
+details { border: 1px solid #cbd2c9; border-radius: 12px; background: white; margin: 12px 0; padding: 18px; }
+summary { cursor: pointer; overflow-wrap: anywhere; line-height: 1.7; }
+.method { display: inline-block; font-weight: 800; background: #c9fa55; border-radius: 4px; padding: 1px 8px; margin-right: 12px; font-size: .8rem; }
+code { font-family: ui-monospace, monospace; }
+pre { overflow-x: auto; background: #f0f3ed; border-radius: 8px; padding: 16px; line-height: 1.5; font-size: .85rem; }
+summary:focus-visible, a:focus-visible { outline: 3px solid #527629; outline-offset: 4px; }
