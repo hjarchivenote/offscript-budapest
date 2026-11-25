@@ -31,7 +31,7 @@ python3 scripts/prepare_local.py
 docker compose up --build --wait
 ```
 
-Open **[http://localhost:8767](http://localhost:8767)**. The API schema is available at **[http://localhost:8767/openapi.json](http://localhost:8767/openapi.json)**.
+Open **[http://localhost:8767](http://localhost:8767)**. The readable API reference is at **[http://localhost:8767/docs](http://localhost:8767/docs)**, with the machine-readable schema at **[http://localhost:8767/openapi.json](http://localhost:8767/openapi.json)**. The reference uses local HTML and CSS and works without external documentation scripts.
 
 The preparation script generates local database passwords under the ignored `.local/` directory and preserves existing passwords. Compose starts PostgreSQL, runs database initialization once, then starts the app. Existing plans and reviews are retained in a named database volume.
 
@@ -119,7 +119,7 @@ Install the pinned Python dependencies shown above and use **Node.js 24**. Run t
 python -u -m scripts.ci quality
 ```
 
-This runs Ruff, **235 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates and failure recovery.
+This runs Ruff, **237 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation and failure recovery.
 
 With Docker running, validate a built image against an isolated PostgreSQL database and real browsers:
 
@@ -145,6 +145,8 @@ A successful run retains the tested image archive, its SHA-256 checksum and vali
 
 **First verified GitHub run:** [CI run 45647384013](https://github.com/hjarchivenote/offscript-budapest/actions/runs/45647384013), for commit [`ea34fd4`](https://github.com/hjarchivenote/offscript-budapest/commit/ea34fd4157a70fe325bea165e2e48fc775abaea8). All three jobs passed, including the 263 automated tests, image scans, browser flows and database recovery checks.
 
+**Failure-path verification:** [Push run 45650479526](https://github.com/hjarchivenote/offscript-budapest/actions/runs/45650479526) and [PR run 45650661254](https://github.com/hjarchivenote/offscript-budapest/actions/runs/45650661254) deliberately fail one test on the verification branch. In both cases the container job is skipped, the final CI gate fails, and no validated image artifact is created. [PR #1](https://github.com/hjarchivenote/offscript-budapest/pull/1) records the failing revision and the corrective change, including browser checks that block all external requests while opening `/docs` and `/redoc`. Registry publication and deployment blocking must also be verified when those stages are implemented.
+
 ## Security and troubleshooting
 
 The app container runs as a non-root user with a read-only filesystem, dropped Linux capabilities and a restricted database role. Only the app port is bound to the host's loopback address; PostgreSQL is not published. Passwords are mounted as local Compose secrets and excluded from Git and the image. The app cannot read the database administrator password.
@@ -166,12 +168,12 @@ This repository is the application and CI foundation for the **End-to-End CI/CD 
 
 | Requirement | Current position and remaining work |
 | --- | --- |
-| Application and GitHub | Functional app, meaningful API endpoints, health/version endpoints, tests, source repository and this README. A real branch/PR update demonstration remains. |
+| Application and GitHub | Functional app, meaningful API endpoints, health/version endpoints, tests, source repository and this README. PR #1 records the documentation fix and CI verification; the feature-release PR demonstration remains. |
 | Docker and registry | Local container execution and automated image validation are implemented. Publish immutable release images to GHCR or Docker Hub. |
 | CI | Push validation, scans and the final success gate are verified. PR triggers are configured; add publication restricted to an authorized release branch. |
 | Kubernetes | Add and demonstrate a Deployment with at least two replicas, a Service, ConfigMap, Secret, readiness/liveness probes, resource requests/limits and RollingUpdate. |
 | Automated delivery | An approved main-branch update must publish a versioned image, deploy it, wait for rollout and verify availability. The deployment runner must be able to reach the chosen cluster securely. |
-| Release demonstrations | Show the initial release, a meaningful feature update through a PR and a tested bug-fix release. Include one intentionally failing CI revision and show that it is not deployed. Record commits, runs, image tags, rollout state and app version for each release. |
+| Release demonstrations | Show the initial release, a meaningful feature update through a PR and a tested bug-fix release. The CI-only failure example is recorded above; verify that a failing revision is not published or deployed once delivery exists. Record commits, runs, image tags, rollout state and app version for each release. |
 | Submission and presentation | Expand the evidence into the required 5-10-page technical PDF and 8-12-slide PowerPoint, and prepare the live change-to-deployment demonstration. |
 
 For a current application walkthrough, launch Compose, filter activities, inspect a provider source, create a plan and join it in another browser to vote. Then open the linked GitHub run to inspect the checks and artifacts. The Kubernetes rollout portion follows once the delivery milestones above are implemented.

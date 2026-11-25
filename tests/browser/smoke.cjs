@@ -24,6 +24,24 @@ async function change(page,action){
   await context.tracing.start({screenshots:true,snapshots:true});
   let friendContext;
   try{
+    const reference=await context.newPage(),referenceErrors=[],requests=[];
+    reference.on('console',message=>{if(message.type()==='error') referenceErrors.push(message.text());});
+    await reference.route('**/*',route=>{
+      requests.push(route.request().url());
+      return new URL(route.request().url()).origin===new URL(root).origin?route.continue():route.abort();
+    });
+    for(const route of ['/docs','/redoc']){
+      await reference.goto(root+route);
+      assert.equal(await reference.locator('h1').innerText(),'Offscript Budapest API');
+      const endpoint=reference.locator('.operation').filter({has:reference.locator('summary code',{hasText:'/api/activities'})}).first();
+      await endpoint.locator('summary').click();
+      assert.match(await endpoint.innerText(),/max_price/);
+      assert.ok(await reference.locator('#models').isVisible());
+    }
+    assert.ok(requests.every(url=>new URL(url).origin===new URL(root).origin));
+    assert.deepEqual(referenceErrors,[]);
+    await reference.close();
+    console.log('PASS API references: both documentation URLs render under CSP with all external requests blocked');
     const info=await(await context.request.get(root+'/api/activities/overture-64ec40bf-c520-4656-9152-5f78d059c904-place')).json();
     const currentPrice=info.provider_freshness.price.state==='current';
     await page.goto(root);await settled(page);

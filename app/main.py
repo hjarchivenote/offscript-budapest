@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Annotated, Literal
 
 from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import func, select, text, update
@@ -18,6 +18,7 @@ from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.orm import Session
 
 from app import __version__
+from app.api_reference import render_reference
 from app.bootstrap import initialize_database, require_initialized_database
 from app.catalogue import CATEGORIES
 from app.catalogue_open import DATA_SOURCE
@@ -82,7 +83,7 @@ def create_app(database_url: str | None = None, clock: Callable | None = None):
         finally:
             engine.dispose()
 
-    api = FastAPI(title="Offscript Budapest", version=__version__, lifespan=lifespan)
+    api = FastAPI(title="Offscript Budapest", version=__version__, lifespan=lifespan, docs_url=None, redoc_url=None)
     api.state.sessions = sessions
     api.state.clock = clock or (lambda: datetime.now(UTC))
     api.state.engine = engine
@@ -275,6 +276,11 @@ def create_app(database_url: str | None = None, clock: Callable | None = None):
     @api.get("/version")
     def version():
         return {"version": __version__, "commit": os.environ.get("APP_COMMIT", "local")}
+
+    @api.get("/docs", response_class=HTMLResponse, include_in_schema=False)
+    @api.get("/redoc", response_class=HTMLResponse, include_in_schema=False)
+    def api_reference():
+        return render_reference(api.openapi())
 
     def calendar_snapshot():
         now = api.state.clock().astimezone(BUDAPEST)
