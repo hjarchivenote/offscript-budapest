@@ -119,7 +119,7 @@ Install the pinned Python dependencies shown above and use **Node.js 24**. Run t
 python -u -m scripts.ci quality
 ```
 
-This runs Ruff, **237 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation and failure recovery.
+This runs Ruff, **240 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation, build-probe cleanup, cache revalidation and failure recovery.
 
 With Docker running, validate a built image against an isolated PostgreSQL database and real browsers:
 
@@ -128,6 +128,8 @@ python -u -m scripts.ci container
 ```
 
 The container checks generate isolated test data, exercise two app instances sharing one database, test desktop/mobile browser flows, interrupt and restore the database, and recreate containers to verify persistence. The script removes its disposable Compose project when finished. Chromium and any required browser system dependencies are installed by this command.
+
+Browser checks also cover first-load failures and timeouts, manual and online recovery, preservation of an existing plan during reconnection, original review publication and updating, safe display of submitted HTML, and sharing when clipboard access is denied or unavailable. Copy failures open a selectable link without changing the current page or discarding a draft.
 
 ### GitHub Actions
 
@@ -151,15 +153,21 @@ A successful run retains the tested image archive, its SHA-256 checksum and vali
 
 The app container runs as a non-root user with a read-only filesystem, dropped Linux capabilities and a restricted database role. Only the app port is bound to the host's loopback address; PostgreSQL is not published. Passwords are mounted as local Compose secrets and excluded from Git and the image. The app cannot read the database administrator password.
 
+CI also adds temporary, non-secret database/environment/cache sentinels before building, then verifies that all 32 paths are absent from the actual image. This checks the Docker exclusion rules for root and nested application paths. The probe files are removed even when a build fails, preserving existing developer files.
+
 The Compose configuration is a local HTTP preview. An external deployment needs HTTPS, `COOKIE_SECURE=1` and `PUBLIC_ORIGIN` set to its public URL. Cluster and registry credentials belong in protected deployment secrets.
+
+HTML, API and operational responses use `no-store`. Static assets use `no-cache` with ETag revalidation so a reload can pick up a new release without always downloading unchanged assets.
 
 | Symptom | Check |
 | --- | --- |
 | Docker cannot connect | Start Docker Engine or Docker Desktop before running Compose or the container checks. |
+| The first connection fails | Use **Try again** in the connection banner. The app also retries when the connection returns; planning controls stay disabled until initialization finishes. |
 | App does not become ready | Run `docker compose ps --all` and `docker compose logs init app db`; initialization must finish and PostgreSQL must be healthy. |
 | Password file is missing | Run `python3 scripts/prepare_local.py`. Preserve existing files so they continue to match the persistent database. |
 | Few results match a filter | Unknown prices, offers, hours or fixed session lengths cannot satisfy filters that require them. Try a broader search and inspect the source notes. |
 | Plan looks out of date | Use **Refresh votes**. A conflict triggers a reload; a failed refresh preserves the last loaded plan and offers a retry. |
+| The browser cannot copy a link | Copy the selected address in the **Share this link** dialog. The current plan, page and draft remain in place. |
 | A historical event is absent | Expired dated events are excluded from discovery; records remain available for saved plans and reviews. |
 
 ## Course requirements and next milestones

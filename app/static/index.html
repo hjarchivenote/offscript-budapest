@@ -18,12 +18,14 @@
     <nav aria-label="Main navigation">
       <a href="/" class="nav-link">Explore</a>
       <a id="back-to-plan" class="nav-link" hidden>Our plan</a>
-      <button class="button dark small" id="new-plan">Plan with friends <span aria-hidden="true">+</span></button>
+      <button class="button dark small" id="new-plan" disabled>Plan with friends <span aria-hidden="true">+</span></button>
     </nav>
   </header>
+  <div id="startup-update" class="startup-update wrap" role="status" hidden><p id="startup-message"></p><button id="retry-startup" class="button outline small" hidden>Try again</button></div>
+  <noscript><p class="wrap">Offscript needs JavaScript to load activities and shared plans. Enable JavaScript and reload this page.</p></noscript>
 
   <main id="main">
-    <section id="explore-view">
+    <section id="explore-view" inert>
       <div class="hero wrap">
         <div class="hero-copy">
           <p class="eyebrow"><span class="tiny-sun" aria-hidden="true">✳</span> FOR YOUR DAYS OFF. AND YOUR HOURS OFF.</p>
@@ -73,13 +75,14 @@
       <section class="friends-band wrap"><div><p class="eyebrow">LESS “I DON'T MIND”. MORE ACTUAL PLANS.</p><h2>Send ideas.<br>Find your collective yes.</h2><p>Make a plan, share one link, and let your friends suggest and vote.</p></div><button class="button dark" id="friends-cta">Make a plan together <span aria-hidden="true">+</span></button><span class="band-star" aria-hidden="true">✳</span></section>
     </section>
 
-    <section id="plan-view" class="wrap plan-view" hidden aria-labelledby="plan-title"><div id="plan-content"></div></section>
+    <section id="plan-view" class="wrap plan-view" hidden inert aria-labelledby="plan-title"><div id="plan-content"></div></section>
   </main>
 
   <footer class="footer wrap"><a class="wordmark" href="/">offscript.</a><p>Place data: <a href="https://docs.overturemaps.org/guides/places/" target="_blank" rel="noopener noreferrer">Overture Maps</a> and contributors · <a href="/static/licenses/CDLA-Permissive-2.0.txt" target="_blank" rel="noopener noreferrer">Data licence</a></p><span id="app-version">Budapest · local edition</span></footer>
   <dialog id="detail-dialog" aria-labelledby="detail-title"><button class="dialog-close" data-close aria-label="Close activity details">×</button><div id="detail-content"></div></dialog>
   <dialog id="plan-dialog" class="compact-dialog" aria-labelledby="create-title"><button class="dialog-close" data-close aria-label="Close plan form">×</button><p class="eyebrow">THE GROUP CHAT CAN RELAX.</p><h2 id="create-title">Let's make a plan.</h2><p>Share a link. Everyone gets a say.</p><form id="create-plan-form" class="stacked-form"><label>Your name or nickname<input name="nickname" required minlength="2" maxlength="40" placeholder="What should your friends call you?"></label><label>Give your plan a name<input name="title" required minlength="2" maxlength="100" placeholder="A little Saturday adventure"></label><label>Pick a day<input name="day" type="date" required></label><button class="button lime" type="submit">Create our plan</button><p class="form-error" role="alert"></p></form></dialog>
   <dialog id="join-dialog" class="compact-dialog" aria-labelledby="join-title"><button class="dialog-close" data-close aria-label="Close join form">×</button><p class="eyebrow">YOU'RE INVITED.</p><h2 id="join-title">Your friends want your take.</h2><form id="join-plan-form" class="stacked-form"><label>Your name or nickname<input name="nickname" required minlength="2" maxlength="40" placeholder="Your nickname"></label><button class="button lime" type="submit">Join the plan</button><p class="form-error" role="alert"></p></form></dialog>
+  <dialog id="share-dialog" class="compact-dialog" aria-labelledby="share-title"><button class="dialog-close" data-close aria-label="Close sharing">×</button><h2 id="share-title">Share this link.</h2><p id="share-help">Automatic copying is unavailable. Copy the selected link and send it to your friends.</p><div class="stacked-form"><label>Link<input id="share-url" type="text" inputmode="url" readonly spellcheck="false" aria-describedby="share-help"></label><button class="button lime" id="select-share-link" type="button">Select link</button></div></dialog>
   <div id="toast" class="toast" role="status" hidden></div>
 </body>
 </html>

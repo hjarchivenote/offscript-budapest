@@ -15,6 +15,54 @@ async function change(page,action){
   await Promise.all([page.waitForResponse(r=>new URL(r.url()).pathname==='/api/activities'),action()]);
   await settled(page);
 }
+async function ready(page){
+  await page.waitForFunction(()=>document.querySelector('#startup-update')?.hidden&&!document.querySelector('#new-plan')?.disabled);
+  await settled(page);
+}
+async function startupChecks(page,context){
+  let failConfig=true,configCalls=0;
+  await page.route('**/api/config',route=>{
+    configCalls++;
+    if(failConfig){failConfig=false;return route.fulfill({status:503,json:{detail:'Storage is temporarily unavailable.'}});}
+    return route.continue();
+  });
+  await page.goto(root);
+  await page.locator('#retry-startup').waitFor();
+  assert.equal(await page.locator('#new-plan').isDisabled(),true);
+  assert.equal(await page.locator('#explore-view').evaluate(e=>e.inert),true);
+  await page.locator('#retry-startup').click();await ready(page);
+  assert.equal(configCalls,2);
+  failConfig=true;
+  await page.reload();await page.locator('#retry-startup').waitFor();
+  await page.evaluate(()=>{window.dispatchEvent(new Event('online'));window.dispatchEvent(new Event('online'));});
+  await ready(page);assert.equal(configCalls,4);
+  await page.unroute('**/api/config');
+
+  let release;
+  const held=new Promise(resolve=>release=resolve);
+  await page.route('**/api/config',async route=>{await held;await route.abort().catch(()=>{});});
+  try{
+    await page.reload();
+    assert.equal(await page.locator('#new-plan').isDisabled(),true);
+    await page.locator('#startup-message').filter({hasText:'Connection timed out'}).waitFor({timeout:15000});
+  }finally{release();await page.unroute('**/api/config');}
+  await page.locator('#retry-startup').click();await ready(page);
+
+  const config=await(await context.request.get(root+'/api/config')).json();
+  const created=await context.request.post(root+'/api/plans',{data:{title:'Startup recovery check',nickname:'Startup QA',day:config.today,use_today:true}});
+  assert.equal(created.status(),201);
+  const plan=await created.json();let failPlan=true;
+  const planRoute='**/api/plans/'+plan.id;
+  await page.route(planRoute,route=>failPlan?route.fulfill({status:503,json:{detail:'Storage is temporarily unavailable.'}}):route.continue());
+  await page.goto(root+'/?plan='+plan.id);
+  await page.locator('#retry-startup').waitFor();
+  assert.equal(await page.locator('#new-plan').isDisabled(),true);
+  assert.equal(await page.locator('#back-to-plan').getAttribute('href'),'/plan/'+plan.id);
+  failPlan=false;await page.locator('#retry-startup').click();await ready(page);
+  assert.equal(await page.locator('#active-plan-banner strong').innerText(),plan.title);
+  await page.unroute(planRoute);
+  console.log('PASS startup: manual/online recovery, duplicate-event guard, bounded timeout and preserved plan context');
+}
 
 (async()=>{
   const browser=await chromium.launch({headless:true});
@@ -24,6 +72,7 @@ async function change(page,action){
   await context.tracing.start({screenshots:true,snapshots:true});
   let friendContext;
   try{
+    await startupChecks(page,context);
     const reference=await context.newPage(),referenceErrors=[],requests=[];
     reference.on('console',message=>{if(message.type()==='error') referenceErrors.push(message.text());});
     await reference.route('**/*',route=>{
@@ -45,6 +94,11 @@ async function change(page,action){
     const info=await(await context.request.get(root+'/api/activities/overture-64ec40bf-c520-4656-9152-5f78d059c904-place')).json();
     const currentPrice=info.provider_freshness.price.state==='current';
     await page.goto(root);await settled(page);
+    await ready(page);
+    for(const width of [320,360,390,768,1440]){
+      await page.setViewportSize({width,height:1000});
+      assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+    }
     assert.equal(await page.locator('html').getAttribute('lang'),'en');
     await change(page,()=>page.locator('[data-when=anytime]').click());
     await change(page,()=>page.locator('[name=q]').fill('De Lanna'));
@@ -82,6 +136,67 @@ async function change(page,action){
     await page.waitForURL('**/plan/**');
     await page.locator('.candidate').waitFor();
     const invite=page.url();
+    await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async text=>window.copiedShareLink=text}}));
+    await page.locator('[data-detail]').first().click();
+    await page.locator('#detail-dialog[open]').waitFor();
+    await page.locator('#review-form [name=nickname]').fill('Preserved share draft');
+    await page.locator('#detail-dialog [data-share]').click();
+    const activityLink=new URL('/?activity='+info.id,root).href;
+    await page.waitForFunction(expected=>window.copiedShareLink===expected,activityLink);
+    assert.equal(page.url(),invite);
+    await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async()=>{throw new DOMException('Permission denied','NotAllowedError');}}}));
+    await page.locator('#detail-dialog [data-share]').click();
+    await page.locator('#share-dialog[open]').waitFor();
+    assert.equal(await page.locator('#share-url').inputValue(),activityLink);
+    assert.equal(await page.locator('#share-url').evaluate(e=>e.selectionEnd-e.selectionStart),activityLink.length);
+    await page.locator('#share-url').evaluate(e=>e.setSelectionRange(0,0));
+    await page.locator('#select-share-link').click();
+    assert.equal(await page.locator('#share-url').evaluate(e=>e.selectionEnd-e.selectionStart),activityLink.length);
+    assert.ok(await page.locator('#share-dialog').evaluate(e=>e.scrollWidth<=e.clientWidth));
+    assert.equal(page.url(),invite);
+    await page.getByRole('button',{name:'Close sharing',exact:true}).click();
+    assert.equal(await page.locator('#detail-dialog [data-share]').evaluate(e=>e===document.activeElement),true);
+    assert.equal(await page.locator('#review-form [name=nickname]').inputValue(),'Preserved share draft');
+    await page.getByRole('button',{name:'Close activity details',exact:true}).click();
+    await page.locator('#copy-plan').click();await page.locator('#share-dialog[open]').waitFor();
+    assert.equal(await page.locator('#share-url').inputValue(),invite);
+    assert.equal(page.url(),invite);
+    await page.keyboard.press('Escape');
+    assert.equal(await page.locator('#share-dialog').evaluate(e=>e.open),false);
+    assert.equal(await page.locator('#copy-plan').evaluate(e=>e===document.activeElement),true);
+    await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:undefined}));
+    await page.locator('#copy-plan').click();await page.locator('#share-dialog[open]').waitFor();
+    assert.equal(await page.locator('#share-url').inputValue(),invite);
+    assert.equal(page.url(),invite);
+    await page.getByRole('button',{name:'Close sharing',exact:true}).click();
+    console.log('PASS sharing: successful copy, denied/missing clipboard, preserved route, draft and modal focus');
+    const review=await context.newPage();
+    review.on('pageerror',error=>errors.push(error.message));
+    await review.goto(root+'/?activity=mecca-day');
+    await review.locator('#detail-dialog[open]').waitFor();
+    const reviewDate=(await(await context.request.get(root+'/api/clock')).json()).today;
+    const reviewNickname='Browser QA '+Date.now();
+    const reviewText='<img src=x onerror=window.reviewXss=true> Automated browser validation, not a real venue review.';
+    await review.locator('#review-form [name=nickname]').fill(reviewNickname);
+    await review.locator('#review-form [name=visited_on]').fill(reviewDate);
+    await review.locator('#review-form [name=rating]').selectOption('4');
+    await review.locator('#review-form [name=text]').fill(reviewText);
+    await review.locator('#review-form [type=submit]').click();
+    const ownReview=review.locator('.review').filter({has:review.locator('strong',{hasText:reviewNickname})});
+    await ownReview.waitFor();
+    assert.equal(await ownReview.locator('p').innerText(),reviewText);
+    assert.equal(await ownReview.locator('img').count(),0);
+    assert.notEqual(await review.evaluate(()=>window.reviewXss),true);
+    await review.locator('#review-form [name=nickname]').fill(reviewNickname);
+    await review.locator('#review-form [name=visited_on]').fill(reviewDate);
+    await review.locator('#review-form [name=rating]').selectOption('3');
+    await review.locator('#review-form [name=text]').fill('Updated automated validation, not a real venue review.');
+    await review.locator('#review-form [type=submit]').click();
+    await ownReview.locator('p').filter({hasText:'Updated automated validation'}).waitFor();
+    assert.equal(await ownReview.count(),1);
+    assert.match(await ownReview.locator('.review-meta').innerText(),/3\/5/);
+    await review.close();
+    console.log('PASS reviews: original publish, safe HTML display and same-guest update without duplicate rows');
     friendContext=await browser.newContext();
     const friend=await friendContext.newPage();
     friend.on('pageerror',error=>errors.push(error.message));
