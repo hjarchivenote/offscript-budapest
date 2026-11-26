@@ -66,6 +66,33 @@ async function reviewResponseChecks(page,context,today){
       }
     }finally{release();await page.unroute('**/api/activities/mecca-day/reviews');}
   }
+  for(const scenario of ['closed-modal','another-activity']){
+    await page.goto(root+'/?activity=mecca-day');await page.locator('#detail-dialog[open]').waitFor();
+    await page.locator('#review-form [name=nickname]').fill('Background failure QA');
+    await page.locator('#review-form [name=visited_on]').fill(today);
+    await page.locator('#review-form [name=text]').fill('This submission will receive a delayed failure.');
+    let started,release;
+    const held=new Promise(resolve=>started=resolve),responseRelease=new Promise(resolve=>release=resolve);
+    await page.route('**/api/activities/mecca-day/reviews',async route=>{
+      if(route.request().method()!=='POST')return route.continue();
+      started();await responseRelease;await route.fulfill({status:503,json:{detail:'Storage is temporarily unavailable.'}});
+    });
+    try{
+      await page.locator('#review-form [type=submit]').click();await held;
+      if(scenario==='closed-modal')await page.getByRole('button',{name:'Close activity details',exact:true}).click();
+      else{
+        await openAnotherDetail(page,'mecca-day');
+        await page.locator('#review-form [name=text]').fill('Retain this other draft after the failed background save.');
+      }
+      release();
+      await page.locator('#toast').filter({hasText:'Could not confirm your submission. Storage is temporarily unavailable.'}).waitFor();
+      if(scenario==='closed-modal')assert.equal(await page.locator('#detail-dialog').evaluate(e=>e.open),false);
+      else{
+        assert.equal(await page.locator('#review-form [name=text]').inputValue(),'Retain this other draft after the failed background save.');
+        assert.equal(await page.locator('#review-form .form-error').innerText(),'');
+      }
+    }finally{release();await page.unroute('**/api/activities/mecca-day/reviews');}
+  }
   await page.goto(root+'/?activity=mecca-day');await page.locator('#detail-dialog[open]').waitFor();
   const retryNickname='Retry QA '+Date.now();
   await page.locator('#review-form [name=nickname]').fill(retryNickname);
@@ -78,11 +105,11 @@ async function reviewResponseChecks(page,context,today){
   assert.equal(await page.locator('#review-form [type=submit]').isEnabled(),true);
   await page.unroute('**/api/activities/mecca-day/reviews');
   await page.locator('#review-form [type=submit]').click();
-  await page.locator('.review p').filter({hasText:'Retain this review after the failed request.'}).waitFor();
+  await page.locator('.review').filter({has:page.locator('strong',{hasText:retryNickname})}).locator('p').filter({hasText:'Retain this review after the failed request.'}).waitFor();
   assert.equal(await page.locator('#review-form [name=text]').inputValue(),'');
   const rows=await(await context.request.get(root+'/api/activities/mecca-day/reviews')).json();
   assert.equal(rows.filter(r=>r.nickname===retryNickname).length,1);
-  console.log('PASS review responses: new drafts, closed/switched dialogs, older reviews beyond the display limit, and failed-save retry');
+  console.log('PASS review responses: new drafts, closed/switched dialogs, older reviews beyond the display limit, background failures and failed-save retry');
 }
 async function suggestionResponseChecks(context,errors){
   const config=await(await context.request.get(root+'/api/config')).json();

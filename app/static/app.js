@@ -541,7 +541,11 @@ $('#friends-cta').addEventListener('click', () => openCreatePlan());
 async function formAction(form, action) {
   const button = $('[type=submit]', form); button.disabled = true; $('.form-error',form).textContent = '';
   try { await action(); }
-  catch (error) { $('.form-error',form).textContent = error.message; }
+  catch (error) {
+    const dialog = form.closest('dialog');
+    if (form.isConnected && (!dialog || dialog.open)) $('.form-error',form).textContent = error.message;
+    else notify(`Could not confirm your submission. ${error.message}`);
+  }
   finally { button.disabled = false; }
 }
 $('#create-plan-form').addEventListener('submit', async event => {
