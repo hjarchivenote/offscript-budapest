@@ -6,7 +6,7 @@ Discover Budapest activities by mood, budget and time, then decide with friends.
 
 Offscript brings coffee, culture, classes, exercise, beauty and wellness into one activity planner. It combines practical discovery filters with a shared shortlist, friend voting and a final choice confirmed by the host.
 
-**Current milestone:** a working English-language application, Docker containerization and verified GitHub Actions CI. The application version is **0.1.0**. Registry publication and Kubernetes delivery are the next infrastructure milestones.
+**Current milestone:** a working English-language application, Docker containerization, GitHub Actions CI and validated-image publication to GitHub Container Registry (GHCR). The application version is **0.1.0**. Kubernetes delivery is the next infrastructure milestone.
 
 ![Offscript Budapest showing activity discovery, mood filters and the local catalogue](docs/assets/offscript-desktop.png)
 
@@ -119,7 +119,7 @@ Install the pinned Python dependencies shown above and use **Node.js 24**. Run t
 python -u -m scripts.ci quality
 ```
 
-This runs Ruff, **240 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation, build-probe cleanup, cache revalidation and failure recovery.
+This runs Ruff, **255 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation, build-probe cleanup, cache revalidation, publication safeguards and failure recovery.
 
 With Docker running, validate a built image against an isolated PostgreSQL database and real browsers:
 
@@ -140,10 +140,30 @@ Browser checks also cover first-load failures and timeouts, manual and online re
 | Quality | Pinned dependencies, linting, Python tests and JavaScript tests |
 | Container | Upload-source secret scan, Docker build, Trivy scan, PostgreSQL integration, two-instance concurrency and Playwright browser checks |
 | CI gate | Succeeds only if both validation jobs succeed; failures, cancellations and skipped jobs do not count as success |
+| Publish | Runs only after all three preceding jobs succeed on a push to `main`; publishes the checked image to GHCR and verifies a pull by digest |
 
 The image is built for `linux/amd64` and identified by the Git commit. Trivy scans both operating-system and Python packages, blocking HIGH or CRITICAL findings. The source scan blocks detected credentials and retains only sanitized finding locations. Actions and scanner/base images are pinned to commit hashes or digests.
 
-A successful run retains the tested image archive, its SHA-256 checksum and validation metadata. Browser/scan diagnostics and Python test results are retained for troubleshooting. Artifact retention is **7 days**. These are GitHub Actions artifacts; registry publication will be added in the release stage.
+A successful run retains the tested image archive, its SHA-256 checksum and validation metadata. Browser/scan diagnostics and Python test results are retained for troubleshooting. Artifact retention is **7 days**. Main-branch runs also retain a `published-image-<commit>` artifact containing the registry reference and publication receipt.
+
+### Published images
+
+The registry is **`ghcr.io/hjarchivenote/offscript-budapest`**. Each successful main-branch push publishes a `sha-<full Git commit>` tag. PRs, other branches and manual validation runs do not publish. Only the publication job receives `packages: write`, using GitHub's short-lived `GITHUB_TOKEN`; no personal registry password is stored in the repository.
+
+Publication downloads the image archive from the **same workflow run**, checks its archive checksum, commit, version, scan/check metadata and loaded image ID, then pushes it without rebuilding. It removes the local app tags, pulls the registry image by digest, checks the image ID again and runs a non-root version/commit smoke check. A failure produces no successful publication receipt.
+
+The workflow summary and `published-image-<commit>` artifact record the full `registry_reference`, for example `ghcr.io/hjarchivenote/offscript-budapest@sha256:<digest>`. Use that recorded digest for deployments: registry tags can be replaced on a rerun, while a digest identifies exact image content. The current images are `linux/amd64`; the required `v1.0.0`, `v1.1.0` and `v1.2.0` release demonstrations will follow when Kubernetes delivery is implemented.
+
+To run a published image, copy its actual digest reference from a successful main workflow into `OFFSCRIPT_IMAGE`, then use the existing Compose setup without rebuilding:
+
+```bash
+export OFFSCRIPT_IMAGE='ghcr.io/hjarchivenote/offscript-budapest@sha256:<digest-from-publication-receipt>'
+python3 scripts/prepare_local.py
+docker pull --platform linux/amd64 "$OFFSCRIPT_IMAGE"
+DOCKER_DEFAULT_PLATFORM=linux/amd64 docker compose up --no-build --wait
+```
+
+GHCR packages are initially private unless their visibility is changed in package settings. Pulling a private package requires registry authentication with read access; the workflow verifies its own authenticated pull. Repository visibility and package visibility are separate settings.
 
 **First verified GitHub run:** [CI run 45647384013](https://github.com/hjarchivenote/offscript-budapest/actions/runs/45647384013), for commit [`ea34fd4`](https://github.com/hjarchivenote/offscript-budapest/commit/ea34fd4157a70fe325bea165e2e48fc775abaea8). All three jobs passed, including the 263 automated tests, image scans, browser flows and database recovery checks.
 
@@ -177,10 +197,10 @@ This repository is the application and CI foundation for the **End-to-End CI/CD 
 | Requirement | Current position and remaining work |
 | --- | --- |
 | Application and GitHub | Functional app, meaningful API endpoints, health/version endpoints, tests, source repository and this README. PR #1 records the documentation fix and CI verification; the feature-release PR demonstration remains. |
-| Docker and registry | Local container execution and automated image validation are implemented. Publish immutable release images to GHCR or Docker Hub. |
-| CI | Push validation, scans and the final success gate are verified. PR triggers are configured; add publication restricted to an authorized release branch. |
+| Docker and registry | Local container execution, image validation and main-only GHCR publication with a digest and pull verification are implemented. Add the required semantic release tags alongside the Kubernetes demonstrations. |
+| CI | Push/PR validation, scans and the final success gate are verified. Publication depends on every validation job succeeding and is restricted to pushes to `main`. |
 | Kubernetes | Add and demonstrate a Deployment with at least two replicas, a Service, ConfigMap, Secret, readiness/liveness probes, resource requests/limits and RollingUpdate. |
-| Automated delivery | An approved main-branch update must publish a versioned image, deploy it, wait for rollout and verify availability. The deployment runner must be able to reach the chosen cluster securely. |
+| Automated delivery | Main-branch publication is implemented. Add Kubernetes deployment, rollout waiting and availability verification. The deployment runner must be able to reach the chosen cluster securely. |
 | Release demonstrations | Show the initial release, a meaningful feature update through a PR and a tested bug-fix release. The CI-only failure example is recorded above; verify that a failing revision is not published or deployed once delivery exists. Record commits, runs, image tags, rollout state and app version for each release. |
 | Submission and presentation | Expand the evidence into the required 5-10-page technical PDF and 8-12-slide PowerPoint, and prepare the live change-to-deployment demonstration. |
 

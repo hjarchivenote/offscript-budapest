@@ -46,7 +46,8 @@ def container(image, commit, output):
     run("docker", "build", "--check", ".")
     with private_context_probes(ROOT) as probes:
         run("docker", "build", "--platform", "linux/amd64", "--build-arg", f"APP_COMMIT={commit}",
-            "--label", f"org.opencontainers.image.revision={commit}", "--tag", image, ".")
+            "--label", f"org.opencontainers.image.revision={commit}",
+            "--label", f"org.opencontainers.image.version={__version__}", "--tag", image, ".")
     image_id = subprocess.check_output(["docker", "image", "inspect", "--format", "{{.Id}}", image], text=True).strip()
     archive = scan_image(image, output)
     run("npm", "ci", "--ignore-scripts", "--no-audit", "--no-fund")
