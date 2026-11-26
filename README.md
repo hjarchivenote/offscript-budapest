@@ -65,7 +65,7 @@ Open **[http://localhost:8765](http://localhost:8765)**. This development mode u
 
 ## Run locally with Kubernetes
 
-Requires a local Docker Engine, **kind 0.33.0**, **kubectl 1.37.x** and Python 3.12. The kind node image is pinned in [kind.yaml](k8s/kind.yaml). Use the official [kind installation instructions](https://kind.sigs.k8s.io/docs/user/quick-start/) and [kubectl installation instructions](https://kubernetes.io/docs/tasks/tools/). The helper also detects a kubectl binary installed under `.local/kubernetes/bin`.
+Requires a local Docker Engine and CLI, **kind 0.33.0**, **kubectl 1.37.x** and Python 3.12. The kind node image is pinned in [kind.yaml](k8s/kind.yaml). Use the official [kind installation instructions](https://kind.sigs.k8s.io/docs/user/quick-start/) and [kubectl installation instructions](https://kubernetes.io/docs/tasks/tools/). The helper also detects a kubectl binary installed under `.local/kubernetes/bin`.
 
 Run from the repository root with your local Docker engine selected:
 
@@ -88,6 +88,10 @@ Open **[http://localhost:8768](http://localhost:8768)**. A loopback-only kind po
 | Probes and resources | Separate startup, readiness and liveness checks, with CPU/memory requests and limits |
 
 Passwords are generated under `.local/kubernetes/secrets`, excluded from Git, and preserved on repeat runs. The cluster Secret is immutable. If an existing cluster Secret differs from the local files, setup stops without replacing its credentials. All app, initialization and database containers run as non-root with read-only root filesystems and dropped capabilities. No service-account token is mounted.
+
+Before changing cluster workloads, the helper executes the pinned image in a disposable, network-isolated Docker container and checks its actual source commit, application version and non-root user. A mismatched or unavailable image stops setup before configuration, credentials, initialization or app replacement. A final per-replica check still confirms the running build.
+
+Rerunning setup resumes an active initialization Job and reuses a successful one. After a terminal failure, it starts a fresh attempt named from the failed Job's identity, preserving the failed attempt for diagnostics until its TTL expires. Failure is reported promptly; correct its cause and rerun the same setup command. A timeout preserves the running Job for the next invocation.
 
 The manifests use a previously published image pinned by digest. To apply another verified image explicitly, pass both its digest and full source commit:
 
@@ -166,7 +170,17 @@ Install the pinned Python dependencies shown above and use **Node.js 24**. Run t
 python -u -m scripts.ci quality
 ```
 
-This runs Ruff, **262 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation, build-probe cleanup, cache revalidation, publication safeguards, local cluster target/credential protection and failure recovery.
+This runs Ruff, **272 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Eight opt-in Kubernetes integration cases are skipped here and run in the dedicated CI job below. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation, build-probe cleanup, cache revalidation, publication safeguards, local cluster target/credential protection, image preflight and initialization recovery.
+
+For a running local Kubernetes environment, validate manifests without changing workloads, or explicitly run the integration checks:
+
+```bash
+python -m scripts.check_kubernetes
+OFFSCRIPT_KUBERNETES_TEST_CONFIG="$PWD/.local/kubernetes/kubeconfig" \
+  python -m pytest -q tests/test_kubernetes_integration.py
+```
+
+The opt-in checks apply the pinned setup, verify Service routing and exercise isolated initialization failures using temporary test Jobs with no database access. They also confirm that a wrong source commit leaves workloads unchanged and that missing resources, incorrect probes/selectors, identity overrides and unknown API fields are rejected. Only their temporary test Jobs and ConfigMap are removed.
 
 With Docker running, validate a built image against an isolated PostgreSQL database and real browsers:
 
@@ -188,8 +202,11 @@ Delayed review and suggestion responses cannot reopen a closed detail dialog, re
 | --- | --- |
 | Quality | Pinned dependencies, linting, Python tests and JavaScript tests |
 | Container | Upload-source secret scan, Docker build, Trivy scan, PostgreSQL integration, two-instance concurrency and Playwright browser checks |
-| CI gate | Succeeds only if both validation jobs succeed; failures, cancellations and skipped jobs do not count as success |
-| Publish | Runs only after all three preceding jobs succeed on a push to `main`; publishes the checked image to GHCR and verifies a pull by digest |
+| Kubernetes | Checksum-pinned tools, an isolated cluster created from `kind.yaml`, strict API schemas, deployment safeguards, two app replicas, Service routing, preflight rejection and initialization retry/reuse checks |
+| CI gate | Succeeds only if all three validation jobs succeed; failures, cancellations and skipped jobs do not count as success |
+| Publish | Runs only after all four preceding jobs succeed on a push to `main`; publishes the checked image to GHCR and verifies a pull by digest |
+
+The Kubernetes job uses the already published image pinned in the manifests to check the infrastructure and setup helper. The separate Container job validates the current source revision. Every Kubernetes CI run has its own temporary kubeconfig and disposable cluster; its test results and non-sensitive resource state are retained as artifacts.
 
 The image is built for `linux/amd64` and identified by the Git commit. Trivy scans both operating-system and Python packages, blocking HIGH or CRITICAL findings. The source scan blocks detected credentials and retains only sanitized finding locations. Actions and scanner/base images are pinned to commit hashes or digests.
 
