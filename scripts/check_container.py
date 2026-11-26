@@ -184,6 +184,25 @@ print('ok')
                 winner = next(r.json()["selected_candidate"] for r in responses if r.status_code == 200)
                 assert peer.get(concurrent_path).json()["selected_candidate"] == winner
                 assert host.get(concurrent_path).json()["selected_candidate"] == winner
+                original_review = {"nickname": "Concurrent QA", "rating": 4, "visited_on": config["today"], "text": "Original complete automated review, not a venue opinion."}
+                assert host.post(review_path, json=original_review).status_code == 200
+                submissions = [{**original_review, "rating": 5}, {**original_review, "text": "Revised complete automated review, not a venue opinion."}]
+                review_barrier = Barrier(2)
+
+                def edit_review(client, body):
+                    review_barrier.wait(timeout=5)
+                    response = client.post(review_path, json=body)
+                    assert response.status_code == 200
+                    saved = response.json()["review"]
+                    assert {key: saved[key] for key in body} == body
+
+                with ThreadPoolExecutor(max_workers=2) as pool:
+                    changes = [pool.submit(edit_review, client, body) for client, body in zip((host, peer), submissions, strict=True)]
+                    for change in changes:
+                        change.result(timeout=20)
+                stored = host.get(review_path).json()
+                assert len(stored) == 1 and {key: stored[0][key] for key in original_review} in submissions
+                passed("concurrent review edits across replicas retain one complete submission without mixing fields")
             docker("rm", "--force", peer_name)
             passed("two real application containers start together and permit only one final choice across replicas")
 

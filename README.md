@@ -119,7 +119,7 @@ Install the pinned Python dependencies shown above and use **Node.js 24**. Run t
 python -u -m scripts.ci quality
 ```
 
-This runs Ruff, **255 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation, build-probe cleanup, cache revalidation, publication safeguards and failure recovery.
+This runs Ruff, **257 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation, build-probe cleanup, cache revalidation, publication safeguards and failure recovery.
 
 With Docker running, validate a built image against an isolated PostgreSQL database and real browsers:
 
@@ -130,6 +130,8 @@ python -u -m scripts.ci container
 The container checks generate isolated test data, exercise two app instances sharing one database, test desktop/mobile browser flows, interrupt and restore the database, and recreate containers to verify persistence. The script removes its disposable Compose project when finished. Chromium and any required browser system dependencies are installed by this command.
 
 Browser checks also cover first-load failures and timeouts, manual and online recovery, preservation of an existing plan during reconnection, original review publication and updating, safe display of submitted HTML, and sharing when clipboard access is denied or unavailable. Copy failures open a selectable link without changing the current page or discarding a draft.
+
+Delayed review and suggestion responses cannot reopen a closed detail dialog, replace a different activity or erase a newer review draft. A saved review updates its own list entry, including an older review outside the 100-item display window; failed saves retain the form for retry, and background failures remain visible after a dialog is closed or replaced. Concurrent edits write a complete submission atomically, verified both with coordinated request snapshots and with two real PostgreSQL-backed app instances.
 
 ### GitHub Actions
 
@@ -163,7 +165,7 @@ docker pull --platform linux/amd64 "$OFFSCRIPT_IMAGE"
 DOCKER_DEFAULT_PLATFORM=linux/amd64 docker compose up --no-build --wait
 ```
 
-GHCR packages are initially private unless their visibility is changed in package settings. Pulling a private package requires registry authentication with read access; the workflow verifies its own authenticated pull. Repository visibility and package visibility are separate settings.
+This repository's published image is publicly pullable without signing in. The [first publication run](https://github.com/hjarchivenote/offscript-budapest/actions/runs/45770266678) verified an authenticated digest pull; anonymous registry access was also checked against the same digest and image config ID. GHCR controls package visibility separately from repository visibility. Private packages require registry authentication with read access.
 
 **First verified GitHub run:** [CI run 45647384013](https://github.com/hjarchivenote/offscript-budapest/actions/runs/45647384013), for commit [`ea34fd4`](https://github.com/hjarchivenote/offscript-budapest/commit/ea34fd4157a70fe325bea165e2e48fc775abaea8). All three jobs passed, including the 263 automated tests, image scans, browser flows and database recovery checks.
 

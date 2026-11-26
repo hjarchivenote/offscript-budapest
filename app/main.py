@@ -386,6 +386,15 @@ def create_app(database_url: str | None = None, clock: Callable | None = None):
     ):
         return activity_json(db, activity_or_404(db, activity_id), max_minutes=max_minutes)
 
+    def review_json(review):
+        return {
+            "id": review.id,
+            "nickname": review.nickname,
+            "rating": review.rating,
+            "text": review.text,
+            "visited_on": review.visited_on.isoformat(),
+        }
+
     @api.get("/api/activities/{activity_id}/reviews")
     def reviews(activity_id: str, db: DB):
         activity_or_404(db, activity_id)
@@ -395,15 +404,7 @@ def create_app(database_url: str | None = None, clock: Callable | None = None):
             .order_by(Review.id.desc())
             .limit(100)
         )
-        return [
-            {
-                "nickname": r.nickname,
-                "rating": r.rating,
-                "text": r.text,
-                "visited_on": r.visited_on.isoformat(),
-            }
-            for r in rows
-        ]
+        return [review_json(review) for review in rows]
 
     @api.post("/api/activities/{activity_id}/reviews")
     def write_review(activity_id: str, body: ReviewInput, db: DB, guest: Visitor):
@@ -414,12 +415,15 @@ def create_app(database_url: str | None = None, clock: Callable | None = None):
             select(Review).where(Review.activity_id == activity_id, Review.visitor_hash == guest)
         )
         if review:
-            for key, value in body.model_dump().items():
-                setattr(review, key, value)
+            # Write the complete submitted snapshot. Dirty-field ORM updates
+            # can combine two concurrent submissions into a review neither sent.
+            db.execute(update(Review).where(Review.id == review.id).values(**body.model_dump()),
+                       execution_options={"synchronize_session": "fetch"})
         else:
-            db.add(Review(activity_id=activity_id, visitor_hash=guest, **body.model_dump()))
+            review = Review(activity_id=activity_id, visitor_hash=guest, **body.model_dump())
+            db.add(review)
         commit(db)
-        return {"status": "published"}
+        return {"status": "published", "review": review_json(review)}
 
     @api.post("/api/plans", status_code=201)
     def create_plan(body: PlanInput, db: DB, guest: Visitor):
