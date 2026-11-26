@@ -438,6 +438,10 @@ $('#detail-dialog').addEventListener('close', () => {
   detailController?.abort(); detailController = null; detailVersion++; detailActivity = null;
 });
 
+function reviewMarkup(r) {
+  return `<article class="review" data-review-id="${esc(r.id)}"><div class="review-meta"><strong>${esc(r.nickname)}</strong> · ${esc(r.rating)}/5 · Visited ${esc(r.visited_on)}</div><p>${esc(r.text)}</p></article>`;
+}
+function detailStillShowing(form) {return form && $('#detail-dialog').open && $('#review-form') === form;}
 async function showDetail(id) {
   detailController?.abort();
   const requestController = new AbortController(); detailController = requestController;
@@ -461,7 +465,7 @@ async function showDetail(id) {
     ${a.requirements?.length ? `<ul class="requirements">${a.requirements.map(r => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}
     <div class="detail-actions">${external(a.booking_url || a.venue.website,bookingLabel(a),'button dark')}${external(a.whatsapp_url,'WhatsApp')}${external(a.instagram_url,'Instagram')}${external(maps,'Directions')}${canSuggest ? `<button class="button lime" data-suggest="${esc(a.id)}">${state.planId ? 'Suggest to our plan' : 'Suggest to friends'}</button>` : ''}<button class="button outline" data-share="${esc(a.id)}">Share</button></div>
     <p class="source-note">${esc(a.catalogue_note || '')} ${sourceNote} Illustrations represent activities, not venue photographs.</p>
-    <section class="reviews-section"><h3>Been here? Tell us how it was.</h3><div>${reviews.length ? reviews.map(r => `<article class="review"><div class="review-meta"><strong>${esc(r.nickname)}</strong> · ${esc(r.rating)}/5 · Visited ${esc(r.visited_on)}</div><p>${esc(r.text)}</p></article>`).join('') : '<p class="review-empty">No reviews yet. Share your own experience — there are no imported reviews here.</p>'}</div>
+    <section class="reviews-section"><h3>Been here? Tell us how it was.</h3><div id="activity-reviews">${reviews.length ? reviews.map(reviewMarkup).join('') : '<p class="review-empty">No reviews yet. Share your own experience — there are no imported reviews here.</p>'}</div>
     <form class="review-form" id="review-form" data-activity="${esc(a.id)}"><label>Your nickname<input name="nickname" required minlength="2" maxlength="40"></label><label>Your rating<select name="rating"><option value="5">5 / 5</option><option value="4">4 / 5</option><option value="3">3 / 5</option><option value="2">2 / 5</option><option value="1">1 / 5</option></select></label><label>Visited on<input name="visited_on" type="date" required max="${esc(state.config.today)}"></label><label class="wide">Your experience<textarea name="text" required minlength="10" maxlength="1500" placeholder="What did you do? What should someone know before going?"></textarea></label><button class="button dark small" type="submit">Publish my review</button><p class="form-error" role="alert"></p></form></section>`;
     if (!$('#detail-dialog').open) $('#detail-dialog').showModal();
     $('#detail-dialog').scrollTop = 0;
@@ -471,7 +475,16 @@ async function showDetail(id) {
         if (!await refreshCalendarDate()) throw new Error('Could not check today’s Budapest date. Please try again when connected.');
         if (!form.reportValidity()) return;
         const values = Object.fromEntries(new FormData(form)); values.rating = Number(values.rating);
-        await send(`/api/activities/${encodeURIComponent(a.id)}/reviews`, values); await showDetail(a.id); notify('Thanks — your review is published.');
+        const saved = await send(`/api/activities/${encodeURIComponent(a.id)}/reviews`, values);
+        if (detailStillShowing(form)) {
+          const current = Object.fromEntries(new FormData(form)); current.rating = Number(current.rating);
+          const unchanged = Object.keys(values).every(key => values[key] === current[key]);
+          const displayed = [saved.review, ...reviews.filter(r => r.id !== saved.review.id)].slice(0,100);
+          reviews.splice(0,reviews.length,...displayed);
+          $('#activity-reviews').innerHTML = reviews.map(reviewMarkup).join('');
+          if (unchanged) form.reset();
+        }
+        notify('Thanks — your submitted review is published.');
       });
     });
     $('#review-form [name=visited_on]').addEventListener('focus', refreshCalendarDate);
@@ -497,10 +510,12 @@ document.addEventListener('click', async event => {
   const suggest = event.target.closest('[data-suggest]');
   if (suggest) {
     if (!state.planId) {$('#detail-dialog').close(); openCreatePlan(suggest.dataset.suggest); return;}
+    const sourceForm = $('#review-form');
     try {
       suggest.disabled = true;
       await mutatePlan(`/api/plans/${state.planId}/candidates`, {activity_id:suggest.dataset.suggest});
-      notify('Added to your plan. Let the voting begin.'); $('#detail-dialog').close();
+      notify('Added to your plan. Let the voting begin.');
+      if (detailStillShowing(sourceForm)) $('#detail-dialog').close();
     } catch (error) {notify(error.message);} finally {suggest.disabled = state.plan?.selected_candidate != null;}
   }
 });
