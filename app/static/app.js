@@ -18,6 +18,8 @@ let planDayEdited = false;
 let planReadVersion = 0;
 let planMutationPending = false;
 let planRefreshError = '';
+let startupReady = false;
+let startRequest = null;
 const artIds = {food:'coffee', massage:'wellness', events:'culture', nightlife:'culture'};
 const labels = {reset:'A little reset', curious:'Something new', active:'Get moving', focus:'Focus time', social:'Better together', treat:'Me-time', quiet:'Quiet setting', study:'Study-friendly', indoor:'Indoors', outdoor:'Outdoors'};
 let controller;
@@ -47,12 +49,12 @@ async function api(path, options = {}) {
   (body.candidates || []).forEach(c => anchorCommercialClock(c.activity,startedAt));
   return body;
 }
-async function openingApi(path, signal) {
+async function openingApi(path, signal, timeoutMessage = 'Opening status update timed out. Please try again.') {
   const request = new AbortController();
   const cancel = () => request.abort(signal.reason);
   if (signal?.aborted) cancel();
   else signal?.addEventListener('abort', cancel, {once:true});
-  const timeout = setTimeout(() => request.abort(new DOMException('Opening status update timed out. Please try again.', 'TimeoutError')), OPENING_TIMEOUT_MS);
+  const timeout = setTimeout(() => request.abort(new DOMException(timeoutMessage, 'TimeoutError')), OPENING_TIMEOUT_MS);
   try { return await api(path, {signal:request.signal, cache:'no-store'}); }
   finally {clearTimeout(timeout); signal?.removeEventListener('abort', cancel);}
 }
@@ -303,6 +305,7 @@ function renderDetailOpening() {
 }
 
 async function loadActivities(keepVisible = false) {
+  if (!state.config) return;
   controller?.abort(); const requestController = new AbortController(); controller = requestController;
   const data = new FormData($('#filters'));
   const params = new URLSearchParams({when:state.when});
@@ -391,7 +394,8 @@ async function refreshDetailOpening() {
   } finally {if (detailController === requestController) detailController = null;}
 }
 async function refreshOpenNow() {
-  if (document.hidden || !state.config) return;
+  if (document.hidden) return;
+  if (!startupReady) {await start(); return;}
   const work = [refreshCalendarDate()];
   if (!$('#explore-view').hidden && !controller) work.push(loadActivities(true));
   if ($('#detail-dialog').open) work.push(refreshDetailOpening());
@@ -477,8 +481,14 @@ async function showDetail(id) {
 
 async function copyLink(url) {
   try { await navigator.clipboard.writeText(url); notify('Link copied. Send it to your friends.'); }
-  catch { notify('Copy the link from your browser’s address bar.'); history.replaceState({},'',url); }
+  catch {
+    $('#share-url').value = url;
+    if (!$('#share-dialog').open) $('#share-dialog').showModal();
+    selectShareLink();
+  }
 }
+function selectShareLink() {const input = $('#share-url'); input.focus(); input.select();}
+$('#select-share-link').addEventListener('click',selectShareLink);
 document.addEventListener('click', async event => {
   const detail = event.target.closest('[data-detail]');
   if (detail) {showDetail(detail.dataset.detail); return;}
@@ -496,6 +506,7 @@ document.addEventListener('click', async event => {
 });
 
 function openCreatePlan(activityId = null) {
+  if (!startupReady) {notify('The app is still connecting. Please try again when it is ready.'); return;}
   state.pendingActivity = activityId;
   planDayEdited = false;
   const form = $('#create-plan-form'); form.reset(); $('.form-error',form).textContent = '';
@@ -599,14 +610,28 @@ async function loadPlan(allowDuringMutation = false) {
   }
 }
 
-async function start() {
+function renderStartup(phase, message = '') {
+  const ready = phase === 'ready';
+  $('#startup-update').hidden = ready;
+  $('#startup-update').setAttribute('aria-busy', String(phase === 'loading'));
+  $('#startup-message').textContent = phase === 'loading' ? 'Connecting to Offscript…' : `Could not connect to Offscript. ${message}`;
+  $('#retry-startup').hidden = phase !== 'failed';
+  $('#retry-startup').disabled = phase === 'loading';
+  for (const selector of ['#new-plan','#friends-cta']) $(selector).disabled = !ready;
+  for (const selector of ['#explore-view','#plan-view']) $(selector).inert = !ready;
+}
+async function bootstrap() {
+  renderStartup('loading');
   try {
-    state.config = await api('/api/config');
+    state.config = await openingApi('/api/config',undefined,'Connection timed out. Please try again.');
     applyServerDate(state.config.as_of, false);
     $('#app-version').textContent = `Budapest · v${state.config.version}`;
     const planMatch = location.pathname.match(/^\/plan\/([A-Za-z0-9_-]+)$/);
     state.planId = planMatch?.[1] || new URLSearchParams(location.search).get('plan');
     if (state.planId && !/^[A-Za-z0-9_-]{24}$/.test(state.planId)) state.planId = null;
+    state.plan = null;
+    $('#active-plan-banner').hidden = true;
+    $('#back-to-plan').hidden = !state.planId;
     if (state.planId) {$('#back-to-plan').hidden = false; $('#back-to-plan').href = `/plan/${state.planId}`;}
     if (planMatch) {
       $('#explore-view').hidden = true; $('#plan-view').hidden = false; await loadPlan();
@@ -614,18 +639,31 @@ async function start() {
       renderCategories(); await loadActivities();
       if (state.planId) {
         try {
-          state.plan = await api(`/api/plans/${state.planId}`);
+          state.plan = await openingApi(`/api/plans/${state.planId}`);
           $('#active-plan-banner').hidden = false;
           $('#active-plan-banner').innerHTML = `<span>Picking ideas for <strong>${esc(state.plan.title)}</strong></span><a href="/plan/${esc(state.planId)}">Back to our plan</a>`;
-        } catch {notify('That plan link is no longer available.'); state.planId = null;}
+        } catch (error) {
+          if (error.status !== 404) throw error;
+          notify('That plan link is no longer available.'); state.planId = null;
+          $('#back-to-plan').hidden = true;
+        }
       }
     }
+    startupReady = true; renderStartup('ready');
     const detailId = new URLSearchParams(location.search).get('activity');
     if (detailId) await showDetail(detailId);
   } catch (error) {
+    startupReady = false; renderStartup('failed',error.message);
     $('#results-title').textContent = 'Could not connect to the app';
     $('#results-note').textContent = error.message;
     notify(error.message);
   }
 }
+async function start() {
+  if (startupReady) return;
+  if (startRequest) return startRequest;
+  startRequest = bootstrap();
+  try {await startRequest;} finally {startRequest = null;}
+}
+$('#retry-startup').addEventListener('click',start);
 start();

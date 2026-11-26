@@ -105,8 +105,9 @@ def create_app(database_url: str | None = None, clock: Callable | None = None):
             "script-src 'self'; connect-src 'self'; font-src 'self'; "
             "frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
         )
-        if request.url.path.startswith("/api/"):
-            response.headers["Cache-Control"] = "no-store"
+        # Revalidate assets on reload so a deployment cannot keep serving an
+        # old client from a heuristic browser cache. Dynamic views are not stored.
+        response.headers["Cache-Control"] = "no-cache" if request.url.path.startswith("/static/") else "no-store"
         return response
 
     @api.exception_handler(SQLAlchemyError)

@@ -10,6 +10,7 @@ import sys
 from pathlib import Path
 
 from app import __version__
+from scripts.build_context import private_context_probes
 from scripts.prepare_local import prepare
 from scripts.scan_image import scan_image
 from scripts.scan_source import scan_source
@@ -43,14 +44,16 @@ def container(image, commit, output):
     prepare(ROOT / ".local" / "container-secrets")
     run("docker", "compose", "config", "--quiet")
     run("docker", "build", "--check", ".")
-    run("docker", "build", "--platform", "linux/amd64", "--build-arg", f"APP_COMMIT={commit}",
-        "--label", f"org.opencontainers.image.revision={commit}", "--tag", image, ".")
+    with private_context_probes(ROOT) as probes:
+        run("docker", "build", "--platform", "linux/amd64", "--build-arg", f"APP_COMMIT={commit}",
+            "--label", f"org.opencontainers.image.revision={commit}", "--tag", image, ".")
     image_id = subprocess.check_output(["docker", "image", "inspect", "--format", "{{.Id}}", image], text=True).strip()
     archive = scan_image(image, output)
     run("npm", "ci", "--ignore-scripts", "--no-audit", "--no-fund")
     environment = {
         **os.environ, "OFFSCRIPT_IMAGE": image, "CI_EXPECTED_COMMIT": commit,
         "CI_BROWSER_TEST": "1", "CI_OUTPUT_DIR": str(output),
+        "CI_CONTEXT_PROBES": json.dumps(probes),
         "PLAYWRIGHT_BROWSERS_PATH": str(ROOT / ".local" / "ci-browsers"),
     }
     run("npx", "--no-install", "playwright", "install", "--with-deps", "chromium", env=environment)
@@ -64,7 +67,7 @@ def container(image, commit, output):
     (output / "validated-image.json").write_text(json.dumps({
         "image": image, "image_id": image_id, "archive_sha256": digest,
         "version": __version__, "commit": commit, "platform": "linux/amd64",
-        "checks": ["source-secret-scan", "image-build", "high-critical-vulnerability-scan", "postgres-integration", "two-replica-concurrency", "browser-desktop-mobile"],
+        "checks": ["source-secret-scan", "image-build", "private-build-context", "high-critical-vulnerability-scan", "postgres-integration", "two-replica-concurrency", "browser-desktop-mobile"],
     }, indent=2) + "\n")
     print("Container validation passed; the checked image is ready for a later release step.", flush=True)
 

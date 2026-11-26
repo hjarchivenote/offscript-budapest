@@ -12,3 +12,16 @@ app/**/.env*
 app/**/*.db
 app/**/*.db-shm
 app/**/*.db-wal
+app/**/*.sqlite
+app/**/*.sqlite-shm
+app/**/*.sqlite-wal
+app/**/*.sqlite3
+app/**/*.sqlite3-shm
+app/**/*.sqlite3-wal
+app/**/.local/
+app/**/.venv/
+app/**/.git/
+app/**/node_modules/
+app/**/.pytest_cache/
+app/**/.ruff_cache/
+app/**/.DS_Store

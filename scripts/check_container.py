@@ -118,6 +118,14 @@ print('ok')
                 "assert all(importlib.util.find_spec(p) is None for p in ['pytest','httpx','ruff']); print('ok')") == "ok"
             passed("non-root read-only application, separate credentials, limited database role and no published DB port")
 
+            if "CI_CONTEXT_PROBES" in os.environ:
+                probes = json.loads(os.environ["CI_CONTEXT_PROBES"])
+                assert isinstance(probes, list) and probes
+                assert compose("exec", "-T", "app", "python", "-c",
+                    "import json,pathlib,sys; assert all(not pathlib.Path(p).exists() for p in json.loads(sys.argv[1])); print('ok')",
+                    json.dumps(probes)) == "ok"
+                passed("private SQLite, environment and development-directory sentinels are excluded from the actual image")
+
             activity = "overture-64ec40bf-c520-4656-9152-5f78d059c904-place"
             excluded = host.get("/api/activities", params={"when": "anytime", "q": "De Lanna", "max_price": 10000}).json()
             included = host.get("/api/activities", params={"when": "anytime", "q": "De Lanna", "max_price": 20000, "max_minutes": 60}).json()
@@ -129,7 +137,7 @@ print('ok')
                 assert not included["items"] and info["price_high"] is None
             passed("budget and activity-duration filters against PostgreSQL")
 
-            created = host.post("/api/plans", json={"title": "Container integration check", "nickname": "Host QA", "day": config["today"]})
+            created = host.post("/api/plans", json={"title": "Container integration check", "nickname": "Host QA", "day": config["today"], "use_today": True})
             assert created.status_code == 201
             plan = created.json()
             path = f"/api/plans/{plan['id']}"
@@ -158,7 +166,7 @@ print('ok')
                         return False
 
                 wait_for(peer_ready)
-                concurrent = host.post("/api/plans", json={"title": "Two-replica final choice", "nickname": "Host QA", "day": config["today"]}).json()
+                concurrent = host.post("/api/plans", json={"title": "Two-replica final choice", "nickname": "Host QA", "day": config["today"], "use_today": True}).json()
                 concurrent_path = f"/api/plans/{concurrent['id']}"
                 for choice in (activity, "mecca-day"):
                     assert host.post(concurrent_path + "/candidates", json={"activity_id": choice}).status_code == 201
