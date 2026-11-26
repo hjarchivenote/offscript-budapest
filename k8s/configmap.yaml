@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: offscript-config
+  namespace: offscript
+data:
+  APP_ENV: production
+  HOST: "0.0.0.0"
+  PORT: "8000"
+  DATABASE_HOST: offscript-db
+  DATABASE_PORT: "5432"
+  DATABASE_NAME: offscript
+  DATABASE_USER: offscript
+  DATABASE_PASSWORD_FILE: /run/secrets/db_password
+  COOKIE_SECURE: "0"

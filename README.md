@@ -6,7 +6,7 @@ Discover Budapest activities by mood, budget and time, then decide with friends.
 
 Offscript brings coffee, culture, classes, exercise, beauty and wellness into one activity planner. It combines practical discovery filters with a shared shortlist, friend voting and a final choice confirmed by the host.
 
-**Current milestone:** a working English-language application, Docker containerization, GitHub Actions CI and validated-image publication to GitHub Container Registry (GHCR). The application version is **0.1.0**. Kubernetes delivery is the next infrastructure milestone.
+**Current milestone:** a working English-language application, Docker containerization, GitHub Actions CI, validated-image publication to GitHub Container Registry (GHCR), and a local Kubernetes environment with two app replicas and persistent PostgreSQL. The application version is **0.1.0**. Automated delivery and the three required release demonstrations follow next.
 
 ![Offscript Budapest showing activity discovery, mood filters and the local catalogue](docs/assets/offscript-desktop.png)
 
@@ -62,6 +62,53 @@ python run.py
 ```
 
 Open **[http://localhost:8765](http://localhost:8765)**. This development mode uses SQLite in `.local/offscript.db`; production mode requires shared PostgreSQL. Node.js is needed for the checks below, not to serve the application.
+
+## Run locally with Kubernetes
+
+Requires a local Docker Engine, **kind 0.33.0**, **kubectl 1.37.x** and Python 3.12. The kind node image is pinned in [kind.yaml](k8s/kind.yaml). Use the official [kind installation instructions](https://kind.sigs.k8s.io/docs/user/quick-start/) and [kubectl installation instructions](https://kubernetes.io/docs/tasks/tools/). The helper also detects a kubectl binary installed under `.local/kubernetes/bin`.
+
+Run from the repository root with your local Docker engine selected:
+
+```bash
+mkdir -p .local/kubernetes
+kind create cluster --name offscript --config k8s/kind.yaml \
+  --kubeconfig .local/kubernetes/kubeconfig --wait 120s
+python3.12 -m scripts.kubernetes_local
+```
+
+Open **[http://localhost:8768](http://localhost:8768)**. A loopback-only kind port mapping reaches the Kubernetes NodePort Service, so the address remains available when app pods are replaced. The separate kubeconfig leaves your global Kubernetes configuration untouched. The helper refuses a remote API server and applies only to the `kind-offscript` context and `offscript` namespace.
+
+| Component | Purpose |
+| --- | --- |
+| Deployment and Service | Two app replicas, HTTP routing, RollingUpdate with zero unavailable replicas and one surge replica |
+| StatefulSet and PVC | One PostgreSQL instance with a 1 GiB persistent volume |
+| ConfigMap | Non-sensitive application settings; database initialization SQL is generated from the existing Docker SQL file |
+| Secret | Generated passwords mounted as files; the app can read only its restricted database password |
+| Initialization Job | Runs catalogue initialization once before the app rollout; its name changes with the image and configuration |
+| Probes and resources | Separate startup, readiness and liveness checks, with CPU/memory requests and limits |
+
+Passwords are generated under `.local/kubernetes/secrets`, excluded from Git, and preserved on repeat runs. The cluster Secret is immutable. If an existing cluster Secret differs from the local files, setup stops without replacing its credentials. All app, initialization and database containers run as non-root with read-only root filesystems and dropped capabilities. No service-account token is mounted.
+
+The manifests use a previously published image pinned by digest. To apply another verified image explicitly, pass both its digest and full source commit:
+
+```bash
+python3.12 -m scripts.kubernetes_local \
+  --image 'ghcr.io/hjarchivenote/offscript-budapest@sha256:<verified-digest>' \
+  --commit '<full-source-commit>'
+```
+
+The current image is `linux/amd64`. Its execution on an Apple Silicon kind node was verified using Docker Desktop's CPU emulation; the image is not rebuilt locally. A native ARM-only runtime without emulation needs an ARM-compatible image.
+
+Useful checks:
+
+```bash
+kubectl --kubeconfig .local/kubernetes/kubeconfig --context kind-offscript \
+  -n offscript get pods,services,jobs,pvc
+curl --fail http://localhost:8768/ready
+curl --fail http://localhost:8768/version
+```
+
+This is a single-node local environment with one database instance. The PVC preserves records when a database pod is recreated; deleting the kind cluster removes its local storage. Kubernetes setup is currently explicit; connecting it to approved GitHub updates is the next delivery milestone.
 
 ## Architecture
 
@@ -119,7 +166,7 @@ Install the pinned Python dependencies shown above and use **Node.js 24**. Run t
 python -u -m scripts.ci quality
 ```
 
-This runs Ruff, **257 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation, build-probe cleanup, cache revalidation, publication safeguards and failure recovery.
+This runs Ruff, **262 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation, build-probe cleanup, cache revalidation, publication safeguards, local cluster target/credential protection and failure recovery.
 
 With Docker running, validate a built image against an isolated PostgreSQL database and real browsers:
 
@@ -169,7 +216,7 @@ This repository's published image is publicly pullable without signing in. The [
 
 **First verified GitHub run:** [CI run 45647384013](https://github.com/hjarchivenote/offscript-budapest/actions/runs/45647384013), for commit [`ea34fd4`](https://github.com/hjarchivenote/offscript-budapest/commit/ea34fd4157a70fe325bea165e2e48fc775abaea8). All three jobs passed, including the 263 automated tests, image scans, browser flows and database recovery checks.
 
-**Failure-path verification:** [Push run 45650479526](https://github.com/hjarchivenote/offscript-budapest/actions/runs/45650479526) and [PR run 45650661254](https://github.com/hjarchivenote/offscript-budapest/actions/runs/45650661254) deliberately fail one test on the verification branch. In both cases the container job is skipped, the final CI gate fails, and no validated image artifact is created. [PR #1](https://github.com/hjarchivenote/offscript-budapest/pull/1) records the failing revision and the corrective change, including browser checks that block all external requests while opening `/docs` and `/redoc`. Registry publication and deployment blocking must also be verified when those stages are implemented.
+**Failure-path verification:** [Push run 45650479526](https://github.com/hjarchivenote/offscript-budapest/actions/runs/45650479526) and [PR run 45650661254](https://github.com/hjarchivenote/offscript-budapest/actions/runs/45650661254) deliberately fail one test on the verification branch. In both cases the container job is skipped, the final CI gate fails, and no validated image artifact is created. [PR #1](https://github.com/hjarchivenote/offscript-budapest/pull/1) records the failing revision and the corrective change, including browser checks that block all external requests while opening `/docs` and `/redoc`. [PR #5](https://github.com/hjarchivenote/offscript-budapest/pull/5) adds current publication-blocking evidence: the failed revision produces no release artifacts or registry tag, and recovery runs the identical dependency gate through a read-only positive control. Main and its published image remain unchanged. Deployment blocking must be verified when automated delivery is connected.
 
 ## Security and troubleshooting
 
@@ -194,18 +241,18 @@ HTML, API and operational responses use `no-store`. Static assets use `no-cache`
 
 ## Course requirements and next milestones
 
-This repository is the application and CI foundation for the **End-to-End CI/CD Pipeline with GitHub, Docker, and Kubernetes** assignment. The required release demonstrations are `v1.0.0`, `v1.1.0` and `v1.2.0`; the current `0.1.0` development version precedes them.
+This repository implements the application, CI, registry publication and local Kubernetes stages for the **End-to-End CI/CD Pipeline with GitHub, Docker, and Kubernetes** assignment. The required release demonstrations are `v1.0.0`, `v1.1.0` and `v1.2.0`; the current `0.1.0` development version precedes them.
 
 | Requirement | Current position and remaining work |
 | --- | --- |
 | Application and GitHub | Functional app, meaningful API endpoints, health/version endpoints, tests, source repository and this README. PR #1 records the documentation fix and CI verification; the feature-release PR demonstration remains. |
 | Docker and registry | Local container execution, image validation and main-only GHCR publication with a digest and pull verification are implemented. Add the required semantic release tags alongside the Kubernetes demonstrations. |
 | CI | Push/PR validation, scans and the final success gate are verified. Publication depends on every validation job succeeding and is restricted to pushes to `main`. |
-| Kubernetes | Add and demonstrate a Deployment with at least two replicas, a Service, ConfigMap, Secret, readiness/liveness probes, resource requests/limits and RollingUpdate. |
+| Kubernetes | Local kind environment with two app replicas, Service, ConfigMap, generated Secret, separate readiness/liveness probes, resource requests/limits, RollingUpdate and persistent PostgreSQL. |
 | Automated delivery | Main-branch publication is implemented. Add Kubernetes deployment, rollout waiting and availability verification. The deployment runner must be able to reach the chosen cluster securely. |
 | Release demonstrations | Show the initial release, a meaningful feature update through a PR and a tested bug-fix release. The CI-only failure example is recorded above; verify that a failing revision is not published or deployed once delivery exists. Record commits, runs, image tags, rollout state and app version for each release. |
 | Submission and presentation | Expand the evidence into the required 5-10-page technical PDF and 8-12-slide PowerPoint, and prepare the live change-to-deployment demonstration. |
 
-For a current application walkthrough, launch Compose, filter activities, inspect a provider source, create a plan and join it in another browser to vote. Then open the linked GitHub run to inspect the checks and artifacts. The Kubernetes rollout portion follows once the delivery milestones above are implemented.
+For a current application walkthrough, launch Compose or the local Kubernetes environment, filter activities, inspect a provider source, create a plan and join it in another browser to vote. Then open the linked GitHub run to inspect the checks and artifacts. Automated updates across the three required release versions remain to be demonstrated.
 
 European weekend events and travel options remain a possible product expansion after the Budapest planning experience and required delivery pipeline are complete.
