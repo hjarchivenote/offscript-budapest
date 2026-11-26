@@ -13,6 +13,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 FROM ${PYTHON_BASE} AS runtime
 ARG APP_COMMIT=local
+LABEL org.opencontainers.image.source="https://github.com/hjarchivenote/offscript-budapest"
 ENV PATH="/opt/venv/bin:${PATH}" \
     APP_COMMIT=${APP_COMMIT} \
     PYTHONDONTWRITEBYTECODE=1 \
