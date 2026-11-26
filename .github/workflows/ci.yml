@@ -170,3 +170,60 @@ jobs:
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 7
+
+  publication_gate_probe:
+    name: Publication gate positive control (no registry writes)
+    needs: [quality, container, gate]
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/codex/verify-publication-blocking' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    permissions:
+      contents: read
+    steps:
+      - name: Check out the verification revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check the production dependency policy and record the control
+        env:
+          NEEDS_RESULTS: ${{ toJSON(needs) }}
+        run: |
+          python - <<'PY'
+          import json, os, re
+          from pathlib import Path
+
+          workflow = Path('.github/workflows/ci.yml').read_text()
+          def job(name):
+              body = workflow.split('\n  ' + name + ':\n', 1)[1]
+              return re.split(r'(?m)^  [A-Za-z_][A-Za-z0-9_-]*:\s*$', body, maxsplit=1)[0]
+          def setting(body, key):
+              return re.search(r'(?m)^    ' + key + r': (.+)$', body).group(1)
+          production, control = job('publish'), job('publication_gate_probe')
+          assert setting(production, 'needs') == setting(control, 'needs')
+          assert setting(production, 'if').replace('refs/heads/main', 'refs/heads/codex/verify-publication-blocking') == setting(control, 'if')
+          permissions = re.search(r'(?m)^    permissions:\n((?:      [^\n]+\n)+)', control).group(1)
+          assert permissions.strip() == 'contents: read'
+          results = json.loads(os.environ['NEEDS_RESULTS'])
+          assert set(results) == {'quality', 'container', 'gate'}
+          assert all(job['result'] == 'success' for job in results.values())
+          proof = {
+              'kind': 'dependency-gate-positive-control',
+              'commit': os.environ['GITHUB_SHA'],
+              'same_production_dependencies': True,
+              'only_branch_matcher_substituted': True,
+              'registry_write_attempted': False,
+              'needs': results,
+          }
+          output = Path('.local/ci/publication-gate-proof.json')
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(json.dumps(proof, indent=2) + '\n')
+          print('PASS publication dependency control: all prerequisites succeeded; registry writing remains disabled.')
+          PY
+      - name: Keep the read-only gate proof
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: publication-gate-proof-${{ github.sha }}
+          path: .local/ci/publication-gate-proof.json
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
