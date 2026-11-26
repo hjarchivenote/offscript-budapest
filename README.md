@@ -131,7 +131,7 @@ The container checks generate isolated test data, exercise two app instances sha
 
 Browser checks also cover first-load failures and timeouts, manual and online recovery, preservation of an existing plan during reconnection, original review publication and updating, safe display of submitted HTML, and sharing when clipboard access is denied or unavailable. Copy failures open a selectable link without changing the current page or discarding a draft.
 
-Delayed review and suggestion responses cannot reopen a closed detail dialog, replace a different activity or erase a newer review draft. A saved review updates its own list entry, including an older review outside the 100-item display window; failed saves retain the form for retry. Concurrent edits write a complete submission atomically, verified both with coordinated request snapshots and with two real PostgreSQL-backed app instances.
+Delayed review and suggestion responses cannot reopen a closed detail dialog, replace a different activity or erase a newer review draft. A saved review updates its own list entry, including an older review outside the 100-item display window; failed saves retain the form for retry, and background failures remain visible after a dialog is closed or replaced. Concurrent edits write a complete submission atomically, verified both with coordinated request snapshots and with two real PostgreSQL-backed app instances.
 
 ### GitHub Actions
 
