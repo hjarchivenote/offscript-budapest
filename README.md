@@ -201,25 +201,45 @@ Install the pinned Python dependencies shown above and use **Node.js 24**. Run t
 python -u -m scripts.ci quality
 ```
 
-This runs Ruff, **306 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Eight opt-in Kubernetes integration cases are skipped here and run in the dedicated CI job below. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation, build-probe cleanup, cache revalidation, publication safeguards, local cluster target/credential protection, image preflight, initialization recovery, delivery eligibility, artifact tampering and stale-release blocking.
+This runs Ruff, **327 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Nine opt-in Kubernetes integration cases are skipped here and run in the dedicated CI job below. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation, build-probe cleanup, cache revalidation, publication safeguards, local cluster target/credential protection, image preflight, initialization recovery, delivery eligibility, artifact tampering and stale-release blocking.
 
-For a running local Kubernetes environment, validate manifests without changing workloads, or explicitly run the integration checks:
+For a running application cluster, validate manifests without changing workloads:
 
 ```bash
 python -m scripts.check_kubernetes
-OFFSCRIPT_KUBERNETES_TEST_CONFIG="$PWD/.local/kubernetes/kubeconfig" \
-  python -m pytest -q tests/test_kubernetes_integration.py
 ```
 
-The opt-in checks apply the pinned setup, verify Service routing and exercise isolated initialization failures using temporary test Jobs with no database access. They also confirm that a wrong source commit leaves workloads unchanged and that missing resources, incorrect probes/selectors, identity overrides and unknown API fields are rejected. Only their temporary test Jobs and ConfigMap are removed.
+The opt-in integration suite requires a validated current-image archive, the matching full commit and the separate `kind-offscript-ci` context; it cannot fall back to an older published image or run candidate images in the application cluster. It verifies both running image IDs, Service routing, initialization recovery and rejection of incorrect configuration. The CI cluster uses loopback port **8769**; the application remains on **8768**.
 
 With Docker running, validate a built image against an isolated PostgreSQL database and real browsers:
 
 ```bash
-python -u -m scripts.ci container
+candidate_commit="$(git rev-parse HEAD)"
+python -u -m scripts.ci container --image "offscript:ci-$candidate_commit" --commit "$candidate_commit"
 ```
 
 The container checks generate isolated test data, exercise two app instances sharing one database, test desktop/mobile browser flows, interrupt and restore the database, and recreate containers to verify persistence. The script removes its disposable Compose project when finished. Chromium and any required browser system dependencies are installed by this command.
+
+To run the same current-image Kubernetes handoff locally after that command:
+
+```bash
+(
+set -e
+python -m scripts.kubernetes_image config
+kind create cluster --name offscript-ci --config .local/ci/kind-ci.yaml \
+  --kubeconfig .local/ci/kubeconfig --wait 120s
+trap 'kind delete cluster --name offscript-ci --kubeconfig .local/ci/kubeconfig' EXIT
+kubectl --kubeconfig .local/ci/kubeconfig --context kind-offscript-ci apply -f k8s/namespace.yaml
+export CI_COMMIT_SHA="$candidate_commit"
+export OFFSCRIPT_KUBERNETES_TEST_CONFIG="$PWD/.local/ci/kubeconfig"
+export OFFSCRIPT_KUBERNETES_IMAGE_DIR="$PWD/.local/ci"
+python -m scripts.kubernetes_image load
+python -m pytest -q tests/test_kubernetes_integration.py --junitxml=.local/ci/kubernetes-tests.xml
+python -m scripts.kubernetes_image receipt
+)
+```
+
+The subshell stops on failure and removes only its test cluster on exit. Kubernetes credentials and synthetic database passwords for this check are separate from the running application's files. No registry publication is needed to test a candidate.
 
 Browser checks also cover first-load failures and timeouts, manual and online recovery, preservation of an existing plan during reconnection, original review publication and updating, safe display of submitted HTML, and sharing when clipboard access is denied or unavailable. Copy failures open a selectable link without changing the current page or discarding a draft.
 
@@ -233,15 +253,15 @@ Delayed review and suggestion responses cannot reopen a closed detail dialog, re
 | --- | --- |
 | Quality | Pinned dependencies, linting, Python tests and JavaScript tests |
 | Container | Upload-source secret scan, Docker build, Trivy scan, PostgreSQL integration, two-instance concurrency and Playwright browser checks |
-| Kubernetes | Checksum-pinned tools, an isolated cluster created from `kind.yaml`, strict API schemas, deployment safeguards, two app replicas, Service routing, preflight rejection and initialization retry/reuse checks |
+| Kubernetes | Runs after Container, retrieves that job's exact image archive, verifies its checksum/image ID, loads it into isolated kind with `imagePullPolicy: Never`, and checks schemas, safeguards, both running image IDs, Service routing and recovery |
 | CI gate | Succeeds only if all three validation jobs succeed; failures, cancellations and skipped jobs do not count as success |
 | Publish | Runs only after all four preceding jobs succeed on a push to `main`; publishes and pull-verifies the checked image, then uploads a deployment request bound to that run/attempt |
 
-The Kubernetes job uses the already published image pinned in the manifests to check the infrastructure and setup helper. The separate Container job validates the current source revision. Every Kubernetes CI run has its own temporary kubeconfig and disposable cluster; its test results and non-sensitive resource state are retained as artifacts.
+Container and Kubernetes test the same current-revision image without rebuilding or publishing it between stages. The Kubernetes receipt binds the commit, version, archive checksum, both runtime image IDs and unskipped test results to the CI run/attempt. Publication rejects a missing or mismatched receipt before registry authentication; the delivery package validates the same evidence again. Every Kubernetes CI run has a private kubeconfig and disposable cluster derived from `kind.yaml`, with a separate port and database credentials.
 
-The image is built for `linux/amd64` and identified by the Git commit. Trivy scans both operating-system and Python packages, blocking HIGH or CRITICAL findings. The source scan blocks detected credentials and retains only sanitized finding locations. Actions and scanner/base images are pinned to commit hashes or digests.
+The image is built and exported for `linux/amd64` and identified by the Git commit. Container/archive checks require Docker 28 or newer. Receipt image IDs are canonical OCI configuration digests; Docker may display an index or manifest ID, so validation also matches runtime configuration and filesystem layers instead of equating different identifier formats. Trivy scans both operating-system and Python packages, blocking HIGH or CRITICAL findings. The source scan blocks detected credentials and retains only sanitized finding locations. Actions and scanner/base images are pinned to commit hashes or digests.
 
-A successful run retains the tested image archive, its SHA-256 checksum and validation metadata. Browser/scan diagnostics and Python test results are retained for troubleshooting. Artifact retention is **7 days**. Main-branch runs also retain a `published-image-<commit>` artifact containing the registry reference and publication receipt.
+A successful run retains the tested image archive, its SHA-256 checksum, validation metadata and a `kubernetes-validated-image-<commit>` receipt. Browser/scan diagnostics and Python/Kubernetes test results are retained for troubleshooting. Artifact retention is **7 days**. Main-branch runs also retain a `published-image-<commit>` artifact containing the registry reference, matching Kubernetes evidence and publication receipt.
 
 ### Published images
 

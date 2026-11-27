@@ -27,8 +27,9 @@ def require_local_server(server):
 
 
 class Kubernetes:
-    def __init__(self, binary, kubeconfig, *, root=ROOT):
-        self.command = [str(binary), "--kubeconfig", str(kubeconfig), "--context", "kind-offscript", "--namespace", "offscript"]
+    def __init__(self, binary, kubeconfig, *, root=ROOT, context="kind-offscript"):
+        self.context = context
+        self.command = [str(binary), "--kubeconfig", str(kubeconfig), "--context", context, "--namespace", "offscript"]
         self.root = Path(root).resolve()
 
     def run(self, *args, document=None, sensitive=False, timeout=40):
@@ -151,12 +152,18 @@ def deploy(kube, image, commit, *, before_apply=None, proof_path=None):
     require_local_server(server)
     print("Checking the image before changing cluster workloads…", flush=True)
     verified_image = verify_image(image, commit)
+    return _deploy_verified(kube, image, commit, verified_image, before_apply=before_apply, proof_path=proof_path)
+
+
+def _deploy_verified(kube, image, commit, verified_image, *, before_apply=None, proof_path=None,
+                     image_pull_policy="IfNotPresent", secret_directory=None):
+    """Shared rollout after the production/isolated-CI entry point verifies identity."""
     if before_apply is not None:
         before_apply()
     root = getattr(kube, "root", ROOT)
     kube.run("apply", "-f", root / "k8s/namespace.yaml")
     kube.run("apply", "-f", root / "k8s/configmap.yaml")
-    ensure_credentials(kube, ROOT / ".local/kubernetes/secrets")
+    ensure_credentials(kube, secret_directory or ROOT / ".local/kubernetes/secrets")
     init = json.loads(kube.run("create", "configmap", "offscript-db-init", "--from-file=10-offscript.sql=" + str(root / "docker/init-app-db.sql"), "--dry-run=client", "-o", "json"))
     kube.apply(init)
     kube.run("apply", "-f", root / "k8s/postgres-service.yaml")
@@ -166,12 +173,14 @@ def deploy(kube, image, commit, *, before_apply=None, proof_path=None):
     config_hash = hashlib.sha256((root / "k8s/configmap.yaml").read_bytes()).hexdigest()
     job = kube.manifest("bootstrap-job.yaml")
     job["spec"]["template"]["spec"]["containers"][0]["image"] = image
+    job["spec"]["template"]["spec"]["containers"][0]["imagePullPolicy"] = image_pull_policy
     suffix = hashlib.sha256((json.dumps(job["spec"], sort_keys=True) + config_hash).encode()).hexdigest()[:12]
     job["metadata"]["name"] = "offscript-bootstrap-" + suffix
     print("Waiting for one-shot catalogue initialization…", flush=True)
     initialization_name = initialize_catalogue(kube, job)
     app = kube.manifest("app-deployment.yaml")
     app["spec"]["template"]["spec"]["containers"][0]["image"] = image
+    app["spec"]["template"]["spec"]["containers"][0]["imagePullPolicy"] = image_pull_policy
     app["spec"]["template"]["metadata"]["annotations"] = {
         "offscript.local/source-image": image, "offscript.local/source-commit": commit,
         "offscript.local/config-sha256": config_hash,
@@ -194,7 +203,7 @@ def deploy(kube, image, commit, *, before_apply=None, proof_path=None):
         versions.append({"pod": pod["metadata"]["name"], **version})
     if len(versions) != 2:
         raise RuntimeError("Expected two verified application replicas.")
-    proof = {"namespace": "offscript", "context": "kind-offscript", "image": image, "commit": commit,
+    proof = {"namespace": "offscript", "context": getattr(kube, "context", "kind-offscript"), "image": image, "commit": commit,
              "bootstrap_job": initialization_name, "ready_replicas": 2, "versions": versions,
              "image_preflight": verified_image}
     output = Path(proof_path) if proof_path is not None else ROOT / ".local/kubernetes/validation-state.json"

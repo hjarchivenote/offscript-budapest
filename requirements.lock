@@ -19,6 +19,7 @@ pydantic==2.14.4
 pydantic_core==2.50.5
 Pygments==2.21.0
 pytest==9.2.0
+PyYAML==6.0.4
 ruff==0.17.6
 SQLAlchemy==2.0.58
 starlette==1.10.0

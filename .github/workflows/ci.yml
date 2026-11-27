@@ -120,9 +120,11 @@ jobs:
 
   kubernetes:
     name: Kubernetes configuration and recovery checks
-    needs: quality
+    needs: [quality, container]
     runs-on: ubuntu-24.04
     timeout-minutes: 12
+    env:
+      CI_COMMIT_SHA: ${{ github.sha }}
     steps:
       - name: Check out the same source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -148,20 +150,41 @@ jobs:
           printf '%s  %s\n' 6129359f4e1f3848a5572ccb0b26cf28b8ca08cef38c95a765b2f64a2c961a2f "$RUNNER_TEMP/kubectl" | sha256sum --check
           chmod +x "$RUNNER_TEMP/kind" "$RUNNER_TEMP/kubectl"
           printf '%s\n' "$RUNNER_TEMP" >> "$GITHUB_PATH"
-          printf 'OFFSCRIPT_KUBERNETES_TEST_CONFIG=%s/offscript-kubeconfig\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
+          printf 'OFFSCRIPT_KUBERNETES_TEST_CONFIG=%s/offscript-ci-kubeconfig\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
           printf 'OFFSCRIPT_KUBECTL=%s/kubectl\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
+          printf 'OFFSCRIPT_KUBERNETES_IMAGE_DIR=%s/.local/ci\n' "$GITHUB_WORKSPACE" >> "$GITHUB_ENV"
+      - name: Retrieve the exact image validated by the container job
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: validated-image-${{ github.sha }}
+          path: .local/ci
+          digest-mismatch: error
       - name: Create an isolated cluster from the checked-in kind configuration
         run: |
           mkdir -p .local/ci
-          kind create cluster --name offscript --config k8s/kind.yaml --kubeconfig "$OFFSCRIPT_KUBERNETES_TEST_CONFIG" --wait 120s
-          kubectl --kubeconfig "$OFFSCRIPT_KUBERNETES_TEST_CONFIG" --context kind-offscript apply -f k8s/namespace.yaml
+          python -m scripts.kubernetes_image config
+          kind create cluster --name offscript-ci --config .local/ci/kind-ci.yaml --kubeconfig "$OFFSCRIPT_KUBERNETES_TEST_CONFIG" --wait 120s
+          kubectl --kubeconfig "$OFFSCRIPT_KUBERNETES_TEST_CONFIG" --context kind-offscript-ci apply -f k8s/namespace.yaml
+      - name: Verify and import the same image archive without rebuilding
+        run: python -u -m scripts.kubernetes_image load --kubeconfig "$OFFSCRIPT_KUBERNETES_TEST_CONFIG"
       - name: Check schemas, safeguards, setup and failure recovery
         run: python -u -m pytest -q tests/test_kubernetes_integration.py --junitxml=.local/ci/kubernetes-tests.xml
+      - name: Bind passing Kubernetes results to both running image IDs
+        run: python -u -m scripts.kubernetes_image receipt --kubeconfig "$OFFSCRIPT_KUBERNETES_TEST_CONFIG"
+      - name: Keep the exact-image Kubernetes receipt for publication
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: kubernetes-validated-image-${{ github.sha }}
+          path: .local/ci/kubernetes-image.json
+          overwrite: true
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
       - name: Record non-sensitive cluster state
         if: ${{ always() }}
         run: |
           if [[ -x "$OFFSCRIPT_KUBECTL" && -f "$OFFSCRIPT_KUBERNETES_TEST_CONFIG" ]]; then
-            "$OFFSCRIPT_KUBECTL" --kubeconfig "$OFFSCRIPT_KUBERNETES_TEST_CONFIG" --context kind-offscript -n offscript get pods,services,jobs,pvc -o wide > .local/ci/kubernetes-resources.txt || true
+            "$OFFSCRIPT_KUBECTL" --kubeconfig "$OFFSCRIPT_KUBERNETES_TEST_CONFIG" --context kind-offscript-ci -n offscript get pods,services,jobs,pvc -o wide > .local/ci/kubernetes-resources.txt || true
           fi
       - name: Keep Kubernetes check results
         if: ${{ always() }}
@@ -172,7 +195,8 @@ jobs:
           path: |
             .local/ci/kubernetes-tests.xml
             .local/ci/kubernetes-resources.txt
-            .local/kubernetes/validation-state.json
+            .local/ci/kubernetes-runtime.json
+            .local/ci/kubernetes-image.json
           include-hidden-files: true
           if-no-files-found: ignore
           retention-days: 7
@@ -180,7 +204,7 @@ jobs:
         if: ${{ always() }}
         run: |
           if [[ -x "$RUNNER_TEMP/kind" ]]; then
-            "$RUNNER_TEMP/kind" delete cluster --name offscript --kubeconfig "$RUNNER_TEMP/offscript-kubeconfig"
+            "$RUNNER_TEMP/kind" delete cluster --name offscript-ci --kubeconfig "$RUNNER_TEMP/offscript-ci-kubeconfig"
           fi
 
   gate:
@@ -225,6 +249,12 @@ jobs:
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: validated-image-${{ github.sha }}
+          path: .local/ci
+          digest-mismatch: error
+      - name: Retrieve the matching exact-image Kubernetes receipt
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: kubernetes-validated-image-${{ github.sha }}
           path: .local/ci
           digest-mismatch: error
       - name: Publish the exact image and verify a registry pull

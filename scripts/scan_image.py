@@ -18,7 +18,9 @@ def scan_image(image: str, output: Path):
     archive = output / "image.tar"
     report = reports / "security.json"
     report.unlink(missing_ok=True)
-    subprocess.run(["docker", "image", "save", "--output", str(archive), image], check=True)
+    # Export one platform so Docker Desktop's attestation/index entries cannot
+    # make kind's containerd import a different platform or miss a blob.
+    subprocess.run(["docker", "image", "save", "--platform", "linux/amd64", "--output", str(archive), image], check=True)
     result = subprocess.run([
         "docker", "run", "--rm", "--user", f"{os.getuid()}:{os.getgid()}",
         "--read-only", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true",

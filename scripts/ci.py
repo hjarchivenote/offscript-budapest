@@ -11,6 +11,7 @@ from pathlib import Path
 
 from app import __version__
 from scripts.build_context import private_context_probes
+from scripts.image_identity import archive_identity, matches_loaded
 from scripts.prepare_local import prepare
 from scripts.scan_image import scan_image
 from scripts.scan_source import scan_source
@@ -50,6 +51,10 @@ def container(image, commit, output):
             "--label", f"org.opencontainers.image.version={__version__}", "--tag", image, ".")
     image_id = subprocess.check_output(["docker", "image", "inspect", "--format", "{{.Id}}", image], text=True).strip()
     archive = scan_image(image, output)
+    canonical_id, archived_config = archive_identity(archive, image)
+    inspected = json.loads(subprocess.check_output(["docker", "image", "inspect", image], text=True))[0]
+    if not matches_loaded(inspected, archived_config):
+        raise RuntimeError("The exported archive differs from the image under validation.")
     run("npm", "ci", "--ignore-scripts", "--no-audit", "--no-fund")
     environment = {
         **os.environ, "OFFSCRIPT_IMAGE": image, "CI_EXPECTED_COMMIT": commit,
@@ -66,7 +71,7 @@ def container(image, commit, output):
         digest = hashlib.file_digest(stream, "sha256").hexdigest()
     (output / "image.tar.sha256").write_text(f"{digest}  image.tar\n")
     (output / "validated-image.json").write_text(json.dumps({
-        "image": image, "image_id": image_id, "archive_sha256": digest,
+        "image": image, "image_id": canonical_id, "docker_image_id": image_id, "archive_sha256": digest,
         "version": __version__, "commit": commit, "platform": "linux/amd64",
         "checks": ["source-secret-scan", "image-build", "private-build-context", "high-critical-vulnerability-scan", "postgres-integration", "two-replica-concurrency", "browser-desktop-mobile"],
     }, indent=2) + "\n")
