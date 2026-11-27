@@ -196,13 +196,15 @@ class Controller:
     def reconcile(self):
         commit = self.github.head()
         if self.state.get("desired_commit") != commit:
-            self.report("waiting-ci", desired_commit=commit, error=None, failure_count=0, next_retry_epoch=0)
+            self.report("waiting-ci", desired_commit=commit, run_url=None, error=None, failure_count=0, next_retry_epoch=0)
         if self.state.get("next_retry_epoch", 0) > time.time():
             return self.state
         run = self.github.latest_run(commit)
-        if not run or run.get("status") != "completed":
-            return self.report("waiting-ci", error=None)
+        if not run:
+            return self.report("waiting-ci", run_url=None, error=None)
         run_url = f"https://github.com/{REPOSITORY}/actions/runs/{run['id']}"
+        if run.get("status") != "completed":
+            return self.report("waiting-ci", run_url=run_url, error=None)
         if run.get("conclusion") != "success":
             return self.report("blocked-ci", run_url=run_url, error="Latest main CI did not succeed; no release was applied.")
         if not approved_run(run, commit):
