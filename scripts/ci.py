@@ -53,7 +53,7 @@ def container(image, commit, output):
     archive = scan_image(image, output)
     canonical_id, archived_config = archive_identity(archive, image)
     inspected = json.loads(subprocess.check_output(["docker", "image", "inspect", image], text=True))[0]
-    if not matches_loaded(inspected, archived_config):
+    if not matches_loaded(inspected, archived_config, canonical_id):
         raise RuntimeError("The exported archive differs from the image under validation.")
     run("npm", "ci", "--ignore-scripts", "--no-audit", "--no-fund")
     environment = {

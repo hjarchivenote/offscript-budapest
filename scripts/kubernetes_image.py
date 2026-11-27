@@ -62,7 +62,7 @@ def inspect_loaded(metadata, output):
     image = json.loads(command("docker", "image", "inspect", metadata["image"]))[0]
     canonical_id, config = archive_identity(output / "image.tar", metadata["image"])
     labels = image.get("Config", {}).get("Labels") or {}
-    if (canonical_id != metadata["image_id"] or not matches_loaded(image, config)
+    if (canonical_id != metadata["image_id"] or not matches_loaded(image, config, canonical_id)
             or image.get("Os") != "linux" or image.get("Architecture") != "amd64"
             or labels.get("org.opencontainers.image.revision") != metadata["commit"]
             or labels.get("org.opencontainers.image.version") != metadata["version"]

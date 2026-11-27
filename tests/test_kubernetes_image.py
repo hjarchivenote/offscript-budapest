@@ -1,3 +1,4 @@
+import hashlib
 import io
 import json
 import xml.etree.ElementTree as ET
@@ -8,6 +9,7 @@ import yaml
 
 from app import __version__
 from scripts import kubernetes_image as candidate
+from scripts.image_identity import matches_loaded
 from scripts.publish_image import CHECKS, validated_kubernetes
 from tests.test_publish_image import COMMIT, IMAGE_ID, write_image_archive
 
@@ -150,3 +152,13 @@ def test_receipt_binds_archive_running_ids_and_test_attempt(image_artifact, monk
     assert proof["archive_sha256"] == metadata["archive_sha256"]
     assert proof["run_id"] == "12345" and proof["run_attempt"] == 1
     assert validated_kubernetes(output, metadata) == proof
+
+
+def test_classic_docker_config_digest_is_authoritative_when_api_omits_legacy_fields():
+    config = {"os": "linux", "architecture": "amd64", "config": {"ArgsEscaped": True},
+              "rootfs": {"diff_ids": ["sha256:" + "3" * 64]}}
+    identity = "sha256:" + hashlib.sha256(json.dumps(config).encode()).hexdigest()
+    inspected = {"Id": identity, "Os": "linux", "Architecture": "amd64", "Config": {},
+                 "RootFS": {"Layers": config["rootfs"]["diff_ids"]}}
+    assert matches_loaded(inspected, config, identity)
+    assert not matches_loaded(inspected, config, "sha256:" + "0" * 64)

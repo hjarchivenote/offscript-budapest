@@ -85,16 +85,17 @@ def publish(output, commit, repository, actor, token):
         docker("image", "load", "--input", str(output / "image.tar"))
         image = json.loads(docker("image", "inspect", metadata["image"]))[0]
         labels = image.get("Config", {}).get("Labels") or {}
-        if (not matches_loaded(image, archived_config) or image.get("Os") != "linux" or image.get("Architecture") != "amd64"
+        if (not matches_loaded(image, archived_config, metadata["image_id"]) or image.get("Os") != "linux" or image.get("Architecture") != "amd64"
                 or labels.get("org.opencontainers.image.revision") != commit
                 or labels.get("org.opencontainers.image.version") != __version__
                 or labels.get("org.opencontainers.image.source") != source):
             raise ValueError("The loaded image is not the validated source revision.")
         docker("login", "ghcr.io", "--username", actor, "--password-stdin", input=token)
         docker("image", "tag", metadata["image"], tag)
-        # Publish the tested platform's manifest directly. An amd64-only index
-        # would prevent the Apple Silicon kind node from selecting that image.
-        pushed = docker("image", "push", "--platform", "linux/amd64", tag)
+        # The classic store is already single-platform. Containerd stores may
+        # expose an index, so select the tested manifest for the ARM/emulation host.
+        platform = ("--platform", "linux/amd64") if image["Id"] != metadata["image_id"] else ()
+        pushed = docker("image", "push", *platform, tag)
         digests = set(re.findall(r"digest: (sha256:[0-9a-f]{64})", pushed))
         if len(digests) != 1:
             raise RuntimeError("Registry publication did not return one image digest.")
@@ -103,7 +104,7 @@ def publish(output, commit, repository, actor, token):
         docker("image", "rm", metadata["image"], tag)
         docker("image", "pull", "--platform", "linux/amd64", reference)
         pulled = json.loads(docker("image", "inspect", reference))[0]
-        if not matches_loaded(pulled, archived_config):
+        if not matches_loaded(pulled, archived_config, metadata["image_id"]):
             raise RuntimeError("The published image differs from the tested image.")
         docker("run", "--rm", "--network", "none", "--read-only", "--cap-drop", "ALL",
                "--security-opt", "no-new-privileges:true", "--entrypoint", "python", reference,

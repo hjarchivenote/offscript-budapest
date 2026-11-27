@@ -80,6 +80,7 @@ def docker_runner(monkeypatch, *, loaded_change=None, pulled_id=IMAGE_ID, push_d
                     image["Id"] = "sha256:" + "f" * 64
                 elif loaded_change == "RootFS":
                     image["RootFS"]["Layers"] = ["sha256:" + "0" * 64]
+                    image["Id"] = "sha256:" + "0" * 64
                 elif loaded_change:
                     image[loaded_change] = "wrong"
             else:
@@ -109,6 +110,7 @@ def test_publishes_exact_archive_and_checks_pulled_image_without_rebuilding(arti
         ["image", "tag"], ["image", "push"], ["image", "rm"], ["image", "pull"], ["image", "inspect"],
     ]
     assert reference in commands[6] and reference in commands[-1]
+    assert "--platform" not in commands[4]  # Classic store already has one platform.
     assert commands[-1][1] == "run" and "--read-only" in commands[-1]
     for command, kwargs in calls:
         assert "private-test-token" not in " ".join(command)
@@ -162,9 +164,10 @@ def test_different_registry_image_cannot_produce_a_success_receipt(artifact, mon
 
 
 def test_docker_store_descriptor_can_differ_while_canonical_runtime_image_matches(artifact, monkeypatch):
-    docker_runner(monkeypatch, loaded_change="store-descriptor")
+    calls = docker_runner(monkeypatch, loaded_change="store-descriptor")
     result = release.publish(artifact, COMMIT, REPOSITORY, "publisher", "synthetic-token")
     assert result["image_id"] == IMAGE_ID
+    assert "--platform" in next(command for command, _ in calls if command[1:3] == ["image", "push"])
 
 
 @pytest.mark.parametrize(("event", "ref"), [("push", "refs/heads/development"), ("pull_request", "refs/heads/main"), ("workflow_dispatch", "refs/heads/main")])

@@ -21,11 +21,15 @@ def archive_identity(path, tag):
     return "sha256:" + hashlib.sha256(payload).hexdigest(), config
 
 
-def matches_loaded(image, config):
+def matches_loaded(image, config, canonical_id=None):
     # Docker's Id may be an OCI index/manifest digest, while CRI uses the config
     # digest. Match the archived runtime configuration and uncompressed layers.
     expected = config.get("config", {})
     actual = image.get("Config") or {}
+    if canonical_id is not None and image.get("Id") == canonical_id:
+        # The classic store already exposes the exact config digest. Its API
+        # may omit legacy Config fields that are still present in the archive.
+        return True
     return (
         image.get("Os") == config.get("os") and image.get("Architecture") == config.get("architecture")
         and image.get("RootFS", {}).get("Layers") == config.get("rootfs", {}).get("diff_ids")
