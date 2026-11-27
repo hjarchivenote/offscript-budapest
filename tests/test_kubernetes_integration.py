@@ -12,35 +12,38 @@ from urllib.request import urlopen
 import pytest
 
 from scripts.check_kubernetes import check_documents, validate
-from scripts.kubernetes_local import (
-    DEFAULT_COMMIT,
-    DEFAULT_IMAGE,
-    ROOT,
-    Kubernetes,
-    deploy,
-    initialize_catalogue,
-)
+from scripts.kubernetes_image import CONTEXT, URL, evidence_identity, setup, verify_running_images
+from scripts.kubernetes_local import ROOT, Kubernetes, initialize_catalogue
+from scripts.publish_image import validated_metadata
 
 
 @pytest.fixture(scope="module")
-def live_cluster():
+def live_cluster(record_testsuite_property):
     config = os.environ.get("OFFSCRIPT_KUBERNETES_TEST_CONFIG")
     if not config:
         pytest.skip("Set OFFSCRIPT_KUBERNETES_TEST_CONFIG to opt into the dedicated kind checks")
     local_binary = ROOT / ".local/kubernetes/bin/kubectl"
     binary = os.environ.get("OFFSCRIPT_KUBECTL") or (str(local_binary) if local_binary.is_file() else shutil.which("kubectl"))
-    kube = Kubernetes(binary, Path(config).resolve())
+    directory = os.environ.get("OFFSCRIPT_KUBERNETES_IMAGE_DIR")
+    commit = os.environ.get("CI_COMMIT_SHA")
+    if not directory or not commit:
+        pytest.fail("The Kubernetes suite requires the current container-stage image archive and commit; there is no older-image fallback.")
+    output = Path(directory).resolve()
+    metadata = validated_metadata(output, commit)
+    kube = Kubernetes(binary, Path(config).resolve(), context=CONTEXT)
     documents = validate(kube)
-    proof = deploy(kube, DEFAULT_IMAGE, DEFAULT_COMMIT)
-    return kube, documents, proof
+    proof = setup(kube, output, commit)
+    for key, value in evidence_identity(metadata).items():
+        record_testsuite_property(key, value)
+    return kube, documents, {**proof, "output": output, "metadata": metadata}
 
 
 def test_service_routes_to_the_verified_ready_application(live_cluster):
     kube, documents, proof = live_cluster
-    with urlopen("http://127.0.0.1:8768/ready", timeout=10) as response:
+    with urlopen(URL + "/ready", timeout=10) as response:
         assert response.status == 200
-    with urlopen("http://127.0.0.1:8768/version", timeout=10) as response:
-        assert json.load(response)["commit"] == DEFAULT_COMMIT
+    with urlopen(URL + "/version", timeout=10) as response:
+        assert json.load(response)["commit"] == proof["commit"]
     assert proof["ready_replicas"] == 2
 
 
@@ -53,15 +56,15 @@ def cluster_snapshot(kube):
 
 
 def test_wrong_commit_is_blocked_before_changing_running_workloads(live_cluster):
-    kube, _, _ = live_cluster
+    kube, _, proof = live_cluster
     before = cluster_snapshot(kube)
-    with pytest.raises(RuntimeError, match="Cluster workloads were not changed"):
-        deploy(kube, DEFAULT_IMAGE, "0" * 40)
+    with pytest.raises(ValueError, match="does not match"):
+        setup(kube, proof["output"], "0" * 40)
     assert cluster_snapshot(kube) == before
 
 
 def test_failed_initialization_retries_and_success_is_reused(live_cluster):
-    kube, documents, _ = live_cluster
+    kube, documents, proof = live_cluster
     base = "offscript-audit-" + secrets.token_hex(6)
     job = copy.deepcopy(documents["bootstrap-job.yaml"])
     job["metadata"] = {"name": base, "namespace": "offscript"}
@@ -69,6 +72,8 @@ def test_failed_initialization_retries_and_success_is_reused(live_cluster):
     pod = job["spec"]["template"]["spec"]
     pod.pop("volumes", None)
     container = pod["containers"][0]
+    container["image"] = proof["image"]
+    container["imagePullPolicy"] = "Never"
     container.pop("envFrom", None)
     container.pop("volumeMounts", None)
     container["env"] = [{"name": "READY_FLAG", "valueFrom": {"configMapKeyRef": {"name": base, "key": "ready"}}}]
@@ -121,3 +126,12 @@ def test_unknown_kubernetes_fields_fail_strict_server_validation(live_cluster):
     invalid["spec"]["template"]["spec"]["offscriptUnknownField"] = True
     with pytest.raises(RuntimeError, match="unknown field|unknownField|Unknown field"):
         kube.run("apply", "--dry-run=server", "--validate=strict", "-f", "-", document=invalid)
+
+
+def test_runtime_image_ids_cannot_be_substituted(live_cluster):
+    kube, _, proof = live_cluster
+    actual = verify_running_images(kube, proof["metadata"])
+    assert actual == [proof["metadata"]["image_id"]] * 2
+    substituted = {**proof["metadata"], "image_id": "sha256:" + "0" * 64}
+    with pytest.raises(RuntimeError, match="image ID differs"):
+        verify_running_images(kube, substituted)

@@ -9,7 +9,7 @@ from types import SimpleNamespace
 import httpx
 import pytest
 
-from scripts import delivery, release_package
+from scripts import delivery, publish_image, release_package
 from scripts.kubernetes_local import ROOT
 
 COMMIT = "a" * 40
@@ -25,11 +25,16 @@ def approved():
 
 
 def receipt():
-    return {"commit": COMMIT, "repository": release_package.REPOSITORY,
+    data = {"commit": COMMIT, "repository": release_package.REPOSITORY,
             "run_url": f"https://github.com/{release_package.REPOSITORY}/actions/runs/{RUN_ID}",
             "pull_verified": True, "version": "0.1.0", "platform": "linux/amd64",
             "checks": sorted(release_package.CHECKS), "image_id": "sha256:" + "2" * 64,
-            "registry_reference": REFERENCE}
+            "registry_reference": REFERENCE, "image": f"offscript:ci-{COMMIT}", "archive_sha256": "3" * 64}
+    proof = {key: data[key] for key in ("image", "commit", "version", "image_id", "archive_sha256")}
+    proof.update(schema=1, run_id=str(RUN_ID), run_attempt=1, context="kind-offscript-ci", ready_replicas=2,
+                 tested_cases=9, failures=0, skipped=0, pod_image_ids=[data["image_id"]] * 2,
+                 checks=sorted(publish_image.KUBERNETES_CHECKS))
+    return {**data, "kubernetes": proof}
 
 
 def archive(entries):
@@ -89,12 +94,12 @@ def test_symbolic_links_are_rejected(package, tmp_path):
         release_package.unpack(data, {"digest": "sha256:" + hashlib.sha256(data).hexdigest()}, approved(), tmp_path / "out")
 
 
-@pytest.mark.parametrize("field,value", [("commit", "b" * 40), ("pull_verified", False), ("checks", []), ("platform", "linux/arm64"), ("run_url", "https://example.com/not-the-run")])
+@pytest.mark.parametrize("field,value", [("commit", "b" * 40), ("pull_verified", False), ("checks", []), ("platform", "linux/arm64"), ("run_url", "https://example.com/not-the-run"), ("kubernetes", None)])
 def test_invalid_receipt_cannot_request_delivery(tmp_path, field, value):
     invalid = receipt()
     invalid[field] = value
     (tmp_path / "published-image.json").write_text(json.dumps(invalid))
-    with pytest.raises(ValueError, match="receipt"):
+    with pytest.raises(ValueError, match="receipt|Kubernetes"):
         release_package.prepare(tmp_path, COMMIT, RUN_ID, 1)
     assert not (tmp_path / "delivery").exists()
 

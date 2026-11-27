@@ -12,7 +12,7 @@ from pathlib import Path
 
 from scripts.check_kubernetes import FILES
 from scripts.kubernetes_local import ROOT
-from scripts.publish_image import CHECKS
+from scripts.publish_image import CHECKS, verify_kubernetes_receipt
 
 REPOSITORY = "hjarchivenote/offscript-budapest"
 REPOSITORY_ID = 1471994197
@@ -22,7 +22,7 @@ ARCHIVE_FILES = (*DATA_FILES, "delivery.json")
 MAX_PACKAGE_BYTES = 1024 * 1024
 
 
-def receipt_matches(receipt, commit, run_id):
+def receipt_matches(receipt, commit, run_id, attempt):
     if (not re.fullmatch(r"[a-f0-9]{40}", commit)
             or receipt.get("commit") != commit or receipt.get("repository") != REPOSITORY
             or receipt.get("run_url") != f"https://github.com/{REPOSITORY}/actions/runs/{run_id}"
@@ -33,12 +33,14 @@ def receipt_matches(receipt, commit, run_id):
             or not re.fullmatch(r"sha256:[a-f0-9]{64}", receipt.get("image_id", ""))
             or not re.fullmatch(r"ghcr\.io/hjarchivenote/offscript-budapest@sha256:[a-f0-9]{64}", receipt.get("registry_reference", ""))):
         raise ValueError("Publication receipt does not match the approved release.")
+    proof = receipt.get("kubernetes")
+    verify_kubernetes_receipt(proof, receipt, run_id, attempt)
 
 
 def prepare(output, commit, run_id, attempt, *, root=ROOT):
     receipt_bytes = (output / "published-image.json").read_bytes()
     receipt = json.loads(receipt_bytes)
-    receipt_matches(receipt, commit, run_id)
+    receipt_matches(receipt, commit, run_id, attempt)
     target = output / "delivery"
     if target.exists():
         shutil.rmtree(target)
@@ -80,7 +82,7 @@ def unpack(data, artifact, run, destination):
             or descriptor.get("files") != {name: hashlib.sha256(contents[name]).hexdigest() for name in DATA_FILES}):
         raise ValueError("Deployment data does not match this CI run and attempt.")
     receipt = json.loads(contents["published-image.json"])
-    receipt_matches(receipt, commit, run_id)
+    receipt_matches(receipt, commit, run_id, attempt)
     # Fixed allowlisted paths and no extractall prevent traversal and script files.
     for name, payload in contents.items():
         path = destination / name
