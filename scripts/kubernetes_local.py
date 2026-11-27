@@ -27,12 +27,13 @@ def require_local_server(server):
 
 
 class Kubernetes:
-    def __init__(self, binary, kubeconfig):
+    def __init__(self, binary, kubeconfig, *, root=ROOT):
         self.command = [str(binary), "--kubeconfig", str(kubeconfig), "--context", "kind-offscript", "--namespace", "offscript"]
+        self.root = Path(root).resolve()
 
     def run(self, *args, document=None, sensitive=False, timeout=40):
         result = subprocess.run(
-            [*self.command, *map(str, args)], cwd=ROOT, text=True, capture_output=True,
+            [*self.command, *map(str, args)], cwd=self.root, text=True, capture_output=True,
             input=json.dumps(document) if document is not None else None, timeout=timeout, check=False,
         )
         if result.returncode:
@@ -44,7 +45,7 @@ class Kubernetes:
         return self.run("apply", "-f", "-", document=document, sensitive=sensitive)
 
     def manifest(self, name):
-        return json.loads(self.run("create", "--dry-run=client", "--validate=false", "-f", ROOT / "k8s" / name, "-o", "json"))
+        return json.loads(self.run("create", "--dry-run=client", "--validate=false", "-f", self.root / "k8s" / name, "-o", "json"))
 
 
 def verify_image(image, commit):
@@ -141,7 +142,7 @@ def ensure_credentials(kube, directory):
     }, sensitive=True)
 
 
-def deploy(kube, image, commit):
+def deploy(kube, image, commit, *, before_apply=None, proof_path=None):
     if not re.fullmatch(r"ghcr\.io/hjarchivenote/offscript-budapest@sha256:[a-f0-9]{64}", image):
         raise ValueError("Use a verified GHCR image digest, not a mutable tag.")
     if not re.fullmatch(r"[a-f0-9]{40}", commit):
@@ -150,16 +151,19 @@ def deploy(kube, image, commit):
     require_local_server(server)
     print("Checking the image before changing cluster workloads…", flush=True)
     verified_image = verify_image(image, commit)
-    kube.run("apply", "-f", ROOT / "k8s/namespace.yaml")
-    kube.run("apply", "-f", ROOT / "k8s/configmap.yaml")
+    if before_apply is not None:
+        before_apply()
+    root = getattr(kube, "root", ROOT)
+    kube.run("apply", "-f", root / "k8s/namespace.yaml")
+    kube.run("apply", "-f", root / "k8s/configmap.yaml")
     ensure_credentials(kube, ROOT / ".local/kubernetes/secrets")
-    init = json.loads(kube.run("create", "configmap", "offscript-db-init", "--from-file=10-offscript.sql=" + str(ROOT / "docker/init-app-db.sql"), "--dry-run=client", "-o", "json"))
+    init = json.loads(kube.run("create", "configmap", "offscript-db-init", "--from-file=10-offscript.sql=" + str(root / "docker/init-app-db.sql"), "--dry-run=client", "-o", "json"))
     kube.apply(init)
-    kube.run("apply", "-f", ROOT / "k8s/postgres-service.yaml")
-    kube.run("apply", "-f", ROOT / "k8s/postgres-statefulset.yaml")
+    kube.run("apply", "-f", root / "k8s/postgres-service.yaml")
+    kube.run("apply", "-f", root / "k8s/postgres-statefulset.yaml")
     print("Waiting for PostgreSQL and its persistent volume…", flush=True)
     kube.run("rollout", "status", "statefulset/offscript-db", "--timeout=180s", timeout=200)
-    config_hash = hashlib.sha256((ROOT / "k8s/configmap.yaml").read_bytes()).hexdigest()
+    config_hash = hashlib.sha256((root / "k8s/configmap.yaml").read_bytes()).hexdigest()
     job = kube.manifest("bootstrap-job.yaml")
     job["spec"]["template"]["spec"]["containers"][0]["image"] = image
     suffix = hashlib.sha256((json.dumps(job["spec"], sort_keys=True) + config_hash).encode()).hexdigest()[:12]
@@ -173,7 +177,7 @@ def deploy(kube, image, commit):
         "offscript.local/config-sha256": config_hash,
     }
     kube.apply(app)
-    kube.run("apply", "-f", ROOT / "k8s/app-service.yaml")
+    kube.run("apply", "-f", root / "k8s/app-service.yaml")
     print("Waiting for both application replicas…", flush=True)
     kube.run("rollout", "status", "deployment/offscript", "--timeout=180s", timeout=200)
     deployment = json.loads(kube.run("get", "deployment", "offscript", "-o", "json"))
@@ -193,7 +197,7 @@ def deploy(kube, image, commit):
     proof = {"namespace": "offscript", "context": "kind-offscript", "image": image, "commit": commit,
              "bootstrap_job": initialization_name, "ready_replicas": 2, "versions": versions,
              "image_preflight": verified_image}
-    output = ROOT / ".local/kubernetes/validation-state.json"
+    output = Path(proof_path) if proof_path is not None else ROOT / ".local/kubernetes/validation-state.json"
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(proof, indent=2) + "\n")
     print("Kubernetes is ready: PostgreSQL and two verified application replicas.", flush=True)

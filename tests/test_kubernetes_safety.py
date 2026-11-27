@@ -163,3 +163,26 @@ def test_wait_timeout_preserves_the_running_job(monkeypatch):
     with pytest.raises(RuntimeError, match="active Job is preserved"):
         local.initialize_catalogue(cluster, {"metadata": {"name": "active"}}, timeout=1)
     assert not cluster.created and cluster.jobs["active"]["metadata"]["uid"] == "running"
+
+
+def test_approval_is_rechecked_after_image_verification_and_before_mutations(monkeypatch):
+    calls = []
+
+    class Cluster:
+        def run(self, *args, **kwargs):
+            assert args[:2] == ("config", "view")
+            return "https://127.0.0.1:6443"
+
+    def verified(*args):
+        calls.append("image-verified")
+        return {"version": "0.1.0"}
+
+    def changed_main():
+        calls.append("main-rechecked")
+        raise RuntimeError("Main advanced")
+
+    monkeypatch.setattr(local, "verify_image", verified)
+    monkeypatch.setattr(local, "ensure_credentials", lambda *args: pytest.fail("No mutation may happen"))
+    with pytest.raises(RuntimeError, match="Main advanced"):
+        local.deploy(Cluster(), local.DEFAULT_IMAGE, local.DEFAULT_COMMIT, before_apply=changed_main)
+    assert calls == ["image-verified", "main-rechecked"]

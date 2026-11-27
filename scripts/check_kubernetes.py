@@ -77,11 +77,12 @@ def check_documents(documents):
 def validate(kube):
     server = kube.run("config", "view", "--minify", "-o", "jsonpath={.clusters[0].cluster.server}").strip()
     require_local_server(server)
+    root = getattr(kube, "root", ROOT)
     documents = {}
-    files = sorted(path.name for path in (ROOT / "k8s").glob("*.yaml") if path.name != "kind.yaml")
+    files = sorted(path.name for path in (root / "k8s").glob("*.yaml") if path.name != "kind.yaml")
     for filename in files:
         documents[filename] = kube.manifest(filename)
-        kube.run("apply", "--dry-run=server", "--validate=strict", "-f", ROOT / "k8s" / filename)
+        kube.run("apply", "--dry-run=server", "--validate=strict", "-f", root / "k8s" / filename)
     check_documents(documents)
     print(f"Kubernetes schema and safeguard checks passed for {len(files)} manifests.", flush=True)
     return documents

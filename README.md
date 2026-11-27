@@ -6,7 +6,7 @@ Discover Budapest activities by mood, budget and time, then decide with friends.
 
 Offscript brings coffee, culture, classes, exercise, beauty and wellness into one activity planner. It combines practical discovery filters with a shared shortlist, friend voting and a final choice confirmed by the host.
 
-**Current milestone:** a working English-language application, Docker containerization, GitHub Actions CI, validated-image publication to GitHub Container Registry (GHCR), and a local Kubernetes environment with two app replicas and persistent PostgreSQL. The application version is **0.1.0**. Automated delivery and the three required release demonstrations follow next.
+**Current milestone:** a working English-language application, Docker containerization, GitHub Actions CI, validated-image publication to GitHub Container Registry (GHCR), and continuous deployment into a private local Kubernetes environment. The application version is **0.1.0**. The three required semantic release demonstrations follow next.
 
 ![Offscript Budapest showing activity discovery, mood filters and the local catalogue](docs/assets/offscript-desktop.png)
 
@@ -112,7 +112,38 @@ curl --fail http://localhost:8768/ready
 curl --fail http://localhost:8768/version
 ```
 
-This is a single-node local environment with one database instance. The PVC preserves records when a database pod is recreated; deleting the kind cluster removes its local storage. Kubernetes setup is currently explicit; connecting it to approved GitHub updates is the next delivery milestone.
+This is a single-node local environment with one database instance. The PVC preserves records when a database pod is recreated; deleting the kind cluster removes its local storage. Initial cluster creation is explicit; subsequent approved main updates are delivered by the local worker below.
+
+## Continuous deployment to the private local cluster
+
+The pipeline uses pull-based delivery: GitHub Actions validates and publishes a main revision, then uploads a deployment request containing the image receipt and that revision's Kubernetes configuration. A local worker reads successful main CI results and applies the verified release to the existing cluster. The assignment permits a justified secure deployment mechanism for a private local cluster; this keeps cluster authentication on the local machine and uses outbound HTTPS connections.
+
+After creating the local cluster and installing the pinned development dependencies, keep this command running:
+
+```bash
+python -u -m scripts.delivery watch
+```
+
+The worker uses the existing Git credential manager for GitHub read access. Alternatively, provide `OFFSCRIPT_GITHUB_TOKEN` through a protected environment with **Actions: read** and **Contents: read** access. Tokens are used in memory and are never written into deployment state, artifacts or source control. The private kubeconfig and generated database passwords remain under `.local/`; they are not uploaded to GitHub. Public GHCR images need no registry password.
+
+Merge an approved change to `main`. After all validation and publication jobs succeed, the worker:
+
+1. Confirms the current main commit, repository, workflow, event and CI attempt, including every required job's success.
+2. Verifies the GitHub artifact digest, publication receipt and hashes of the allowlisted configuration files. Only deployment data is accepted; downloaded scripts are not executed.
+3. Validates API schemas and deployment safeguards, verifies the pinned image, and rechecks main/CI immediately before changing workloads.
+4. Initializes the catalogue, applies the configuration and rolls both app replicas to the image digest from that CI run.
+5. Waits for rollout completion and checks readiness, the Service address and the running commit/version. It records success or failure locally.
+
+```bash
+python -m scripts.delivery status
+curl --fail http://localhost:8768/version
+```
+
+Status includes whether the worker is running, the desired commit, the source CI URL and the last successful deployment. `.local/delivery/events.jsonl` records transitions; the matching `rollout-<commit>-<attempt>.json` records both replicas and their versions. These files contain no credentials. CI success means a validated release request is available; local deployment success is confirmed by the worker's status and rollout record.
+
+The worker checks every 15 seconds by default, serializes deployment with a local lock, resumes interrupted setup and avoids redeploying an already healthy release. Failed or cancelled CI, pull requests, other branches, stale main revisions/attempts and invalid artifacts cannot initiate deployment. Failures retain the previous success record and retry with bounded backoff; this is not automatic rollback. Correct main and let the worker retry, or stop the worker before manually restoring a previously verified image/configuration.
+
+Docker, the cluster and this worker must be running. After a restart, rerun the watch command; while the machine is asleep or offline, deployment waits until connectivity returns. Requests expire after the existing seven-day artifact retention period; rerun main CI to create a fresh request. The local worker intentionally holds no GitHub write permission.
 
 ## Architecture
 
@@ -170,7 +201,7 @@ Install the pinned Python dependencies shown above and use **Node.js 24**. Run t
 python -u -m scripts.ci quality
 ```
 
-This runs Ruff, **272 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Eight opt-in Kubernetes integration cases are skipped here and run in the dedicated CI job below. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation, build-probe cleanup, cache revalidation, publication safeguards, local cluster target/credential protection, image preflight and initialization recovery.
+This runs Ruff, **306 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Eight opt-in Kubernetes integration cases are skipped here and run in the dedicated CI job below. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation, build-probe cleanup, cache revalidation, publication safeguards, local cluster target/credential protection, image preflight, initialization recovery, delivery eligibility, artifact tampering and stale-release blocking.
 
 For a running local Kubernetes environment, validate manifests without changing workloads, or explicitly run the integration checks:
 
@@ -204,7 +235,7 @@ Delayed review and suggestion responses cannot reopen a closed detail dialog, re
 | Container | Upload-source secret scan, Docker build, Trivy scan, PostgreSQL integration, two-instance concurrency and Playwright browser checks |
 | Kubernetes | Checksum-pinned tools, an isolated cluster created from `kind.yaml`, strict API schemas, deployment safeguards, two app replicas, Service routing, preflight rejection and initialization retry/reuse checks |
 | CI gate | Succeeds only if all three validation jobs succeed; failures, cancellations and skipped jobs do not count as success |
-| Publish | Runs only after all four preceding jobs succeed on a push to `main`; publishes the checked image to GHCR and verifies a pull by digest |
+| Publish | Runs only after all four preceding jobs succeed on a push to `main`; publishes and pull-verifies the checked image, then uploads a deployment request bound to that run/attempt |
 
 The Kubernetes job uses the already published image pinned in the manifests to check the infrastructure and setup helper. The separate Container job validates the current source revision. Every Kubernetes CI run has its own temporary kubeconfig and disposable cluster; its test results and non-sensitive resource state are retained as artifacts.
 
@@ -218,7 +249,7 @@ The registry is **`ghcr.io/hjarchivenote/offscript-budapest`**. Each successful 
 
 Publication downloads the image archive from the **same workflow run**, checks its archive checksum, commit, version, scan/check metadata and loaded image ID, then pushes it without rebuilding. It removes the local app tags, pulls the registry image by digest, checks the image ID again and runs a non-root version/commit smoke check. A failure produces no successful publication receipt.
 
-The workflow summary and `published-image-<commit>` artifact record the full `registry_reference`, for example `ghcr.io/hjarchivenote/offscript-budapest@sha256:<digest>`. Use that recorded digest for deployments: registry tags can be replaced on a rerun, while a digest identifies exact image content. The current images are `linux/amd64`; the required `v1.0.0`, `v1.1.0` and `v1.2.0` release demonstrations will follow when Kubernetes delivery is implemented.
+The workflow summary and `published-image-<commit>` artifact record the full `registry_reference`, for example `ghcr.io/hjarchivenote/offscript-budapest@sha256:<digest>`. Use that recorded digest for deployments: registry tags can be replaced on a rerun, while a digest identifies exact image content. The current images are `linux/amd64`; the required `v1.0.0`, `v1.1.0` and `v1.2.0` release demonstrations remain to be performed through continuous deployment.
 
 To run a published image, copy its actual digest reference from a successful main workflow into `OFFSCRIPT_IMAGE`, then use the existing Compose setup without rebuilding:
 
@@ -233,7 +264,7 @@ This repository's published image is publicly pullable without signing in. The [
 
 **First verified GitHub run:** [CI run 45647384013](https://github.com/hjarchivenote/offscript-budapest/actions/runs/45647384013), for commit [`ea34fd4`](https://github.com/hjarchivenote/offscript-budapest/commit/ea34fd4157a70fe325bea165e2e48fc775abaea8). All three jobs passed, including the 263 automated tests, image scans, browser flows and database recovery checks.
 
-**Failure-path verification:** [Push run 45650479526](https://github.com/hjarchivenote/offscript-budapest/actions/runs/45650479526) and [PR run 45650661254](https://github.com/hjarchivenote/offscript-budapest/actions/runs/45650661254) deliberately fail one test on the verification branch. In both cases the container job is skipped, the final CI gate fails, and no validated image artifact is created. [PR #1](https://github.com/hjarchivenote/offscript-budapest/pull/1) records the failing revision and the corrective change, including browser checks that block all external requests while opening `/docs` and `/redoc`. [PR #5](https://github.com/hjarchivenote/offscript-budapest/pull/5) adds current publication-blocking evidence: the failed revision produces no release artifacts or registry tag, and recovery runs the identical dependency gate through a read-only positive control. Main and its published image remain unchanged. Deployment blocking must be verified when automated delivery is connected.
+**Failure-path verification:** [Push run 45650479526](https://github.com/hjarchivenote/offscript-budapest/actions/runs/45650479526) and [PR run 45650661254](https://github.com/hjarchivenote/offscript-budapest/actions/runs/45650661254) deliberately fail one test on the verification branch. In both cases the container job is skipped, the final CI gate fails, and no validated image artifact is created. [PR #1](https://github.com/hjarchivenote/offscript-budapest/pull/1) records the failing revision and the corrective change, including browser checks that block all external requests while opening `/docs` and `/redoc`. [PR #5](https://github.com/hjarchivenote/offscript-budapest/pull/5) adds current publication-blocking evidence: the failed revision produces no release artifacts or registry tag, and recovery runs the identical dependency gate through a read-only positive control. Main and its published image remain unchanged. Delivery eligibility tests reject failed/cancelled CI and prevent any apply; repeat the end-to-end failing-revision demonstration with delivery running as part of the required release demonstrations.
 
 ## Security and troubleshooting
 
@@ -258,7 +289,7 @@ HTML, API and operational responses use `no-store`. Static assets use `no-cache`
 
 ## Course requirements and next milestones
 
-This repository implements the application, CI, registry publication and local Kubernetes stages for the **End-to-End CI/CD Pipeline with GitHub, Docker, and Kubernetes** assignment. The required release demonstrations are `v1.0.0`, `v1.1.0` and `v1.2.0`; the current `0.1.0` development version precedes them.
+This repository implements the application, CI, registry publication, local Kubernetes and continuous deployment stages for the **End-to-End CI/CD Pipeline with GitHub, Docker, and Kubernetes** assignment. The required release demonstrations are `v1.0.0`, `v1.1.0` and `v1.2.0`; the current `0.1.0` development version precedes them.
 
 | Requirement | Current position and remaining work |
 | --- | --- |
@@ -266,10 +297,10 @@ This repository implements the application, CI, registry publication and local K
 | Docker and registry | Local container execution, image validation and main-only GHCR publication with a digest and pull verification are implemented. Add the required semantic release tags alongside the Kubernetes demonstrations. |
 | CI | Push/PR validation, scans and the final success gate are verified. Publication depends on every validation job succeeding and is restricted to pushes to `main`. |
 | Kubernetes | Local kind environment with two app replicas, Service, ConfigMap, generated Secret, separate readiness/liveness probes, resource requests/limits, RollingUpdate and persistent PostgreSQL. |
-| Automated delivery | Main-branch publication is implemented. Add Kubernetes deployment, rollout waiting and availability verification. The deployment runner must be able to reach the chosen cluster securely. |
+| Automated delivery | Successful main CI produces a verified deployment request. The outbound-only local worker applies its image/configuration, waits for rollout, checks Service availability and records the running version. |
 | Release demonstrations | Show the initial release, a meaningful feature update through a PR and a tested bug-fix release. The CI-only failure example is recorded above; verify that a failing revision is not published or deployed once delivery exists. Record commits, runs, image tags, rollout state and app version for each release. |
 | Submission and presentation | Expand the evidence into the required 5-10-page technical PDF and 8-12-slide PowerPoint, and prepare the live change-to-deployment demonstration. |
 
-For a current application walkthrough, launch Compose or the local Kubernetes environment, filter activities, inspect a provider source, create a plan and join it in another browser to vote. Then open the linked GitHub run to inspect the checks and artifacts. Automated updates across the three required release versions remain to be demonstrated.
+For a current application walkthrough, launch Compose or the local Kubernetes environment, filter activities, inspect a provider source, create a plan and join it in another browser to vote. For delivery, keep the local worker running, merge a change, inspect its successful GitHub run and deployment request, then show worker status, both replicas and `/version`. The three required semantic release demonstrations remain.
 
 European weekend events and travel options remain a possible product expansion after the Budapest planning experience and required delivery pipeline are complete.
