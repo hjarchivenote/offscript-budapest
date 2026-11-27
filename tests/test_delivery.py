@@ -198,6 +198,11 @@ def test_failed_ci_preserves_previous_release_without_fetching_or_applying(monke
     result = controller.step()
     assert result["status"] == "blocked-ci" and result["last_success"] == previous
     assert api.artifact_reads == 0
+    api.run.update(id=RUN_ID + 1, status="in_progress", conclusion=None)
+    result = controller.step()
+    assert result["status"] == "waiting-ci"
+    assert result["run_url"].endswith(f"/actions/runs/{RUN_ID + 1}")
+    assert result["last_success"] == previous and api.artifact_reads == 0
 
 
 @pytest.mark.parametrize("stale", [False, True])
