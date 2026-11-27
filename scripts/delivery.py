@@ -2,11 +2,15 @@
 
 import argparse
 import fcntl
+import getpass
+import hashlib
 import json
 import os
 import re
 import shutil
+import stat
 import subprocess
+import sys
 import tempfile
 import time
 import zipfile
@@ -38,6 +42,16 @@ class DeliveryError(RuntimeError):
     pass
 
 
+class AuthenticationRequired(DeliveryError):
+    pass
+
+
+AUTHENTICATION_MESSAGE = (
+    "GitHub read authentication is missing, expired or invalid. "
+    "Update the configured credential; the worker will retry without changing the running application."
+)
+
+
 def approved_run(run, commit):
     return (
         re.fullmatch(r"[a-f0-9]{40}", commit) is not None
@@ -51,24 +65,57 @@ def approved_run(run, commit):
     )
 
 
+def token_value(value):
+    if not isinstance(value, str) or not re.fullmatch(r"[\x21-\x7e]{1,4096}", value):
+        raise AuthenticationRequired(AUTHENTICATION_MESSAGE)
+    return value
+
+
+def token_path():
+    return Path(os.environ.get("OFFSCRIPT_GITHUB_TOKEN_FILE", ROOT / ".local/delivery/github-token")).expanduser()
+
+
+def file_read_token(path):
+    try:
+        # Do not follow a token symlink or block on a FIFO/device masquerading as a file.
+        fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+        with os.fdopen(fd, "r", encoding="ascii") as stream:
+            info = os.fstat(stream.fileno())
+            if (not stat.S_ISREG(info.st_mode) or info.st_uid != os.getuid()
+                    or info.st_mode & 0o077 or info.st_size > 4097):
+                raise AuthenticationRequired(AUTHENTICATION_MESSAGE)
+            return token_value(stream.read(4097).strip())
+    except (OSError, UnicodeError):
+        raise AuthenticationRequired(AUTHENTICATION_MESSAGE) from None
+
+
 def git_read_token():
-    if os.environ.get("OFFSCRIPT_GITHUB_TOKEN"):
-        return os.environ["OFFSCRIPT_GITHUB_TOKEN"]
-    result = subprocess.run(
-        ["git", "credential", "fill"], input="protocol=https\nhost=github.com\n\n",
-        text=True, capture_output=True, timeout=15, check=False,
-        env={**os.environ, "GIT_TERMINAL_PROMPT": "0"},
-    )
+    if "OFFSCRIPT_GITHUB_TOKEN" in os.environ:
+        return token_value(os.environ["OFFSCRIPT_GITHUB_TOKEN"])
+    path = token_path()
+    if "OFFSCRIPT_GITHUB_TOKEN_FILE" in os.environ or path.exists() or path.is_symlink():
+        return file_read_token(path)
+    try:
+        result = subprocess.run(
+            ["git", "credential", "fill"], input="protocol=https\nhost=github.com\n\n",
+            text=True, capture_output=True, timeout=15, check=False,
+            env={**os.environ, "GIT_TERMINAL_PROMPT": "0"},
+        )
+    except (OSError, subprocess.SubprocessError):
+        raise AuthenticationRequired(AUTHENTICATION_MESSAGE) from None
     fields = dict(line.split("=", 1) for line in result.stdout.splitlines() if "=" in line)
     if result.returncode or not fields.get("password"):
-        raise DeliveryError("GitHub read access is required through the existing Git credential manager.")
-    return fields["password"]
+        raise AuthenticationRequired(AUTHENTICATION_MESSAGE)
+    return token_value(fields["password"])
 
 
 class GitHub:
-    def __init__(self, token):
+    def __init__(self, token=None, *, token_provider=None):
+        if token is not None and token_provider is not None:
+            raise ValueError("Choose one GitHub credential source.")
+        self.token_provider = token_provider or ((lambda: token) if token is not None else git_read_token)
         self.api = httpx.Client(base_url="https://api.github.com", timeout=30, follow_redirects=False, headers={
-            "Authorization": "Bearer " + token, "Accept": "application/vnd.github+json",
+            "Accept": "application/vnd.github+json",
             "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "offscript-local-delivery",
         })
         self.download = httpx.Client(timeout=40, follow_redirects=False)
@@ -77,11 +124,34 @@ class GitHub:
         self.api.close()
         self.download.close()
 
-    def get(self, path, **params):
+    def read_token(self):
+        # Providers can fail with sensitive subprocess/transport details. Never log them.
         try:
-            response = self.api.get(f"/repos/{REPOSITORY}/" + path, params=params)
-        except httpx.HTTPError:
-            raise DeliveryError("GitHub could not be reached; the previous deployment is preserved.") from None
+            return token_value(self.token_provider())
+        except (OSError, RuntimeError, ValueError, subprocess.SubprocessError):
+            raise AuthenticationRequired(AUTHENTICATION_MESSAGE) from None
+
+    def request(self, path, **params):
+        token = self.read_token()
+        for attempt in range(2):
+            try:
+                response = self.api.get(f"/repos/{REPOSITORY}/" + path, params=params,
+                                        headers={"Authorization": "Bearer " + token})
+            except httpx.HTTPError:
+                raise DeliveryError("GitHub could not be reached; the previous deployment is preserved.") from None
+            if response.status_code != 401:
+                return response
+            response.close()
+            if attempt == 0:
+                refreshed = self.read_token()
+                if refreshed != token:
+                    token = refreshed
+                    continue
+            raise AuthenticationRequired(AUTHENTICATION_MESSAGE)
+        raise AssertionError("Unreachable authentication retry state")
+
+    def get(self, path, **params):
+        response = self.request(path, **params)
         if response.status_code != 200:
             raise DeliveryError(f"GitHub read request failed (HTTP {response.status_code}).")
         return response.json()
@@ -124,10 +194,12 @@ class GitHub:
 
     def archive(self, artifact):
         try:
-            response = self.api.get(f"/repos/{REPOSITORY}/actions/artifacts/{artifact['id']}/zip")
+            response = self.request(f"actions/artifacts/{artifact['id']}/zip")
+            if response.status_code != 302:
+                raise DeliveryError(f"GitHub artifact read request failed (HTTP {response.status_code}).")
             location = response.headers.get("location", "")
             url = urlsplit(location)
-            if (response.status_code != 302 or url.scheme != "https" or not url.hostname
+            if (url.scheme != "https" or not url.hostname
                     or not (url.hostname.endswith(".blob.core.windows.net") or url.hostname.endswith(".actions.githubusercontent.com"))):
                 raise DeliveryError("GitHub returned an unexpected artifact download location.")
             # A separate client prevents forwarding the GitHub credential to storage.
@@ -186,8 +258,13 @@ class Controller:
         return self.state
 
     def step(self):
+        if self.state.get("next_retry_epoch", 0) > time.time():
+            return self.state
         try:
             return self.reconcile()
+        except AuthenticationRequired:
+            return self.report("authentication-required", error=AUTHENTICATION_MESSAGE,
+                               failure_count=self.state.get("failure_count", 0) + 1, next_retry_epoch=0)
         except (DeliveryError, ValueError, KeyError, TypeError, OSError, RuntimeError, subprocess.SubprocessError, zipfile.BadZipFile) as error:
             count = self.state.get("failure_count", 0) + 1
             return self.report("deployment-failed", error=str(error), failure_count=count,
@@ -197,8 +274,6 @@ class Controller:
         commit = self.github.head()
         if self.state.get("desired_commit") != commit:
             self.report("waiting-ci", desired_commit=commit, run_url=None, error=None, failure_count=0, next_retry_epoch=0)
-        if self.state.get("next_retry_epoch", 0) > time.time():
-            return self.state
         run = self.github.latest_run(commit)
         if not run:
             return self.report("waiting-ci", run_url=None, error=None)
@@ -267,13 +342,23 @@ def worker_running(directory):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("watch", "once", "status"))
+    parser.add_argument("action", choices=("watch", "once", "status", "configure-token"))
     parser.add_argument("--directory", type=Path, default=ROOT / ".local/delivery")
     parser.add_argument("--kubeconfig", type=Path, default=ROOT / ".local/kubernetes/kubeconfig")
     parser.add_argument("--interval", type=int, default=15)
     local_binary = ROOT / ".local/kubernetes/bin/kubectl"
     parser.add_argument("--kubectl", default=str(local_binary) if local_binary.is_file() else shutil.which("kubectl"))
     args = parser.parse_args()
+    if args.action == "configure-token":
+        try:
+            configure_token()
+        except DeliveryError as error:
+            raise SystemExit(str(error)) from None
+        except OSError:
+            raise SystemExit("Token was not saved. Check the read permissions and private credential file location.") from None
+        except (EOFError, KeyboardInterrupt):
+            raise SystemExit("Token configuration cancelled; the credential is unchanged.") from None
+        return
     if args.action == "status":
         path = args.directory / "state.json"
         state = json.loads(path.read_text()) if path.exists() else {"status": "not-started"}
@@ -282,13 +367,13 @@ def main():
     if not args.kubectl or not args.kubeconfig.is_file() or args.interval < 5:
         parser.error("Provide the private local kubeconfig, kubectl, and an interval of at least five seconds.")
     with worker_lock(args.directory):
-        github = GitHub(git_read_token())
+        github = GitHub()
         try:
             controller = Controller(github, args.kubectl, args.kubeconfig.resolve(), args.directory)
             while True:
                 state = controller.step()
                 if args.action == "once":
-                    if state["status"] == "deployment-failed":
+                    if state["status"] in {"deployment-failed", "authentication-required"}:
                         raise SystemExit(1)
                     return
                 time.sleep(args.interval)
@@ -296,6 +381,40 @@ def main():
             print("Delivery worker stopped; the running application is preserved.", flush=True)
         finally:
             github.close()
+
+
+def configure_token():
+    """Accept a hidden token locally, verify read access, then replace its private file atomically."""
+    if not sys.stdin.isatty() or "OFFSCRIPT_GITHUB_TOKEN" in os.environ:
+        raise DeliveryError("Use an interactive terminal and remove the fixed token environment override first.")
+    token = token_value(getpass.getpass("GitHub Actions/Contents read token (hidden): "))
+    github = GitHub(token)
+    try:
+        commit = github.head()
+        run = github.latest_run(commit)
+        if run and approved_run(run, commit):
+            artifact = github.artifact(run)
+            if artifact:
+                payload = github.archive(artifact)
+                if "sha256:" + hashlib.sha256(payload).hexdigest() != artifact["digest"]:
+                    raise DeliveryError("The read-access probe returned a different artifact.")
+    finally:
+        github.close()
+    path = token_path()
+    path.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", dir=path.parent, prefix=".github-token-", delete=False) as stream:
+            temporary = Path(stream.name)
+            os.fchmod(stream.fileno(), 0o600)
+            stream.write(token + "\n")
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, path)
+    finally:
+        if temporary:
+            temporary.unlink(missing_ok=True)
+    print("GitHub read credential saved privately. A running worker will read the replacement automatically.")
 
 
 if __name__ == "__main__":

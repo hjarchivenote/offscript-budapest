@@ -124,7 +124,17 @@ After creating the local cluster and installing the pinned development dependenc
 python -u -m scripts.delivery watch
 ```
 
-The worker uses the existing Git credential manager for GitHub read access. Alternatively, provide `OFFSCRIPT_GITHUB_TOKEN` through a protected environment with **Actions: read** and **Contents: read** access. Tokens are used in memory and are never written into deployment state, artifacts or source control. The private kubeconfig and generated database passwords remain under `.local/`; they are not uploaded to GitHub. Public GHCR images need no registry password.
+The worker needs a GitHub read credential with **Actions: read** and **Contents: read** access to this repository. It reads the current credential for every GitHub request. On HTTP 401 it reads the source again and retries the same request once only if the credential changed. A missing or rejected credential produces `authentication-required` status while the worker stays running and preserves the existing application; replacing the credential allows the next polling cycle to recover without a restart. Permission/rate-limit failures do not trigger blind authentication retries.
+
+For a long-running worker, use a fine-grained token restricted to this repository. To configure or replace it, run this in an interactive local terminal:
+
+```bash
+python -m scripts.delivery configure-token
+```
+
+The prompt hides the token. The command checks repository/Actions read access, including an artifact download when the current successful main release has one, before atomically saving an owner-only (`0600`) credential file at `.local/delivery/github-token`. A rejected token leaves the previous file unchanged. The running worker reads the replacement automatically; do not paste tokens into chat or put them in command arguments.
+
+Credential precedence is an explicit `OFFSCRIPT_GITHUB_TOKEN` environment override, `OFFSCRIPT_GITHUB_TOKEN_FILE` (or the default private file if present), then the existing Git credential manager. A fixed environment override requires restarting the worker to replace that environment value; the file and credential-manager sources can be changed while it runs. `configure-token` refuses to run with a fixed token override, to avoid saving a credential the worker would ignore. An explicitly configured missing/unsafe file is rejected rather than silently switching identities. Tokens are never written into logs, deployment state, artifacts or source control. The credential file, private kubeconfig and generated database passwords stay under `.local/`; they are not uploaded to GitHub. Public GHCR images need no registry password.
 
 Merge an approved change to `main`. After all validation and publication jobs succeed, the worker:
 
@@ -201,7 +211,7 @@ Install the pinned Python dependencies shown above and use **Node.js 24**. Run t
 python -u -m scripts.ci quality
 ```
 
-This runs Ruff, **333 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Nine opt-in Kubernetes integration cases are skipped here and run in the dedicated CI job below. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation, build-probe cleanup, cache revalidation, publication safeguards, local cluster target/credential protection, image preflight, initialization recovery, delivery eligibility, artifact tampering and stale-release blocking.
+This runs Ruff, **360 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Nine opt-in Kubernetes integration cases are skipped here and run in the dedicated CI job below. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation, build-probe cleanup, cache revalidation, publication safeguards, local cluster target/credential protection, image preflight, initialization recovery, delivery eligibility, artifact tampering and stale-release blocking.
 
 For a running application cluster, validate manifests without changing workloads:
 
