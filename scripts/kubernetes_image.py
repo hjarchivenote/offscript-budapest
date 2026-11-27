@@ -3,6 +3,7 @@
 import argparse
 import json
 import os
+import re
 import shutil
 import subprocess
 import xml.etree.ElementTree as ET
@@ -78,6 +79,21 @@ def runtime_image_id(reference):
     return image["status"]["id"]
 
 
+def running_container_image_id(container_id):
+    # Imported Docker archives can leave a synthetic repoDigest in Pod.imageID
+    # that CRI cannot look up. Inspect the actual running container by its ID;
+    # CRI's imageId is its immutable config digest, independent of image names.
+    if not re.fullmatch(r"containerd://[a-f0-9]{64}", container_id):
+        raise RuntimeError("A running containerd container ID is required.")
+    identity = container_id.split("://", 1)[1]
+    status = json.loads(command("docker", "exec", NODE, "crictl", "inspect", identity))["status"]
+    image_id = status.get("imageId", "")
+    if (status.get("id") != identity or status.get("state") != "CONTAINER_RUNNING"
+            or not re.fullmatch(r"sha256:[a-f0-9]{64}", image_id)):
+        raise RuntimeError("CRI did not identify the expected running container and image.")
+    return image_id
+
+
 def load(kube, output, commit, kind):
     (output / "kubernetes-image.json").unlink(missing_ok=True)
     metadata = validated_metadata(output, commit)
@@ -115,7 +131,7 @@ def verify_running_images(kube, metadata):
         if (container["image"] != metadata["image"] or container.get("imagePullPolicy") != "Never"
                 or len(status) != 1 or not status[0].get("ready")):
             raise RuntimeError("A replica is not running the ready, locally loaded candidate.")
-        actual = runtime_image_id(status[0]["imageID"])
+        actual = running_container_image_id(status[0].get("containerID", ""))
         if actual != metadata["image_id"]:
             raise RuntimeError("A running Pod's image ID differs from the container-stage image.")
         identities.append(actual)

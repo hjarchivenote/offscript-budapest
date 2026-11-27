@@ -162,3 +162,33 @@ def test_classic_docker_config_digest_is_authoritative_when_api_omits_legacy_fie
                  "RootFS": {"Layers": config["rootfs"]["diff_ids"]}}
     assert matches_loaded(inspected, config, identity)
     assert not matches_loaded(inspected, config, "sha256:" + "0" * 64)
+
+
+def test_running_container_identity_does_not_depend_on_synthetic_import_names(monkeypatch):
+    container_id = "a" * 64
+    calls = []
+
+    def inspect(*args):
+        calls.append(args)
+        return json.dumps({"status": {"id": container_id, "state": "CONTAINER_RUNNING", "imageId": IMAGE_ID,
+                                      "imageRef": "docker.io/library/import-old@sha256:" + "b" * 64}})
+
+    monkeypatch.setattr(candidate, "command", inspect)
+    assert candidate.running_container_image_id("containerd://" + container_id) == IMAGE_ID
+    assert calls == [("docker", "exec", candidate.NODE, "crictl", "inspect", container_id)]
+
+
+@pytest.mark.parametrize("fault", ["id", "state", "imageId"])
+def test_wrong_stopped_or_missing_runtime_identity_is_rejected(monkeypatch, fault):
+    container_id = "a" * 64
+    status = {"id": container_id, "state": "CONTAINER_RUNNING", "imageId": IMAGE_ID}
+    status[fault] = "incorrect"
+    monkeypatch.setattr(candidate, "command", lambda *args: json.dumps({"status": status}))
+    with pytest.raises(RuntimeError, match="expected running container"):
+        candidate.running_container_image_id("containerd://" + container_id)
+
+
+def test_missing_container_id_is_rejected_before_runtime_query(monkeypatch):
+    monkeypatch.setattr(candidate, "command", lambda *args: pytest.fail("Missing container ID must not query CRI"))
+    with pytest.raises(RuntimeError, match="containerd container ID"):
+        candidate.running_container_image_id("")
