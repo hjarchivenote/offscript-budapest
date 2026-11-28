@@ -10,6 +10,7 @@ from tempfile import TemporaryDirectory
 
 from app import __version__
 from scripts.image_identity import archive_identity, matches_loaded
+from scripts.release_version import new_release_tag
 
 CHECKS = {
     "source-secret-scan", "image-build", "private-build-context",
@@ -62,13 +63,46 @@ def verify_kubernetes_receipt(proof, metadata, run_id, attempt):
         raise ValueError("Kubernetes verification does not match this image, archive or CI attempt.")
 
 
-def publish(output, commit, repository, actor, token):
+def manifest_digest(docker, tag, *, missing_ok=False):
+    try:
+        manifest = json.loads(docker("manifest", "inspect", "--verbose", tag))
+    except subprocess.CalledProcessError as error:
+        message = (error.stderr or "").lower()
+        if missing_ok and ("manifest unknown" in message or "no such manifest" in message):
+            return None
+        raise RuntimeError("The release tag could not be checked; no version alias was changed.") from None
+    if not isinstance(manifest, dict):
+        raise ValueError("Release tags must identify one validated image manifest.")
+    digest = manifest.get("Descriptor", {}).get("digest") or manifest.get("Digest")
+    if not isinstance(digest, str) or not re.fullmatch(r"sha256:[a-f0-9]{64}", digest):
+        raise ValueError("The registry did not identify the release manifest digest.")
+    return digest
+
+
+def publish_version_tag(docker, reference, version_tag, platform):
+    expected = reference.split("@", 1)[1]
+    existing = manifest_digest(docker, version_tag, missing_ok=True)
+    if existing is not None:
+        if existing != expected:
+            raise ValueError("The semantic release tag already identifies another image; it will not be overwritten.")
+        return
+    docker("image", "tag", reference, version_tag)
+    pushed = docker("image", "push", *platform, version_tag)
+    if set(re.findall(r"digest: (sha256:[0-9a-f]{64})", pushed)) != {expected}:
+        raise RuntimeError("The semantic release push differs from the validated image.")
+    if manifest_digest(docker, version_tag) != expected:
+        raise RuntimeError("The semantic release tag did not resolve to the validated image.")
+
+
+def publish(output, commit, repository, actor, token, *, release_tag=None):
     receipt = output / "published-image.json"
     receipt.unlink(missing_ok=True)
     if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository):
         raise ValueError("Invalid repository name.")
     if not actor or not token:
         raise ValueError("Registry authentication is missing.")
+    if release_tag is not None and release_tag != "v" + __version__:
+        raise ValueError("The semantic release tag must match the application version.")
     metadata = validated_metadata(output, commit)
     _, archived_config = archive_identity(output / "image.tar", metadata["image"])
     kubernetes = validated_kubernetes(output, metadata)
@@ -111,10 +145,14 @@ def publish(output, commit, repository, actor, token):
                "-c", "import os,sys; from app import __version__; assert os.getuid()!=0; "
                "assert __version__==sys.argv[1]; assert os.environ['APP_COMMIT']==sys.argv[2]",
                __version__, commit)
+        version_tag = f"{registry_image}:{release_tag}" if release_tag else None
+        if version_tag:
+            publish_version_tag(docker, reference, version_tag, platform)
     result = {
         **metadata, "kubernetes": kubernetes, "registry_tag": tag, "registry_reference": reference,
         "repository": repository, "run_url": f"https://github.com/{repository}/actions/runs/{os.environ['GITHUB_RUN_ID']}",
         "pull_verified": True,
+        "registry_version_tag": version_tag,
     }
     receipt.write_text(json.dumps(result, indent=2) + "\n")
     summary = os.environ.get("GITHUB_STEP_SUMMARY")
@@ -123,6 +161,8 @@ def publish(output, commit, repository, actor, token):
             stream.write(f"### Published and pull-verified image\n\nVersion: `{__version__}` · Commit: `{commit}`\n\n"
                          f"Tag: `{tag}`\n\nDeploy by digest: `{reference}`\n\n"
                          f"Validated image ID: `{metadata['image_id']}`\n")
+            if version_tag:
+                stream.write(f"Semantic release tag: `{version_tag}` (same verified manifest digest)\n")
     print(f"Published and verified: {reference}", flush=True)
     return result
 
@@ -131,7 +171,7 @@ def main():
     if os.environ.get("GITHUB_EVENT_NAME") != "push" or os.environ.get("GITHUB_REF") != "refs/heads/main":
         raise RuntimeError("Only a successful main-branch push workflow may publish.")
     publish(Path(".local/ci"), os.environ["GITHUB_SHA"], os.environ["GITHUB_REPOSITORY"],
-            os.environ["GITHUB_ACTOR"], os.environ["GHCR_TOKEN"])
+            os.environ["GITHUB_ACTOR"], os.environ["GHCR_TOKEN"], release_tag=new_release_tag(os.environ["GITHUB_SHA"]))
 
 
 if __name__ == "__main__":

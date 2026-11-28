@@ -6,7 +6,7 @@ Discover Budapest activities by mood, budget and time, then decide with friends.
 
 Offscript brings coffee, culture, classes, exercise, beauty and wellness into one activity planner. It combines practical discovery filters with a shared shortlist, friend voting and a final choice confirmed by the host.
 
-**Current milestone:** a working English-language application, Docker containerization, GitHub Actions CI, validated-image publication to GitHub Container Registry (GHCR), and continuous deployment into a private local Kubernetes environment. The application version is **0.1.0**. The three required semantic release demonstrations follow next.
+**Current milestone:** a working English-language application, Docker containerization, GitHub Actions CI, validated-image publication to GitHub Container Registry (GHCR), and continuous deployment into a private local Kubernetes environment. The application version is **1.0.0**, the initial functional release. Its automated release record is followed by the required v1.1.0 feature update and v1.2.0 bug-fix demonstrations.
 
 ![Offscript Budapest showing activity discovery, mood filters and the local catalogue](docs/assets/offscript-desktop.png)
 
@@ -211,7 +211,7 @@ Install the pinned Python dependencies shown above and use **Node.js 24**. Run t
 python -u -m scripts.ci quality
 ```
 
-This runs Ruff, **360 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Nine opt-in Kubernetes integration cases are skipped here and run in the dedicated CI job below. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation, build-probe cleanup, cache revalidation, publication safeguards, local cluster target/credential protection, image preflight, initialization recovery, delivery eligibility, artifact tampering and stale-release blocking.
+This runs Ruff, **384 Python tests**, JavaScript syntax checking and **28 JavaScript tests**, installing the pinned Node dependencies along the way. Nine opt-in Kubernetes integration cases are skipped here and run in the dedicated CI job below. Coverage includes date boundaries, opening and visit windows, commercial freshness, recommendation order, plan permissions, concurrent changes, catalogue updates, API documentation, build-probe cleanup, cache revalidation, publication safeguards, local cluster target/credential protection, image preflight, initialization recovery, delivery eligibility, artifact tampering and stale-release blocking.
 
 For a running application cluster, validate manifests without changing workloads:
 
@@ -279,7 +279,7 @@ The registry is **`ghcr.io/hjarchivenote/offscript-budapest`**. Each successful 
 
 Publication downloads the image archive from the **same workflow run**, checks its archive checksum, commit, version, scan/check metadata and loaded image ID, then pushes it without rebuilding. It removes the local app tags, pulls the registry image by digest, checks the image ID again and runs a non-root version/commit smoke check. A failure produces no successful publication receipt.
 
-The workflow summary and `published-image-<commit>` artifact record the full `registry_reference`, for example `ghcr.io/hjarchivenote/offscript-budapest@sha256:<digest>`. Use that recorded digest for deployments: registry tags can be replaced on a rerun, while a digest identifies exact image content. The current images are `linux/amd64`; the required `v1.0.0`, `v1.1.0` and `v1.2.0` release demonstrations remain to be performed through continuous deployment.
+The workflow summary and `published-image-<commit>` artifact record the full `registry_reference`, for example `ghcr.io/hjarchivenote/offscript-budapest@sha256:<digest>`. Use that recorded digest for deployments: commit tags can be replaced on a rerun, while a digest identifies exact image content. The current images are `linux/amd64`. A main commit that increases the application version also publishes a semantic image tag such as `v1.0.0`, pointing to the exact manifest verified by the container, Kubernetes and registry-pull checks. The publisher reads the main commit’s first parent using a two-commit checkout. An unchanged version publishes only its commit tag; an existing semantic tag that points to another digest is rejected rather than overwritten. Deployment still uses the immutable digest, and the receipt records both the commit tag and any semantic tag.
 
 To run a published image, copy its actual digest reference from a successful main workflow into `OFFSCRIPT_IMAGE`, then use the existing Compose setup without rebuilding:
 
@@ -319,18 +319,18 @@ HTML, API and operational responses use `no-store`. Static assets use `no-cache`
 
 ## Course requirements and next milestones
 
-This repository implements the application, CI, registry publication, local Kubernetes and continuous deployment stages for the **End-to-End CI/CD Pipeline with GitHub, Docker, and Kubernetes** assignment. The required release demonstrations are `v1.0.0`, `v1.1.0` and `v1.2.0`; the current `0.1.0` development version precedes them.
+This repository implements the application, CI, registry publication, local Kubernetes and continuous deployment stages for the **End-to-End CI/CD Pipeline with GitHub, Docker, and Kubernetes** assignment. The required release demonstrations are `v1.0.0`, `v1.1.0` and `v1.2.0`; `1.0.0` is the initial functional release; feature and bug-fix releases follow it.
 
 | Requirement | Current position and remaining work |
 | --- | --- |
 | Application and GitHub | Functional app, meaningful API endpoints, health/version endpoints, tests, source repository and this README. PR #1 records the documentation fix and CI verification; the feature-release PR demonstration remains. |
-| Docker and registry | Local container execution, image validation and main-only GHCR publication with a digest and pull verification are implemented. Add the required semantic release tags alongside the Kubernetes demonstrations. |
+| Docker and registry | Local container execution, image validation, main-only GHCR publication and semantic version tags on application version changes are implemented. The initial v1.0.0 release starts the three-version demonstration. |
 | CI | Push/PR validation, scans and the final success gate are verified. Publication depends on every validation job succeeding and is restricted to pushes to `main`. |
 | Kubernetes | Local kind environment with two app replicas, Service, ConfigMap, generated Secret, separate readiness/liveness probes, resource requests/limits, RollingUpdate and persistent PostgreSQL. |
 | Automated delivery | Successful main CI produces a verified deployment request. The outbound-only local worker applies its image/configuration, waits for rollout, checks Service availability and records the running version. |
 | Release demonstrations | Show the initial release, a meaningful feature update through a PR and a tested bug-fix release. The CI-only failure example is recorded above; verify that a failing revision is not published or deployed once delivery exists. Record commits, runs, image tags, rollout state and app version for each release. |
 | Submission and presentation | Expand the evidence into the required 5-10-page technical PDF and 8-12-slide PowerPoint, and prepare the live change-to-deployment demonstration. |
 
-For a current application walkthrough, launch Compose or the local Kubernetes environment, filter activities, inspect a provider source, create a plan and join it in another browser to vote. For delivery, keep the local worker running, merge a change, inspect its successful GitHub run and deployment request, then show worker status, both replicas and `/version`. The three required semantic release demonstrations remain.
+For a current application walkthrough, launch Compose or the local Kubernetes environment, filter activities, inspect a provider source, create a plan and join it in another browser to vote. For delivery, keep the local worker running, merge a change, inspect its successful GitHub run and deployment request, then show worker status, both replicas and `/version`. The initial-release evidence records its commit, successful/failed CI runs, semantic image tag, digest and both running replicas. The feature and bug-fix release demonstrations follow separately.
 
 European weekend events and travel options remain a possible product expansion after the Budapest planning experience and required delivery pipeline are complete.
