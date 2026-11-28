@@ -1,7 +1,10 @@
+import tomllib
 from datetime import UTC, datetime
+from pathlib import Path
 
 import pytest
 
+from app import __version__
 from app.discovery import fits_window, planning_window
 from app.models import Activity
 
@@ -15,6 +18,11 @@ def test_health_version_and_readiness(client):
     assert client.get("/health").json() == {"status": "ok"}
     assert client.get("/ready").json() == {"status": "ready"}
     assert client.get("/version").json()["version"] == "0.1.0"
+
+
+def test_distribution_and_runtime_versions_agree():
+    project = tomllib.loads((Path(__file__).resolve().parents[1] / "pyproject.toml").read_text())
+    assert project["project"]["version"] == __version__
 
 
 def test_frontend_and_static_files_are_served(client):

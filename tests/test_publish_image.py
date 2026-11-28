@@ -221,3 +221,32 @@ def test_missing_or_mismatched_kubernetes_proof_blocks_publication_before_login(
         release.publish(artifact, COMMIT, REPOSITORY, "publisher", "synthetic-token")
     assert not calls
     assert not (artifact / "published-image.json").exists()
+
+
+def test_semantic_alias_is_written_only_for_the_exact_pulled_and_verified_image(artifact, monkeypatch):
+    calls = docker_runner(monkeypatch)
+    runner = release.subprocess.run
+    manifest_reads = []
+
+    def run(command, **kwargs):
+        if command[1:3] == ["manifest", "inspect"]:
+            calls.append((command, kwargs))
+            manifest_reads.append(command)
+            if len(manifest_reads) == 1:
+                raise subprocess.CalledProcessError(1, command, stderr="manifest unknown")
+            return SimpleNamespace(stdout=json.dumps({"Descriptor": {"digest": DIGEST}}))
+        return runner(command, **kwargs)
+
+    monkeypatch.setattr(release.subprocess, "run", run)
+    result = release.publish(artifact, COMMIT, REPOSITORY, "publisher", "private-test-token", release_tag="v" + release.__version__)
+    assert result["registry_version_tag"] == f"ghcr.io/{REPOSITORY}:v{release.__version__}"
+    commands = [command for command, _ in calls]
+    assert next(i for i, c in enumerate(commands) if c[1] == "run") < next(i for i, c in enumerate(commands) if c[1] == "manifest")
+    assert json.loads((artifact / "published-image.json").read_text())["registry_version_tag"] == result["registry_version_tag"]
+
+
+def test_an_arbitrary_version_alias_is_rejected_before_authentication(artifact, monkeypatch):
+    calls = docker_runner(monkeypatch)
+    with pytest.raises(ValueError, match="application version"):
+        release.publish(artifact, COMMIT, REPOSITORY, "publisher", "private-test-token", release_tag="latest")
+    assert not calls and not (artifact / "published-image.json").exists()
