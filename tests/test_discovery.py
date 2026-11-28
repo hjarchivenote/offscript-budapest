@@ -17,7 +17,7 @@ def ids(response):
 def test_health_version_and_readiness(client):
     assert client.get("/health").json() == {"status": "ok"}
     assert client.get("/ready").json() == {"status": "ready"}
-    assert client.get("/version").json()["version"] == "0.1.0"
+    assert client.get("/version").json()["version"] == __version__
 
 
 def test_distribution_and_runtime_versions_agree():
